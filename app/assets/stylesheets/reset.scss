@@ -1,0 +1,114 @@
+/* 
+font-size
+10px = 77%     11px = 85%     12px = 93%     13px = 100%
+14px = 108%    15px = 116%    16px = 123.1%  17px = 131%
+18px = 138.5%  19px = 146.5%  20px = 153.9%  21px = 161.6%
+22px = 167%    23px = 174%    24px = 182%    25px = 189%
+26px = 197%
+*/
+
+/*
+========================================
+	reset 
+========================================
+*/
+
+html,
+body {
+	height:100%;
+}
+html {
+	overflow-y: scroll;
+}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,
+pre,form,fieldset,
+input,textarea,p,blockquote,th,td {
+	margin:0;padding:0;
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset,
+img {
+	border:0;
+}
+ol,
+ul {
+	list-style:none;
+}
+caption,th {
+	text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-weight:normal;
+}
+q:before,q:after {
+	content:'';
+}
+abbr,acronym {
+	border:0;
+}
+.clearfix {
+	zoom:1;
+}
+.clearfix:after {
+	content:'';
+	display:block;
+	clear:both;
+}
+a:hover img.over {
+	opacity:0.6;
+	filter:alpha(opacity=60);
+	-ms-filter: "alpha( opacity=60 )";
+}
+.clear {
+	clear:both;
+}
+input {
+	cursor:pointer;
+	cursor:hand;
+}
+/*
+========================================
+	Addition20111007�@�X�}�t�H���Z�b�g
+========================================
+/* 
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    vertical-align:baseline;
+    background-color:transparent;
+    font-weight:normal;
+}
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+	display:block;
+}
+blockquote, q {
+    quotes:none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}

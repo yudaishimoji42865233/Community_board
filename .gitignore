@@ -15,3 +15,12 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+.env
+.envrc
+config/secrets.yml
+.DS_Store
