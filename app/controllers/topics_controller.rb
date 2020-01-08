@@ -18,6 +18,9 @@ class TopicsController < ApplicationController
   def comment_new
   end
 
+  def delete_select
+  end
+
   def delete_check
   end
 end
