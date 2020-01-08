@@ -1,0 +1,367 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<meta charset="utf-8">
+<title>情報交換BBS一覧｜ぷちっとくろにくる</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no,address=no,email=no">
+
+<link href="/assets/reset.css" rel="stylesheet">
+<link href="/assets/style.css" rel="stylesheet">
+<link href="/assets/layout.css" rel="stylesheet">
+<link href="/assets/p_lay.css?180313" rel="stylesheet">
+
+<script src="/assets/jquery.1.6.1.min.js"></script>
+<script src="/assets/common.js"></script>
+
+<script type="text/javascript">
+function opent(oid){
+	$('#'+oid).css({'height':'20em'});
+	$('#overlay').show();
+}
+$(function () {
+	$('#tmenu').bind('click', 
+		function(e){
+			if($('#overlay').css('display') == 'block' && e.target.className=="menu1") {
+				$('#t1').css({'height':'1.5em'});
+				$('#overlay').hide();
+			}
+		}
+	);
+});
+
+</script>
+
+
+<style type="text/css">
+#t1{
+height: 1.5em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+				<script language="JavaScript">
+					function comme_call(num)
+					{
+						document.form_comme.topic_id.value=num;
+						document.form_comme.submit();
+					}
+				</script>
+				<form name="form_comme" method="POST" action="" >
+				<input type=hidden name="topic_id" value=0>
+				<input type=hidden name="ibbs_contribution_comment" value=0>
+				<input type=hidden name=page_type value=>
+<input type=hidden name=page value=3>
+<input type=hidden name=page_cate value=0>
+
+				</form>
+				<form name=form_next method=POST action="">
+				
+				<input type="hidden" name="page" value="0">
+				<input type="hidden" name="page_type" value="">
+				<input type="hidden" name="page_cate" value="0">
+				</form>
+				<form name=form_rnk method=POST action="">
+				
+				<input type="hidden" name="page" value="0">
+				<input type="hidden" name="page_type" value="">
+				<input type="hidden" name="page_cate" value="0">
+				</form>
+
+<section>
+	<p class="alignC"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></p>
+</section>
+
+
+<section id="content_area"  style="position: relative;">
+
+	<div style="position: absolute;top:0;z-index:1000;width: 100%;">
+	<ul id="tmenu" class="menu1" style="width: 97%;position: absolute;margin-left: 3%;margin-right: 0%;margin-top: 0.25em;z-index:1000;">
+	<li id=t1 >
+	<ul>
+	<li style="float:none;width:100%;display: block;margin: 0;position: relative;z-index:1001;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;position: relative;z-index:1002;" onclick="opent('t1');event.preventDefault();return false;" class="white">全部</a></li><li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="document.form_rnk.page_cate.value='99';document.form_rnk.submit();return false;" class="white">公式</a></li><li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="document.form_rnk.page_cate.value='1';document.form_rnk.submit();return false;" class="white">募集</a></li><li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="document.form_rnk.page_cate.value='2';document.form_rnk.submit();return false;" class="white">情報</a></li><li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="document.form_rnk.page_cate.value='3';document.form_rnk.submit();return false;" class="white">質問</a></li><li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="document.form_rnk.page_cate.value='4';document.form_rnk.submit();return false;" class="white">雑記</a></li><li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="document.form_rnk.page_cate.value='5';document.form_rnk.submit();return false;" class="white">競売</a></li>
+	</ul>
+	</li>
+	  <li ><a href="javascript:void(0)" onclick="document.form_rnk.page_type.value='view';document.form_rnk.submit();return false;" class="white">閲覧順</a></li>
+	  <li ><a href="javascript:void(0)" onclick="document.form_rnk.page_type.value='good';document.form_rnk.submit();return false;" class="white">評価順</a></li>
+	  <li ><a href="javascript:void(0)" onclick="document.form_rnk.page_type.value='new';document.form_rnk.submit();return false;" class="white">新着順</a></li>
+	  <li ><a href="javascript:void(0)" onclick="document.form_rnk.page_type.value='update';document.form_rnk.submit();return false;" class="white">更新順</a></li>
+	  <li ><a href="javascript:void(0)" onclick="document.form_rnk.page_type.value='my';document.form_rnk.submit();return false;" class="white">MY投稿</a></li>
+	</ul>
+	<div>
+
+	<div id="overlay" style="width: 100%;height: 100%;position: fixed;top: 0;left: 0;z-index: 100;background: #000;opacity: 0.7; display: none; background-color: rgb(0, 0, 0);" onclick="$('#t1').css({'height':'1.5em'});$(this).hide();"></div>
+
+
+
+	<div id="content_main_area" class="in_box_sizing" style="position:absolute;top:2.5rem;z-index:1;width: 98%;" >
+
+    	<div id="content_main_area_in" >
+        
+					<div class="category_area">
+		    	<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+			        <tr>
+						<form action="" method="POST">
+						<input type=hidden name=page_type value=>
+<input type=hidden name=page value=3>
+<input type=hidden name=page_cate value=0>
+
+						<td class="td_txt_explanation" style="width:60%">投稿できます。</td>
+						
+						<td class="btn_submit_area" align="right">
+							<input name=ibbs_delete type="submit" value="削除する" class="btn_delete in_box_sizing" style="width:95%;">
+						</td>
+										<td class="btn_submit_area" align="right">
+					<input name=ibbs_contribution_input type="submit" value="投稿する" class="btn_submit in_box_sizing" style="width:95%">
+				</td>
+						</form>
+						</tr>
+						
+				</table>
+			</div><!-- category_area -->
+		
+
+        <!-- 投稿一覧 -->
+        <div class="category_area">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+                <tr>
+                    <td class="td_category"><img src="/assets/category/category_contribution_list.png" alt="トピック投稿一覧"></td>
+                    <td class="td_txt_explanation" >今までに投稿したトピックの一覧です。</td>
+                    <td class="td_txt_explanation"  style="display:none;" >以降、投稿したトピックはありません。</td>
+                    <td class="td_txt_explanation"  style="display:none;" >情報交換がありません。</td>
+                </tr>
+            </table>
+<!-- style=\"display:none;\" -->
+
+			<form action="" method="POST">
+			<input type=hidden name=page_type value=>
+<input type=hidden name=page value=3>
+<input type=hidden name=page_cate value=0>
+
+
+<ul class=bbsList><li>
+<div class="bbsBox" 						onclick="comme_call(112985)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1844910_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >お年玉プレゼント(結果発表)<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【情報】ばに・コ・</div>
+<div class="bbsInfoBar bbsInfoBarL">2020/01/01 閲覧数80</div>
+</div>
+</li><li>
+<div class="bbsBox" 						onclick="comme_call(113070)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1729969_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >アメチュワンド！<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【競売】ゆう@りん</div>
+<div class="bbsInfoBar bbsInfoBarL">2020/01/03 閲覧数79</div>
+</div>
+</li></ul><ul class=bbsList><li>
+<div class="bbsBox" 						onclick="comme_call(112986)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1642082_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >水水水曜日〜<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【雑記】オニドレ</div>
+<div class="bbsInfoBar bbsInfoBarL">2020/01/01 閲覧数79</div>
+</div>
+</li><li>
+<div class="bbsBox" 						onclick="comme_call(113007)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1843878_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >年明けたんで、イメチェンしまーす。<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【雑記】徳永参謀</div>
+<div class="bbsInfoBar bbsInfoBarL">2020/01/02 閲覧数78</div>
+</div>
+</li></ul><ul class=bbsList><li>
+<div class="bbsBox" 						onclick="comme_call(113024)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1831839_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >目が乾燥した時の対処法<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【質問】鈴華/Suzuka</div>
+<div class="bbsInfoBar bbsInfoBarL">2020/01/02 閲覧数78</div>
+</div>
+</li><li>
+<div class="bbsBox" 						onclick="comme_call(113081)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1838632_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >熱が出たので<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【全部】霊朝</div>
+<div class="bbsInfoBar bbsInfoBarL">2020/01/03 閲覧数77</div>
+</div>
+</li></ul><ul class=bbsList><li>
+<div class="bbsBox" 						onclick="comme_call(113105)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1827873_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >誰かぁ〜<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【全部】▹▸ぴけ</div>
+<div class="bbsInfoBar bbsInfoBarL">2020/01/03 閲覧数76</div>
+</div>
+</li><li>
+<div class="bbsBox" 						onclick="comme_call(113101)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1470988_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >学園生活<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【全部】アリスｻﾏ</div>
+<div class="bbsInfoBar bbsInfoBarL">2020/01/03 閲覧数76</div>
+</div>
+</li></ul><ul class=bbsList><li>
+<div class="bbsBox" 						onclick="comme_call(112423)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1797170_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >( ・ω・)∩ｼﾂﾓｰﾝ<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【全部】@おからさん@</div>
+<div class="bbsInfoBar bbsInfoBarL">2019/12/26 閲覧数76</div>
+</div>
+</li><li>
+<div class="bbsBox" 						onclick="comme_call(113174)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1841767_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >私呼びにくいから<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【全部】まりとゆなは</div>
+<div class="bbsInfoBar bbsInfoBarL">2020/01/04 閲覧数75</div>
+</div>
+</li></ul><ul class=bbsList><li>
+<div class="bbsBox" 						onclick="comme_call(112470)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1850876_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >分からん(笑)<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【雑記】-ソウト-</div>
+<div class="bbsInfoBar bbsInfoBarL">2019/12/26 閲覧数75</div>
+</div>
+</li><li>
+<div class="bbsBox" 						onclick="comme_call(113199)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1849729_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >青っぽいの頂戴。<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【募集】後輩さん</div>
+<div class="bbsInfoBar bbsInfoBarL">2020/01/04 閲覧数74</div>
+</div>
+</li></ul><ul class=bbsList><li>
+<div class="bbsBox" 						onclick="comme_call(113191)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1844910_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >バグイベ！<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【募集】ばに・コ・</div>
+<div class="bbsInfoBar bbsInfoBarL">2020/01/04 閲覧数73</div>
+</div>
+</li><li>
+<div class="bbsBox" 						onclick="comme_call(113198)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1838830_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >なんかプチフレの成長止まった気がするわ<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【全部】れうすみん</div>
+<div class="bbsInfoBar bbsInfoBarL">2020/01/04 閲覧数73</div>
+</div>
+</li></ul><ul class=bbsList><li>
+<div class="bbsBox" 						onclick="comme_call(113106)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1345778_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >最近の言葉は？<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【全部】悪ノ使者</div>
+<div class="bbsInfoBar bbsInfoBarL">2020/01/03 閲覧数73</div>
+</div>
+</li><li>
+<div class="bbsBox" 						onclick="comme_call(113013)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1819755_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >出た✨<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【全部】$炭酸拳(^^)</div>
+<div class="bbsInfoBar bbsInfoBarL">2020/01/02 閲覧数72</div>
+</div>
+</li></ul><ul class=bbsList><li>
+<div class="bbsBox" 						onclick="comme_call(113139)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1842561_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >やっと<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【全部】あかり(*^^*)</div>
+<div class="bbsInfoBar bbsInfoBarL">2020/01/04 閲覧数71</div>
+</div>
+</li><li>
+<div class="bbsBox" 						onclick="comme_call(113075)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1841767_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >えっ！<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【全部】まりとゆなは</div>
+<div class="bbsInfoBar bbsInfoBarL">2020/01/03 閲覧数70</div>
+</div>
+</li></ul><ul class=bbsList><li>
+<div class="bbsBox" 						onclick="comme_call(112981)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1852632_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >初めのうちにやるべき事は？<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【質問】✳︎空音✳︎</div>
+<div class="bbsInfoBar bbsInfoBarL">2020/01/01 閲覧数70</div>
+</div>
+</li><li>
+<div class="bbsBox" 						onclick="comme_call(113019)" style="cursor: pointer;">
+<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1760326_1.jpeg" class="icon80"></a>
+<p class="bbsDetail" >ギルドに入りたいのですが…<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+</div>
+<div class="bbsClearfix">
+<div class="bbsDashed3"></div>
+<div class="bbsInfoBar bbsInfoBarR">【全部】。うらる</div>
+<div class="bbsInfoBar bbsInfoBarL">2020/01/02 閲覧数70</div>
+</div>
+</li></ul>
+
+			</form>
+            
+
+<div style="float:left;height:40px;overflow: hidden;" ><a href="javascript:void(0)" onclick="document.form_next.page.value=2;document.form_next.submit();return false;"><img align=left width=100% src=/assets/bg/jmp_prev.png></a></div><div style="float:right;height:40px;overflow: hidden;"><a href="javascript:void(0)" onclick="document.form_next.page.value=4;document.form_next.submit();return false;"><img align=right width=100% src=/assets/bg/jmp_next.png></a></div><div style="clear:both;"></div>
+
+        </div><!-- category_area -->
+
+
+
+      </div><!-- content_main_area_in -->
+    </div><!-- content_main_area -->
+</section>
+
+
+
+</body>
+</html>
