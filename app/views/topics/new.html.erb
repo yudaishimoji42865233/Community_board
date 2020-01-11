@@ -5,9 +5,9 @@
   
   <section id="content_area">
   	<div id="content_main_area" class="in_box_sizing" style="z-index:2;">
-      <div id="content_main_area_in">
-        <div class="category_area">
-  			  <form action="" method="POST">
+      <%= form_for @topic do |f| %>
+        <div id="content_main_area_in">
+          <div class="category_area">
   			    <input type=hidden name=topic_id value=113019>
   			    <input type=hidden name=page_type value=>
             <input type=hidden name=page value=3>
@@ -18,7 +18,7 @@
 			      			投稿する
 			      		</td>
 			      		<td class="btn_submit_area" align="right">
-			      	  	<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="document.form_touko.submit();return false;">
+			      	  	<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/'">
 			      	  </td>				
                 <td class="btn_submit_area" align="right">
 			      		  <input type="submit" name="ibbs_contribution_comment_input" value="投稿を確認する" class="btn_submit in_box_sizing" style="width:95%">
@@ -30,36 +30,34 @@
               </tr>
               -->
             </table>
-			    </form>
-        </div><!-- category_area -->
+          </div><!-- category_area -->
 
-    <div class="category_area" style="position:relative;">
-      <form action="" method="">
-        <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
-          <tr>
-            <td class="td_category"><img src="/assets/category/category_name2.png" alt="投稿入力フォーム"></td>
-            <td style="cursor: pointer;" class="td_txt_explanation" onclick="document.form_pr.look_pid.value=1642643;document.form_pr.submit();return false;">
-	  		    <span class="txt_contribution_title">下記フォームにすべて入力し、投稿確認ボタンを押してください。</span>
-	  	      </td>
-          </tr>
-          <tr>
-            <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_name.png" alt="トピック名"></td>
-            <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
-              <input class="contribution_input_txt_area in_box_sizing" placeholder=トピック名を入力してください。>
-            </td>
-          </tr>
-          <tr>
-            <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
-            <td class="td_txt_explanation" style="padding-top:5px;">
-              <textarea class="renewal_comment_area in_box_sizing" placeholder="投稿するトピックの本文をこちらに入力してください。"></textarea>
-            </td>
-          </tr>
-        </table>
-      </form>
-    </div>
-
-    
-
-      </div>
+          <div class="category_area" style="position:relative;">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+              <tr>
+                <td class="td_category"><img src="/assets/category/category_name2.png" alt="投稿入力フォーム"></td>
+                <td style="cursor: pointer;" class="td_txt_explanation" onclick="document.form_pr.look_pid.value=1642643;document.form_pr.submit();return false;">
+	        	      <span class="txt_contribution_title">
+                    <%= f.text_field :username, class:"contribution_input_txt_area in_box_sizing", placeholder:"ユーザー名を入力してください。"%>
+                    <br>下記フォームにすべて入力し、投稿確認ボタンを押してください。
+                  </span>
+	        	    </td>
+              </tr>
+              <tr>
+                <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_name.png" alt="トピック名"></td>
+                <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+                  <%= f.text_field :title, class:"contribution_input_txt_area in_box_sizing", placeholder:"トピック名を入力してください。"%>
+                </td>
+              </tr>
+              <tr>
+                <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
+                <td class="td_txt_explanation" style="padding-top:5px;">
+                  <%= f.text_area :content, class:"renewal_comment_area in_box_sizing", placeholder:"投稿するトピックの本文をこちらに入力してください。"%>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      <% end %>
     </div>
   </section>

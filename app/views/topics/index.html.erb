@@ -108,7 +108,6 @@ height: 1.5em;
 					<div class="category_area">
 		    	<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
 			        <tr>
-						<form action="" method="POST">
 						<input type=hidden name=page_type value=>
 <input type=hidden name=page value=3>
 <input type=hidden name=page_cate value=0>
@@ -119,9 +118,9 @@ height: 1.5em;
 							<input name=ibbs_delete type="submit" value="削除する" class="btn_delete in_box_sizing" style="width:95%;">
 						</td>
 										<td class="btn_submit_area" align="right">
-					<input name=ibbs_contribution_input type="submit" value="投稿する" class="btn_submit in_box_sizing" style="width:95%">
+					<%# <input name=ibbs_contribution_input type="submit" value="投稿する" class="btn_submit in_box_sizing" style="width:95%"> %>
+					<%= button_to '投稿する', new_topic_path, method: :get, class:"btn_submit in_box_sizing", style:"width:95%" %>
 				</td>
-						</form>
 						</tr>
 						
 				</table>
@@ -145,208 +144,42 @@ height: 1.5em;
 <input type=hidden name=page value=3>
 <input type=hidden name=page_cate value=0>
 
-
-<ul class=bbsList><li>
-<div class="bbsBox" 						onclick="comme_call(112985)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1844910_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >お年玉プレゼント(結果発表)<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【情報】ばに・コ・</div>
-<div class="bbsInfoBar bbsInfoBarL">2020/01/01 閲覧数80</div>
-</div>
-</li><li>
-<div class="bbsBox" 						onclick="comme_call(113070)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1729969_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >アメチュワンド！<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【競売】ゆう@りん</div>
-<div class="bbsInfoBar bbsInfoBarL">2020/01/03 閲覧数79</div>
-</div>
-</li></ul><ul class=bbsList><li>
-<div class="bbsBox" 						onclick="comme_call(112986)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1642082_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >水水水曜日〜<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【雑記】オニドレ</div>
-<div class="bbsInfoBar bbsInfoBarL">2020/01/01 閲覧数79</div>
-</div>
-</li><li>
-<div class="bbsBox" 						onclick="comme_call(113007)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1843878_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >年明けたんで、イメチェンしまーす。<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【雑記】徳永参謀</div>
-<div class="bbsInfoBar bbsInfoBarL">2020/01/02 閲覧数78</div>
-</div>
-</li></ul><ul class=bbsList><li>
-<div class="bbsBox" 						onclick="comme_call(113024)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1831839_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >目が乾燥した時の対処法<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【質問】鈴華/Suzuka</div>
-<div class="bbsInfoBar bbsInfoBarL">2020/01/02 閲覧数78</div>
-</div>
-</li><li>
-<div class="bbsBox" 						onclick="comme_call(113081)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1838632_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >熱が出たので<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【全部】霊朝</div>
-<div class="bbsInfoBar bbsInfoBarL">2020/01/03 閲覧数77</div>
-</div>
-</li></ul><ul class=bbsList><li>
-<div class="bbsBox" 						onclick="comme_call(113105)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1827873_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >誰かぁ〜<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【全部】▹▸ぴけ</div>
-<div class="bbsInfoBar bbsInfoBarL">2020/01/03 閲覧数76</div>
-</div>
-</li><li>
-<div class="bbsBox" 						onclick="comme_call(113101)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1470988_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >学園生活<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【全部】アリスｻﾏ</div>
-<div class="bbsInfoBar bbsInfoBarL">2020/01/03 閲覧数76</div>
-</div>
-</li></ul><ul class=bbsList><li>
-<div class="bbsBox" 						onclick="comme_call(112423)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1797170_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >( ・ω・)∩ｼﾂﾓｰﾝ<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【全部】@おからさん@</div>
-<div class="bbsInfoBar bbsInfoBarL">2019/12/26 閲覧数76</div>
-</div>
-</li><li>
-<div class="bbsBox" 						onclick="comme_call(113174)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1841767_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >私呼びにくいから<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【全部】まりとゆなは</div>
-<div class="bbsInfoBar bbsInfoBarL">2020/01/04 閲覧数75</div>
-</div>
-</li></ul><ul class=bbsList><li>
-<div class="bbsBox" 						onclick="comme_call(112470)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1850876_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >分からん(笑)<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【雑記】-ソウト-</div>
-<div class="bbsInfoBar bbsInfoBarL">2019/12/26 閲覧数75</div>
-</div>
-</li><li>
-<div class="bbsBox" 						onclick="comme_call(113199)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1849729_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >青っぽいの頂戴。<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【募集】後輩さん</div>
-<div class="bbsInfoBar bbsInfoBarL">2020/01/04 閲覧数74</div>
-</div>
-</li></ul><ul class=bbsList><li>
-<div class="bbsBox" 						onclick="comme_call(113191)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1844910_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >バグイベ！<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【募集】ばに・コ・</div>
-<div class="bbsInfoBar bbsInfoBarL">2020/01/04 閲覧数73</div>
-</div>
-</li><li>
-<div class="bbsBox" 						onclick="comme_call(113198)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1838830_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >なんかプチフレの成長止まった気がするわ<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【全部】れうすみん</div>
-<div class="bbsInfoBar bbsInfoBarL">2020/01/04 閲覧数73</div>
-</div>
-</li></ul><ul class=bbsList><li>
-<div class="bbsBox" 						onclick="comme_call(113106)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1345778_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >最近の言葉は？<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【全部】悪ノ使者</div>
-<div class="bbsInfoBar bbsInfoBarL">2020/01/03 閲覧数73</div>
-</div>
-</li><li>
-<div class="bbsBox" 						onclick="comme_call(113013)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1819755_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >出た✨<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【全部】$炭酸拳(^^)</div>
-<div class="bbsInfoBar bbsInfoBarL">2020/01/02 閲覧数72</div>
-</div>
-</li></ul><ul class=bbsList><li>
-<div class="bbsBox" 						onclick="comme_call(113139)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1842561_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >やっと<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【全部】あかり(*^^*)</div>
-<div class="bbsInfoBar bbsInfoBarL">2020/01/04 閲覧数71</div>
-</div>
-</li><li>
-<div class="bbsBox" 						onclick="comme_call(113075)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1841767_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >えっ！<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【全部】まりとゆなは</div>
-<div class="bbsInfoBar bbsInfoBarL">2020/01/03 閲覧数70</div>
-</div>
-</li></ul><ul class=bbsList><li>
-<div class="bbsBox" 						onclick="comme_call(112981)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1852632_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >初めのうちにやるべき事は？<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【質問】✳︎空音✳︎</div>
-<div class="bbsInfoBar bbsInfoBarL">2020/01/01 閲覧数70</div>
-</div>
-</li><li>
-<div class="bbsBox" 						onclick="comme_call(113019)" style="cursor: pointer;">
-<a><img onerror="this.src='/assets/bar/noface.jpg'" src="/assets/1760326_1.jpeg" class="icon80"></a>
-<p class="bbsDetail" >ギルドに入りたいのですが…<img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
-</div>
-<div class="bbsClearfix">
-<div class="bbsDashed3"></div>
-<div class="bbsInfoBar bbsInfoBarR">【全部】。うらる</div>
-<div class="bbsInfoBar bbsInfoBarL">2020/01/02 閲覧数70</div>
-</div>
-</li></ul>
+<% @topic.each_slice(2) do |a,b| %>
+	<ul class=bbsList>
+		<li>
+			<div class="bbsBox" 						onclick="location.href='/topics/<%=a.id%>'" style="cursor: pointer;">
+				<% if a.image.present?%>
+					<a><img src="/assets/<%=a.image%>" class="icon80"></a>
+				<%else%>
+					<a><img src='/assets/bar/noface.jpg' class="icon80"></a>
+				<%end%>
+				<p class="bbsDetail" ><%=a.title%><img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+			</div>
+			<div class="bbsClearfix">
+				<div class="bbsDashed3"></div>
+				<div class="bbsInfoBar bbsInfoBarR">【】<%=a.username%></div>
+				<div class="bbsInfoBar bbsInfoBarL"><%=a.updated_at%> 閲覧数80</div>
+			</div>
+		</li>
+		<% if b.present? %>
+			<li>
+				<div class="bbsBox" 						onclick="location.href='/topics/<%=b.id%>'" style="cursor: pointer;">
+					<% if b.image.present?%>
+						<a><img src="/assets/<%b.image%>" class="icon80"></a>
+					<%else%>
+						<a><img src='/assets/bar/noface.jpg' class="icon80"></a>
+					<%end%>
+					<p class="bbsDetail" ><%=b.title%><img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+				</div>
+				<div class="bbsClearfix">
+					<div class="bbsDashed3"></div>
+					<div class="bbsInfoBar bbsInfoBarR">【】<%=b.username%></div>
+					<div class="bbsInfoBar bbsInfoBarL"><%=b.updated_at%> 閲覧数79</div>
+				</div>
+			</li>
+		<%end%>
+	</ul>
+<% end %>
 
 			</form>
             
