@@ -55,6 +55,12 @@
                   <%= f.text_area :content, class:"renewal_comment_area in_box_sizing", placeholder:"投稿するトピックの本文をこちらに入力してください。"%>
                 </td>
               </tr>
+              <tr>
+                <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
+                <td class="td_txt_explanation" style="padding-top:5px;">
+                  <%= f.collection_select :category_id, Category.all, :id, :name%>
+                </td>
+              </tr>
             </table>
           </div>
         </div>
