@@ -167,16 +167,41 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
 <input type=hidden name=page_cate value=0>
 
 			<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+        <tr>
+          <td class="td_txt_explanation">
+            ○ぷちっとくろにくる【コミュ掲示板・ガイドライン】<br>
+            <hr width="90%">
+          </td>
+        <hr>
+        </tr>
+        <tr>
+          <td class="td_txt_explanation">
+            原則的に本コンテンツに関するトピック・コメントであれば書き込みを自由に行う事ができます。<br>
+            以下のような書き込みが行われた際には、削除されますのでご注意ください。<br><br>
+            ▼削除の対象となるトピック・コメント<br><br>
+            ・個人情報に関する内容<br>
+            ・公序良俗に反する内容<br>
+            ・意図的に品位を欠く内容<br>
+            ・スパムと判断される内容<br>
+            ・無関係のWEBサイトなどへの誘導や宣伝行為<br>
+            ・その他、ぷちっとくろにくる運営が不適切と判断する内容<br><br>
+            判断はぷちっとくろにくる運営の判断となります。<br>
+            なお、必ずしも一律な基準で承認作業が行えない場合もございますが、<br>
+            なにとぞご了承くださいますようお願いします。<br>
+            <hr width="90%">
+          </td>
+        </tr>
 				<tr>
 					<td class="td_txt_explanation" style="width:60%">
-						このトピックに対してあと98件のコメントを行うことができます。<br>
-						評価されるとポイントが貰えます！<br>
+						この内容で投稿致します。<br>
+						よろしければ下の【投稿する】ボタンを押してください。<br>
 					</td>
-									<td class="btn_submit_area" align="right">
-					<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/'">
-				</td>				<td class="btn_submit_area" align="right">
-					<%= button_to 'コメントする', comment_new_topic_path(@topic.id), method: :get, class:"btn_submit in_box_sizing", style:"width:95%" %>
-				</td>
+				  <td class="btn_submit_area" align="right">
+				  	<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/'">
+				  </td>				
+          <td class="btn_submit_area" align="right">
+				  	<%= button_to 'コメントする',new_topic_path, class:"btn_submit", style:"width:95%" %>
+				  </td>
 				</tr>
 				<!-- コメント数が最大に達した時に下記エラー分を表示させてください。
 				<tr>
@@ -224,46 +249,10 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
 					<tr><td></td><td><hr>総評価：1　投稿評価：1</td></tr>
                 </table>
             </form>
-			
-			
-
         </div><!-- category_area -->
 
-				<% if @comment.present? %>
-					<% @comment.each do |comment|%>
-						<div class="category_area">
-							<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
-								<tr>
-									<td style="width:30%;text-align:left;cursor: pointer;" 
-										onclick="
-											document.form_pr.look_pid.value=1845725;
-											document.form_pr.elements['return_page[form_act]'].value='../ibbs/#a_no_1';
-											document.form_pr.submit();
-											return false;"
-									>名前：<span><%#comment.name%></span></td>
-									<td style="width:40%;text-align:right;">評価：0</td>
-									<td style="width:30%;text-align:right;">日時：<time><%=comment.created_at%></time></td>
-								</tr>
-								<tr>
-									<td colspan="3" class="txt_comment">
-										<span><%=comment.content%></span>
-									</td>
-								</tr>
-							</table>
-						</div><!-- category_area -->
-					<%end%>
-				<% else %>
-					<div class="category_area">
-						<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
-							<tr>
-								<td colspan="2" class="alignC">現在このトピックへのコメントはありません。</td>
-							</tr>
-						</table>
-					</div><!-- category_area -->
-				<%end%>
-
         <div class="category_area">
-			<div style="clear:both;"></div>
+			    <div style="clear:both;"></div>
         </div><!-- category_area -->
 
       </div><!-- content_main_area_in -->

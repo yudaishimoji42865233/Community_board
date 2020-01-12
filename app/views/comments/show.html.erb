@@ -1,0 +1,71 @@
+<div class="vsc-initialized">
+  <section>
+  	<p class="alignC"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></p>
+  </section>
+  
+  <section id="content_area">
+  	<div id="content_main_area" class="in_box_sizing" style="z-index:2;">
+      <%= form_for("/topics/#{@topic.id}/comments", method: :post) do |f| %>
+        <div id="content_main_area_in">
+          <div class="category_area">
+  			    <input type=hidden name=topic_id value=113019>
+  			    <input type=hidden name=page_type value=>
+            <input type=hidden name=page value=3>
+            <input type=hidden name=page_cate value=0>
+			      <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+			      	<tr>
+			      		<td class="td_txt_explanation" style="width:60%">
+			      			下記トピック本文にコメントします。<br>投稿されたコメントは自由に削除することはできませんのであらかじめご了承ください。
+			      		</td>
+			      		<td class="btn_submit_area" align="right">
+			      	  	<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/topics/<%=@topic.id%>'">
+			      	  </td>				
+                <td class="btn_submit_area" align="right">
+			      		  <input type="submit" name="ibbs_contribution_comment_input" value="投稿を確認する" class="btn_submit in_box_sizing" style="width:95%">
+			      	  </td>
+			      	</tr>
+			      	<!-- コメント数が最大に達した時に下記エラー分を表示させてください。
+			      	<tr>
+			      		<td colspan="3" class="txt_error">コメント数が最大数となり、コメントがこれ以上行えません。新しくトピックを作成する必要があります。</td>
+              </tr>
+              -->
+            </table>
+          </div><!-- category_area -->
+
+    <div class="category_area" style="position:relative;">
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+
+        <tr>
+          <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_name2.png" alt="投稿入力フォーム"></td>
+          <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+            <%= f.text_field :username, class:"contribution_input_txt_area in_box_sizing", placeholder:"ユーザー名を入力してください。"%>
+            <br>下記フォームにすべて入力し、投稿確認ボタンを押してください。
+          </td>
+        </tr>
+        <tr>
+          <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
+          <td style="cursor: pointer;" class="td_txt_explanation" onclick="document.form_pr.look_pid.value=1642643;document.form_pr.submit();return false;">
+	  	    <span class="txt_contribution_title"><%=@topic.content%></span>
+	  	    </td>
+        </tr>
+        <tr>
+          <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_name.png" alt="トピック名"></td>
+          <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+            <%= f.text_area :content, class:"renewal_comment_area in_box_sizing", placeholder:"コメントする内容をこちらに入力してください。" %>
+          </td>
+        </tr>
+        <tr>
+          <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
+          <td class="td_txt_explanation" style="padding-top:5px;">
+            <span class="small bold">画像を1つ追加できます。</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    
+
+        </div>
+      <%end%>
+    </div>
+  </section>

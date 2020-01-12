@@ -24,8 +24,10 @@ class TopicsController < ApplicationController
   def show3
   end
 
-  def comment_new
-    @topic = Topic.find(params[:id])
+  def new_check
+    @topic = Topic.find(1)
+    @title = params[:title]
+    @content = params[:content]
   end
 
   def delete_select

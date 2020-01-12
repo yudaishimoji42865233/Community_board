@@ -113,7 +113,6 @@ height: 1.5em;
 <input type=hidden name=page_cate value=0>
 
 						<td class="td_txt_explanation" style="width:60%">投稿できます。</td>
-						
 						<td class="btn_submit_area" align="right">
 							<input name=ibbs_delete type="submit" value="削除する" class="btn_delete in_box_sizing" style="width:95%;">
 						</td>
@@ -122,6 +121,9 @@ height: 1.5em;
 					<%= button_to '投稿する', new_topic_path, method: :get, class:"btn_submit in_box_sizing", style:"width:95%" %>
 				</td>
 						</tr>
+
+						<%#投稿しました%>
+						<%#削除しました%>
 						
 				</table>
 			</div><!-- category_area -->
