@@ -1,71 +1,329 @@
-<div class="vsc-initialized">
-  <section>
-  	<p class="alignC"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></p>
-  </section>
-  
-  <section id="content_area">
-  	<div id="content_main_area" class="in_box_sizing" style="z-index:2;">
-      <%= form_for("/topics/#{@topic.id}/comments", method: :post) do |f| %>
-        <div id="content_main_area_in">
-          <div class="category_area">
-  			    <input type=hidden name=topic_id value=113019>
-  			    <input type=hidden name=page_type value=>
-            <input type=hidden name=page value=3>
-            <input type=hidden name=page_cate value=0>
-			      <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
-			      	<tr>
-			      		<td class="td_txt_explanation" style="width:60%">
-			      			下記トピック本文にコメントします。<br>投稿されたコメントは自由に削除することはできませんのであらかじめご了承ください。
-			      		</td>
-			      		<td class="btn_submit_area" align="right">
-			      	  	<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/topics/<%=@topic.id%>'">
-			      	  </td>				
-                <td class="btn_submit_area" align="right">
-			      		  <input type="submit" name="ibbs_contribution_comment_input" value="投稿を確認する" class="btn_submit in_box_sizing" style="width:95%">
-			      	  </td>
-			      	</tr>
-			      	<!-- コメント数が最大に達した時に下記エラー分を表示させてください。
-			      	<tr>
-			      		<td colspan="3" class="txt_error">コメント数が最大数となり、コメントがこれ以上行えません。新しくトピックを作成する必要があります。</td>
-              </tr>
-              -->
+
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<meta charset="utf-8">
+<title>情報交換BBS｜トピック詳細｜ぷちっとくろにくる</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<!--<meta name="viewport" content="width=device-width, height=device-height, target-densityDpi=low-dpi, user-scalable=no">-->
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+<meta name="format-detection" content="telephone=no,address=no,email=no">
+
+<link href="../release/css/reset.css" rel="stylesheet">
+<link href="../release/css/style.css" rel="stylesheet">
+<link href="../release/css/layout.css" rel="stylesheet">
+<link href="../release/css/modal_bbs.css?23" rel="stylesheet">
+
+<script src="../release/js/jquery.1.6.1.min.js"></script>
+<script src="../release/js/common.js"></script>
+<script type="text/javascript" src="../release/js/ss.modal.js?23"></script>
+<script type="text/javascript" src="../release/js/jquery.color.js?23"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+    $('.modalLink').modal({
+        trigger: '.modalLink',          // id or class of link or button to trigger modal
+        olay:'div.overlay',             // id or class of overlay
+        modals:'div.modal',             // id or class of modal
+        animationEffect: 'fadeIn',   // overlay effect | slideDown or fadeIn | default=fadeIn
+        animationSpeed: 100,            // speed of overlay in milliseconds | default=400
+        moveModalSpeed: 'fast',         // speed of modal movement when window is resized | slow or fast | default=false
+        background: '000',           // hexidecimal color code - DONT USE #
+        opacity: 0.5,                   // opacity of modal |  0 - 1 | default = 0.8
+        openOnLoad: false,              // open modal on page load | true or false | default=false
+        docClose: true,                 // click document to close | true or false | default=true    
+        closeByEscape: true,            // close modal by escape key | true or false | default=true
+        moveOnScroll: false,             // move modal when window is scrolled | true or false | default=false
+        resizeWindow: true,             // move modal when window is resized | true or false | default=false
+        video: '',                      // enter the url of the video
+        videoClass:'video',             // class of video element(s)
+        close:'.closeBtn'               // id or class of close button
+    });
+});
+
+var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pid:1845725};idx[2]={img:0,next:0,befo:1,pid:41055};
+
+</script>
+
+<style type="text/css">
+.cs1 {
+    position:relative;
+    display:inline-block;
+    line-height:0;
+    border-radius:10px;
+    overflow:hidden;
+}
+.cs1::after {
+    content:"";
+    position:absolute;
+    top:0; right:0; bottom:0; left:0;
+    border-radius:10px;
+    box-shadow:inset 0 5px 10px rgba(0,0,0,.5);
+}
+</style>
+
+</head>
+
+<body>
+
+<form name=form_good action="" method="POST">
+<input type=hidden name=page_type value=new>
+<input type=hidden name=page value=0>
+<input type=hidden name=page_cate value=0>
+
+<input type=hidden name="ibbs_contribution_comment" value=0>
+<input type=hidden name=good_id value=0>
+<input type=hidden name=good_pid value=0>
+<input type=hidden id=topic_id name=topic_id value=113327>
+</form>
+
+				<form name=form_gazo method=POST action="">
+				<input type=hidden name=page_type value=new>
+<input type=hidden name=page value=0>
+<input type=hidden name=page_cate value=0>
+
+				<input type="hidden" name="ibbs_ss" value="0">
+				<input type="hidden" name="topic_id" value="113327">
+				<input type="hidden" name="gazo_no" value="0">
+				</form>
+
+
+				<form name=form_pr method=POST action="../pr/">
+				<input type=hidden name=page_type value=new>
+<input type=hidden name=page value=0>
+<input type=hidden name=page_cate value=0>
+
+				<input type=hidden name=return_page[page_type] value=new>
+<input type=hidden name=return_page[page] value=0>
+<input type=hidden name=return_page[page_cate] value=0>
+
+				<input type=hidden name=return_page[topic_id] value=113327>
+				<input type=hidden name=return_page[ibbs_contribution_comment] value=0>
+				<input type=hidden name=return_page[form_act] value="../ibbs/">
+				<input type=hidden name=return_page_act value="../ibbs/">
+				<input type=hidden name=look_pid value=0>
+				</form>
+
+				<form name=form_del_come action="" method="POST">
+				<input type=hidden name=page_type value=new>
+<input type=hidden name=page value=0>
+<input type=hidden name=page_cate value=0>
+
+				<input type=hidden name="ibbs_contribution_comment" value=0>
+				<input type=hidden name=del_come value=0>
+				<input type=hidden name=topic_id value=113327>
+				</form>
+
+				<form name=form_next method=POST action="">
+				
+				<input type=hidden name="ibbs_contribution_comment" value=0>
+				<input type="hidden" name="topic_id" value="113327">
+				<input type="hidden" name="cm_page" value="0">
+				</form>
+
+				<form name=form_touko action="#a_113327" method="POST">
+				<input type=hidden name=page_type value=new>
+<input type=hidden name=page value=0>
+<input type=hidden name=page_cate value=0>
+
+                </form>
+
+				<form name=form_vote action="" method="POST">
+				<input type=hidden name=page_type value=new>
+<input type=hidden name=page value=0>
+<input type=hidden name=page_cate value=0>
+
+				<input type=hidden name="ibbs_contribution_comment" value=0>
+				<input type=hidden name=topic_id value=113327>
+				<input type=hidden name=vote_no value=0>
+				</form>
+
+				<script type="text/javascript"><!--
+				function comeDelete(delno){
+					document.form_del_come.del_come.value=delno;
+					document.form_del_come.submit();
+				}
+				// --></script>
+
+
+
+<section>
+	<p class="alignC"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></p>
+</section>
+
+<section id="content_area">
+	<div id="content_main_area" class="in_box_sizing" style="z-index:2;">
+    	<div id="content_main_area_in">
+
+		
+
+        <div class="category_area">
+			<input type=hidden name=topic_id value=113327>
+			<input type=hidden name=page_type value=new>
+<input type=hidden name=page value=0>
+<input type=hidden name=page_cate value=0>
+
+			<%#<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+				<tr>
+					<td>
+						コメントしました
+					</td>
+				</tr>
+			</table>%>
+
+			<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+				
+				<tr>
+					<td class="td_txt_explanation" style="width:60%">
+						このトピックに対してあと98件のコメントを行うことができます。<br>
+						評価されるとポイントが貰えます！<br>
+					</td>
+									<td class="btn_submit_area" align="right">
+					<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/'">
+				</td>				<td class="btn_submit_area" align="right">
+					<%= button_to 'コメントする', topic_comments_path(@topic.id), method: :get, class:"btn_submit in_box_sizing", style:"width:95%" %>
+				</td>
+				</tr>
+				<!-- コメント数が最大に達した時に下記エラー分を表示させてください。
+				<tr>
+					<td colspan="3" class="txt_error">コメント数が最大数となり、コメントがこれ以上行えません。
+新しくトピックを作成する必要があります。</td>
+                </tr>
+                -->
             </table>
-          </div><!-- category_area -->
+        </div><!-- category_area -->
 
-    <div class="category_area" style="position:relative;">
-      <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+        <!-- トピック詳細 -->
+        <div class="category_area" style="position:relative;">
+            <form action="" method="">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+                    <tr>
+                        <td class="td_category"><img src="/assets/category/category_name2.png" alt="投稿入力フォーム"></td>
+                        <td style="cursor: pointer;" class="td_txt_explanation" onclick="document.form_pr.look_pid.value=41055;document.form_pr.submit();return false;">
+							<span id=n_0><%=@topic.username%></span>
+						</td>
+                    </tr>
+                    <tr>
+                        <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_name.png" alt="トピック名"></td>
+                        <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+                            <span class="txt_contribution_title"><%=@topic.title%></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
+                        <td class="td_txt_explanation" style="padding-top:5px;">
+                            <span class="txt_contribution_content"><span id=td_0><%=@topic.content%></span>
+														<% if @image.present?%>
+														 <a class="modalLink" href="#modal1" id='0'><img style="max-width:54px;padding:0 0 .15rem .25rem;" src="/assets/bg/icon_photo.png" alt="画像"></a></span>
+														<%end%>
+                        </td>
+                    </tr>
+										<% if @enquete.present? %>
+											<tr>
+												<td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_vote.png" alt="投票結果"></td>
+												<td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+													<hr>
+													<table width="100%" border="0" cellpadding="0" cellspacing="0" summary=""><tr><td width=50%>あ(12)</td><td width=50%><img src="../imgbar.php?per=48 "></td></tr><tr><td width=50%>い(3)</td><td width=50%><img src="../imgbar.php?per=12 "></td></tr><tr><td width=50%>う(4)</td><td width=50%><img src="../imgbar.php?per=16 "></td></tr><tr><td width=50%>え(1)</td><td width=50%><img src="../imgbar.php?per=4 "></td></tr><tr><td width=50%>お(5)</td><td width=50%><img src="../imgbar.php?per=20 "></td></tr>						</table>
+												</td>
+											</tr>
+										<% end %>
+					<tr><td></td><td><hr>総評価：1　投稿評価：1</td></tr>
+                </table>
+            </form>
+			
+			
 
-        <tr>
-          <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_name2.png" alt="投稿入力フォーム"></td>
-          <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
-            <%= f.text_field :username, class:"contribution_input_txt_area in_box_sizing", placeholder:"ユーザー名を入力してください。"%>
-            <br>下記フォームにすべて入力し、投稿確認ボタンを押してください。
-          </td>
-        </tr>
-        <tr>
-          <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
-          <td style="cursor: pointer;" class="td_txt_explanation" onclick="document.form_pr.look_pid.value=1642643;document.form_pr.submit();return false;">
-	  	    <span class="txt_contribution_title"><%=@topic.content%></span>
-	  	    </td>
-        </tr>
-        <tr>
-          <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_name.png" alt="トピック名"></td>
-          <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
-            <%= f.text_area :content, class:"renewal_comment_area in_box_sizing", placeholder:"コメントする内容をこちらに入力してください。" %>
-          </td>
-        </tr>
-        <tr>
-          <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
-          <td class="td_txt_explanation" style="padding-top:5px;">
-            <span class="small bold">画像を1つ追加できます。</span>
-          </td>
-        </tr>
-      </table>
-    </div>
+        </div><!-- category_area -->
 
-    
+				<% if @comment.present? %>
+					<% @comment.each do |comment|%>
+						<div class="category_area">
+							<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+								<tr>
+									<td style="width:30%;text-align:left;cursor: pointer;" 
+										onclick="
+											document.form_pr.look_pid.value=1845725;
+											document.form_pr.elements['return_page[form_act]'].value='../ibbs/#a_no_1';
+											document.form_pr.submit();
+											return false;"
+									>名前：<span><%=comment.username%></span></td>
+									<td style="width:40%;text-align:right;">評価：0</td>
+									<td style="width:30%;text-align:right;">日時：<time><%=comment.created_at%></time></td>
+								</tr>
+								<tr>
+									<td colspan="3" class="txt_comment">
+										<span><%=comment.content%></span>
+									</td>
+								</tr>
+							</table>
+						</div><!-- category_area -->
+					<%end%>
+				<% else %>
+					<div class="category_area">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+							<tr>
+								<td colspan="2" class="alignC">現在このトピックへのコメントはありません。</td>
+							</tr>
+						</table>
+					</div><!-- category_area -->
+				<%end%>
 
-        </div>
-      <%end%>
-    </div>
-  </section>
+        <div class="category_area">
+			<div style="clear:both;"></div>
+        </div><!-- category_area -->
+
+      </div><!-- content_main_area_in -->
+    </div><!-- content_main_area -->
+</section>
+
+
+
+<!-- モーダル部分 -->
+
+<div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
+<input id=next_no type=hidden name=next_no value=1>
+<div class="overlay"></div>
+<div id="modal1" class="modal">
+<section class="modalWindow">
+	<div class=cs1 style="background-color:#000000;display:block;margin-left:auto;margin-right:auto;text-align:center;width:90%;border-radius:10px;">
+		<img id="pcross" src="/assets/ss_sample.jpg" alt=画像 style="
+				display:block;
+				margin-left:auto;
+				margin-right:auto;
+				text-align:center;
+				width:100%;
+				border-radius:10px;
+		">
+	</div>
+	<div style="width:97%;position: absolute;top: 20px;text-align: center;">
+		<div id=come style="
+			margin: 0 auto;
+			text-align: left;
+			display: inline-block;
+			width:80%;
+			font-size: medium;
+			font-weight: bolder;color:#fff;
+			text-shadow:
+				-1px -1px #000,
+				1px -1px #000,
+				-1px 1px #000,
+				1px 1px #000;
+		">
+		</div>
+	</div>
+	<ul class="modalBtn">
+	<li><a class="modalLink" href="#modal1,2" id='1' style="text-align:center; display:block;"><img style="width:80%;" src="/assets/shop/modal_return.png" alt="次へ"></a></li>
+	<li><a href="" class="close closeBtn" style="text-align:center; display:block;"><img style="width:80%;" src="/assets/shop/modal_close.png" alt="ウィンドウを閉じる"></a></li>
+	<li><a class="modalLink" href="#modal1,1" id='1' style="text-align:center; display:block;"><img style="width:80%;" src="/assets/shop/modal_next.png" alt="次へ"></a></li>
+	</ul>
+
+</section>
+</div>
+
+<!-- モーダル部分 -->
+
+</body>
+</html>

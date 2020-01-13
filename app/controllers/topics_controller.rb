@@ -18,6 +18,26 @@ class TopicsController < ApplicationController
     @comment = Comment.where(topic_id: @topic.id)
   end
 
+  def index_sort
+    case params[:id].to_i
+      when 1 then
+        # @topic = Topic.order('whatch DESC')
+        redirect_to root_path
+      when 2 then
+        # @topic = Topic.order('like DESC')
+        redirect_to root_path
+      when 3 then
+        @topic = Topic.order('created_at DESC')
+      when 4 then
+        @topic = Topic.order('updated_at DESC')
+      when 5 then
+        # @topic = Topic.where(user_id: current_user.id)
+        redirect_to root_path
+      else
+        どの値にも一致しない場合に行う処理
+    end
+  end
+
   def show2
   end
 

@@ -11,8 +11,8 @@ Rails.application.routes.draw do
       get :show3, to: 'topics#show3'
     end
     member do
+      get :index_sort, to: 'topics#index_sort'
     end
   end
-  resources :categories, only: :show do
-  end
+  resources :categories, only: :show
 end

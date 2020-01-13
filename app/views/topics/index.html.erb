@@ -54,7 +54,7 @@ height: 1.5em;
 						document.form_comme.submit();
 					}
 				</script>
-				<form name="form_comme" method="POST" action="" >
+				<form name="form_comme" action="" >
 				<input type=hidden name="topic_id" value=0>
 				<input type=hidden name="ibbs_contribution_comment" value=0>
 				<input type=hidden name=page_type value=>
@@ -62,13 +62,13 @@ height: 1.5em;
 <input type=hidden name=page_cate value=0>
 
 				</form>
-				<form name=form_next method=POST action="">
+				<form name=form_next action="">
 				
 				<input type="hidden" name="page" value="0">
 				<input type="hidden" name="page_type" value="">
 				<input type="hidden" name="page_cate" value="0">
 				</form>
-				<form name=form_rnk method=POST action="">
+				<form name=form_rnk action="">
 				
 				<input type="hidden" name="page" value="0">
 				<input type="hidden" name="page_type" value="">
@@ -76,7 +76,7 @@ height: 1.5em;
 				</form>
 
 <section>
-	<p class="alignC"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></p>
+	<a class="alignC" href="/"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></a>
 </section>
 
 
@@ -86,14 +86,20 @@ height: 1.5em;
 	<ul id="tmenu" class="menu1" style="width: 97%;position: absolute;margin-left: 3%;margin-right: 0%;margin-top: 0.25em;z-index:1000;">
 	<li id=t1 >
 	<ul>
-	<li style="float:none;width:100%;display: block;margin: 0;position: relative;z-index:1001;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;position: relative;z-index:1002;" onclick="opent('t1');event.preventDefault();return false;" class="white">全部</a></li><li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="document.form_rnk.page_cate.value='99';document.form_rnk.submit();return false;" class="white">公式</a></li><li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="document.form_rnk.page_cate.value='1';document.form_rnk.submit();return false;" class="white">募集</a></li><li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="document.form_rnk.page_cate.value='2';document.form_rnk.submit();return false;" class="white">情報</a></li><li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="document.form_rnk.page_cate.value='3';document.form_rnk.submit();return false;" class="white">質問</a></li><li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="document.form_rnk.page_cate.value='4';document.form_rnk.submit();return false;" class="white">雑記</a></li><li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="document.form_rnk.page_cate.value='5';document.form_rnk.submit();return false;" class="white">競売</a></li>
+		<li style="float:none;width:100%;display: block;margin: 0;position: relative;z-index:1001;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;position: relative;z-index:1002;" onclick="opent('t1');event.preventDefault();return false;" class="white">全部</a></li>
+		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="document.form_rnk.page_cate.value='99';document.form_rnk.submit();return false;" class="white">公式</a></li>
+		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/categories/2'" method=GET class="white">募集</a></li>
+		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/categories/3'" method=GET class="white">情報</a></li>
+		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/categories/4'" method=GET class="white">質問</a></li>
+		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/categories/5'" method=GET class="white">雑記</a></li>
+		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/categories/6'" method=GET class="white">競売</a></li>
 	</ul>
 	</li>
-	  <li ><a href="javascript:void(0)" onclick="document.form_rnk.page_type.value='view';document.form_rnk.submit();return false;" class="white">閲覧順</a></li>
-	  <li ><a href="javascript:void(0)" onclick="document.form_rnk.page_type.value='good';document.form_rnk.submit();return false;" class="white">評価順</a></li>
-	  <li ><a href="javascript:void(0)" onclick="document.form_rnk.page_type.value='new';document.form_rnk.submit();return false;" class="white">新着順</a></li>
-	  <li ><a href="javascript:void(0)" onclick="document.form_rnk.page_type.value='update';document.form_rnk.submit();return false;" class="white">更新順</a></li>
-	  <li ><a href="javascript:void(0)" onclick="document.form_rnk.page_type.value='my';document.form_rnk.submit();return false;" class="white">MY投稿</a></li>
+	  <li ><a href="javascript:void(0)" onclick="location.href='/topics/1/index_sort'" class="white">閲覧順</a></li>
+	  <li ><a href="javascript:void(0)" onclick="location.href='/topics/2/index_sort'" class="white">評価順</a></li>
+	  <li ><a href="javascript:void(0)" onclick="location.href='/topics/3/index_sort'" class="white">新着順</a></li>
+	  <li ><a href="javascript:void(0)" onclick="location.href='/topics/4/index_sort'" class="white">更新順</a></li>
+	  <li ><a href="javascript:void(0)" onclick="location.href='/topics/5/index_sort'" class="white">MY投稿</a></li>
 	</ul>
 	<div>
 
@@ -141,7 +147,7 @@ height: 1.5em;
             </table>
 <!-- style=\"display:none;\" -->
 
-			<form action="" method="POST">
+			<form action="">
 			<input type=hidden name=page_type value=>
 <input type=hidden name=page value=3>
 <input type=hidden name=page_cate value=0>
