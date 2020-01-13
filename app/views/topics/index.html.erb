@@ -88,11 +88,11 @@ height: 1.5em;
 	<ul>
 		<li style="float:none;width:100%;display: block;margin: 0;position: relative;z-index:1001;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;position: relative;z-index:1002;" onclick="opent('t1');event.preventDefault();return false;" class="white">全部</a></li>
 		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="document.form_rnk.page_cate.value='99';document.form_rnk.submit();return false;" class="white">公式</a></li>
-		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/categories/2'" method=GET class="white">募集</a></li>
-		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/categories/3'" method=GET class="white">情報</a></li>
-		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/categories/4'" method=GET class="white">質問</a></li>
-		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/categories/5'" method=GET class="white">雑記</a></li>
-		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/categories/6'" method=GET class="white">競売</a></li>
+		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/topics/2/index_category'" method=GET class="white">募集</a></li>
+		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/topics/3/index_category'" method=GET class="white">情報</a></li>
+		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/topics/4/index_category'" method=GET class="white">質問</a></li>
+		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/topics/5/index_category'" method=GET class="white">雑記</a></li>
+		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/topics/6/index_category'" method=GET class="white">競売</a></li>
 	</ul>
 	</li>
 	  <li ><a href="javascript:void(0)" onclick="location.href='/topics/1/index_sort'" class="white">閲覧順</a></li>
@@ -173,7 +173,7 @@ height: 1.5em;
 			<li>
 				<div class="bbsBox" 						onclick="location.href='/topics/<%=b.id%>'" style="cursor: pointer;">
 					<% if b.image.present?%>
-						<a><img src="/assets/<%b.image%>" class="icon80"></a>
+						<a><img src="/assets/<%=b.image%>" class="icon80"></a>
 					<%else%>
 						<a><img src='/assets/bar/noface.jpg' class="icon80"></a>
 					<%end%>

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
     member do
       get :index_sort, to: 'topics#index_sort'
+      get :index_category, to: 'topics#index_category'
     end
   end
   resources :categories, only: :show

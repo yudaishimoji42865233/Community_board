@@ -28,14 +28,21 @@ class TopicsController < ApplicationController
         redirect_to root_path
       when 3 then
         @topic = Topic.order('created_at DESC')
+        render action: :index
       when 4 then
         @topic = Topic.order('updated_at DESC')
+        render action: :index
       when 5 then
         # @topic = Topic.where(user_id: current_user.id)
         redirect_to root_path
       else
-        どの値にも一致しない場合に行う処理
+        redirect_to root_path
     end
+  end
+
+  def index_category
+    @topic = Topic.where(category_id: params[:id])
+    render action: :index
   end
 
   def show2
