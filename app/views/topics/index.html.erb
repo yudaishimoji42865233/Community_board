@@ -157,9 +157,9 @@ height: 1.5em;
 		<li>
 			<div class="bbsBox" 						onclick="location.href='/topics/<%=a.id%>'" style="cursor: pointer;">
 				<% if a.image.present?%>
-					<a><img src="/assets/<%=a.image%>" class="icon80"></a>
+					<a><%= image_tag a.image.url, class:"icon80" %></a>
 				<%else%>
-					<a><img src='/assets/bar/noface.jpg' class="icon80"></a>
+					<a><%= image_tag '/assets/bar/noface.jpg', class:"icon80" %></a>
 				<%end%>
 				<p class="bbsDetail" ><%=a.title%><img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
 			</div>
@@ -173,9 +173,9 @@ height: 1.5em;
 			<li>
 				<div class="bbsBox" 						onclick="location.href='/topics/<%=b.id%>'" style="cursor: pointer;">
 					<% if b.image.present?%>
-						<a><img src="/assets/<%=b.image%>" class="icon80"></a>
+						<a><%= image_tag b.image.url, class:"icon80" %></a>
 					<%else%>
-						<a><img src='/assets/bar/noface.jpg' class="icon80"></a>
+						<a><%= image_tag '/assets/bar/noface.jpg', class:"icon80" %></a>
 					<%end%>
 					<p class="bbsDetail" ><%=b.title%><img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
 				</div>

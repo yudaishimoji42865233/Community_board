@@ -216,8 +216,10 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
                         <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
                         <td class="td_txt_explanation" style="padding-top:5px;">
                             <span class="txt_contribution_content"><span id=td_0><%=@topic.content%></span>
-														<% if @image.present?%>
-														 <a class="modalLink" href="#modal1" id='0'><img style="max-width:54px;padding:0 0 .15rem .25rem;" src="/assets/bg/icon_photo.png" alt="画像"></a></span>
+														<% if @topic.image.present?%>
+														 <a class="modalLink" href="#modal1" id='0'>
+														 <%= image_tag "/assets/bg/icon_photo.png", style:"max-width:54px;padding:0 0 .15rem .25rem;", alt:"画像"%>
+														 </a></span>
 														<%end%>
                         </td>
                     </tr>
@@ -256,6 +258,11 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
 								<tr>
 									<td colspan="3" class="txt_comment">
 										<span><%=comment.content%></span>
+										<% if comment.image.present?%>
+										 <span><a class="modalLink" href="#modal1" id='0'>
+										 <%= image_tag "/assets/bg/icon_photo.png", style:"max-width:54px;padding:0 0 .15rem .25rem;", alt:"画像" %>
+										 </a></span>
+										<%end%>
 									</td>
 								</tr>
 							</table>

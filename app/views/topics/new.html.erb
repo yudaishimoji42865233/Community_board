@@ -59,6 +59,7 @@
                 <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
                 <td class="td_txt_explanation" style="padding-top:5px;">
                   <%= f.collection_select :category_id, Category.all, :id, :name %>
+                  <%= f.file_field :image %>
                 </td>
               </tr>
             </table>
