@@ -9,6 +9,7 @@ class TopicsController < ApplicationController
   end
 
   def create
+    binding.pry
     Topic.create!(topic_params)
     redirect_to root_path
   end
