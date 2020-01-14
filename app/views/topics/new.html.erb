@@ -59,9 +59,55 @@
                 <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
                 <td class="td_txt_explanation" style="padding-top:5px;">
                   <%= f.collection_select :category_id, Category.all, :id, :name %>
+                </td>
+              </tr>
+              <tr>
+                <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
+                <td class="td_txt_explanation" style="padding-top:5px;">
+                  <span class="small bold">画像を1つ追加できます。</span>
                   <%= f.file_field :image %>
                 </td>
               </tr>
+              <tr>
+                <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_anke.png" alt="トピック名"></td>
+                <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+                  <span class="txt_contribution_title">
+                    下記のアンケート選択回答を入力してください。
+                  </span>
+                </td>
+              </tr>
+              <%= f.fields_for :enquete ,@topic.enquetes, multipart: true do |i| %>
+                <tr>
+                  <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_vote.png" alt="トピック名"></td>
+                  <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+                    <%= i.text_field :content, class:"contribution_input_txt_area in_box_sizing", placeholder:"選択回答内容(10文字以内)"%>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_vote.png" alt="トピック名"></td>
+                  <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+                    <%= i.text_field :content, class:"contribution_input_txt_area in_box_sizing", placeholder:"選択回答内容(10文字以内)"%>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_vote.png" alt="トピック名"></td>
+                  <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+                    <%= i.text_field :content, class:"contribution_input_txt_area in_box_sizing", placeholder:"選択回答内容(10文字以内)"%>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_vote.png" alt="トピック名"></td>
+                  <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+                    <%= i.text_field :content, class:"contribution_input_txt_area in_box_sizing", placeholder:"選択回答内容(10文字以内)"%>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_vote.png" alt="トピック名"></td>
+                  <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+                    <%= i.text_field :content, class:"contribution_input_txt_area in_box_sizing", placeholder:"選択回答内容(10文字以内)"%>
+                  </td>
+                </tr>
+              <%end%>
             </table>
           </div>
         </div>

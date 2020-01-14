@@ -66,7 +66,7 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:username, :title, :content, :image, :category_id)
+    params.require(:topic).permit(:username, :title, :content, :image, :category_id, enquetes_attributes: [:id, :content,:topic_id])
   end
 
 end
