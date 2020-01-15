@@ -48,8 +48,6 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-
-
   <<: *default
   database: Community_board_production
   username: Community_board
