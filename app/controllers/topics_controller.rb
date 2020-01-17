@@ -6,16 +6,21 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
+    @enquete = @topic.enquetes.build
   end
 
   def create
-    Topic.create!(topic_params)
+    @topic = Topic.create!(topic_params)
+    params[:enquetes]['content'].each do |i|
+      @enquete = @topic.enquetes.create!(content: i, topic_id: @topic.id)
+    end
     redirect_to root_path
   end
 
   def show
     @topic = Topic.find(params[:id])
     @comment = Comment.where(topic_id: @topic.id)
+    @enquete = Enquete.where(topic_id: @topic.id)
   end
 
   def index_sort
@@ -66,7 +71,7 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:username, :title, :content, :image, :category_id, enquetes_attributes: [:id, :content,:topic_id])
+    params.require(:topic).permit(:username, :title, :content, :image, :category_id, enquetes_attributes: [:id, :content, :topic_id])
   end
 
 end
