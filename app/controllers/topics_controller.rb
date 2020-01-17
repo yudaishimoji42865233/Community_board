@@ -12,7 +12,9 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.create!(topic_params)
     params[:enquetes]['content'].each do |i|
-      @enquete = @topic.enquetes.create!(content: i, topic_id: @topic.id)
+      if i.present?
+        @enquete = @topic.enquetes.create!(content: i, topic_id: @topic.id)
+      end
     end
     redirect_to root_path
   end

@@ -224,13 +224,41 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
                         </td>
                     </tr>
 										<% if @enquete.present? %>
-											<tr>
-												<td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_vote.png" alt="投票結果"></td>
-												<td class="td_txt_explanation" valign="top" style="padding-top:5px;">
-													<hr>
-													<table width="100%" border="0" cellpadding="0" cellspacing="0" summary=""><tr><td width=50%>あ(12)</td><td width=50%><img src="../imgbar.php?per=48 "></td></tr><tr><td width=50%>い(3)</td><td width=50%><img src="../imgbar.php?per=12 "></td></tr><tr><td width=50%>う(4)</td><td width=50%><img src="../imgbar.php?per=16 "></td></tr><tr><td width=50%>え(1)</td><td width=50%><img src="../imgbar.php?per=4 "></td></tr><tr><td width=50%>お(5)</td><td width=50%><img src="../imgbar.php?per=20 "></td></tr>						</table>
-												</td>
-											</tr>
+											<%unless @com.present?%>
+												<tr>
+													<td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_anke.png" alt="投票結果"></td>
+													<td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+														<hr>
+														<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+															<%@enquete.each do |enquete|%>
+																<tr>
+																	<td style="cursor: pointer;" onclick="document.form_vote.vote_no.value=0;document.form_vote.submit();return false;">
+																		<%=enquete.content%><img style="max-width:40px;padding:0 0 .15rem .25rem;" src="/assets/bg/icon_vote.png">
+																	</td>
+																</tr>
+															<%end%>
+															<tr>
+																<td>投票でポイントもらえるよ</td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											<%else%>
+												<tr>
+													<td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_vote.png" alt="投票結果"></td>
+													<td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+														<hr>
+														<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+															<%@enquete.each do |enquete|%>
+																<tr>
+																	<td width=50%><%=enquete.content%>(0)</td>
+																	<td width=50%><img src="../imgbar.php?per=48 "></td>
+																</tr>
+															<%end%>
+														</table>
+													</td>
+												</tr>
+											<% end %>
 										<% end %>
 					<tr><td></td><td><hr>総評価：1　投稿評価：1</td></tr>
                 </table>
