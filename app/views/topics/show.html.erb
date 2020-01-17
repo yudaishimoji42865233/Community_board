@@ -184,7 +184,7 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
 									<td class="btn_submit_area" align="right">
 					<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/'">
 				</td>				<td class="btn_submit_area" align="right">
-					<%= button_to 'コメントする', topic_comments_path(@topic.id), method: :get, class:"btn_submit in_box_sizing", style:"width:95%" %>
+					<%= button_to 'コメントする', new_topic_comment_path(@topic.id), method: :get, class:"btn_submit in_box_sizing", style:"width:95%" %>
 				</td>
 				</tr>
 				<!-- コメント数が最大に達した時に下記エラー分を表示させてください。

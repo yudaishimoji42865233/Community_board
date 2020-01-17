@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-  def index
+  def new
     @topic = Topic.find(params[:topic_id])
     @comment = Comment.new
   end
