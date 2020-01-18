@@ -10,15 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200117152635) do
+ActiveRecord::Schema.define(version: 20200118122551) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "content"
+    t.string   "content",    null: false
     t.string   "image"
-    t.integer  "topic_id"
     t.string   "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "topic_id",   null: false
+    t.index ["topic_id"], name: "index_comments_on_topic_id", using: :btree
   end
 
   create_table "enquetes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -34,10 +35,11 @@ ActiveRecord::Schema.define(version: 20200117152635) do
     t.string   "title",       null: false
     t.string   "content",     null: false
     t.string   "image"
-    t.integer  "category_id"
+    t.integer  "category_id", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
+  add_foreign_key "comments", "topics"
   add_foreign_key "enquetes", "topics"
 end
