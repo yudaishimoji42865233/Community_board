@@ -21,8 +21,9 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
-    @comment = Comment.where(topic_id: @topic.id)
-    @enquete = Enquete.where(topic_id: @topic.id)
+    @comment = Comment.where(topic_id: params[:id])
+    @enquete = Enquete.where(topic_id: params[:id])
+    @user_vote = Vote.where(enquete_id: @enquete.ids).where(user_id: current_user.id) if user_signed_in?
   end
 
   def index_sort
@@ -70,10 +71,19 @@ class TopicsController < ApplicationController
   def delete_check
   end
 
+  def vote
+    @votes = Vote.create!(enquete_id: params[:enquete_id], user_id: current_user.id)
+    @enquete = Enquete.where(topic_id: params[:id])
+  end
+
   private
 
   def topic_params
     params.require(:topic).permit(:username, :title, :content, :image, :category_id, enquetes_attributes: [:id, :content, :topic_id])
+  end
+
+  def vote_params
+    params.require(:vote).permit(:enquete_id, :user_id)
   end
 
 end

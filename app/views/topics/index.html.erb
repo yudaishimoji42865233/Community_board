@@ -9,14 +9,6 @@
 <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 <meta name="format-detection" content="telephone=no,address=no,email=no">
 
-<link href="/assets/reset.css" rel="stylesheet">
-<link href="/assets/style.css" rel="stylesheet">
-<link href="/assets/layout.css" rel="stylesheet">
-<link href="/assets/p_lay.css?180313" rel="stylesheet">
-
-<script src="/assets/jquery.1.6.1.min.js"></script>
-<script src="/assets/common.js"></script>
-
 <script type="text/javascript">
 function opent(oid){
 	$('#'+oid).css({'height':'20em'});
@@ -119,6 +111,24 @@ height: 1.5em;
 <input type=hidden name=page_cate value=0>
 
 						<td class="td_txt_explanation" style="width:60%">投稿できます。</td>
+
+  <% if user_signed_in? %>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %>
+    </li>
+  </ul>
+  <% else %>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <%= link_to 'ログイン', new_user_session_path, class: "nav-link" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to '新規登録', new_user_registration_path, class: "nav-link" %>
+    </li>
+  </ul>
+  <% end %>
+
 						<td class="btn_submit_area" align="right">
 							<input name=ibbs_delete type="submit" value="削除する" class="btn_delete in_box_sizing" style="width:95%;">
 						</td>

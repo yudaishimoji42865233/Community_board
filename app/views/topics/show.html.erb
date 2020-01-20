@@ -11,16 +11,6 @@
 <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 <meta name="format-detection" content="telephone=no,address=no,email=no">
 
-<link href="../release/css/reset.css" rel="stylesheet">
-<link href="../release/css/style.css" rel="stylesheet">
-<link href="../release/css/layout.css" rel="stylesheet">
-<link href="../release/css/modal_bbs.css?23" rel="stylesheet">
-
-<script src="../release/js/jquery.1.6.1.min.js"></script>
-<script src="../release/js/common.js"></script>
-<script type="text/javascript" src="../release/js/ss.modal.js?23"></script>
-<script type="text/javascript" src="../release/js/jquery.color.js?23"></script>
-
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -203,8 +193,8 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
                     <tr>
                         <td class="td_category"><img src="/assets/category/category_name2.png" alt="投稿入力フォーム"></td>
                         <td style="cursor: pointer;" class="td_txt_explanation" onclick="document.form_pr.look_pid.value=41055;document.form_pr.submit();return false;">
-							<span id=n_0><%=@topic.username%></span>
-						</td>
+													<span id=n_0><%=@topic.username%></span>
+												</td>
                     </tr>
                     <tr>
                         <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_name.png" alt="トピック名"></td>
@@ -223,42 +213,44 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
 														<%end%>
                         </td>
                     </tr>
-										<% if @enquete.present? %>
-											<%unless @com.present?%>
-												<tr>
-													<td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_anke.png" alt="投票結果"></td>
-													<td class="td_txt_explanation" valign="top" style="padding-top:5px;">
-														<hr>
-														<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
-															<%@enquete.each do |enquete|%>
-																<tr>
-																	<td style="cursor: pointer;" onclick="document.form_vote.vote_no.value=0;document.form_vote.submit();return false;">
-																		<%=enquete.content%><img style="max-width:40px;padding:0 0 .15rem .25rem;" src="/assets/bg/icon_vote.png">
-																	</td>
-																</tr>
-															<%end%>
+										<% if @user_vote.present? %>
+											<tr>
+												<td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_vote.png" alt="投票結果"></td>
+												<td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+													<hr>
+													<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+														<%@enquete.each do |enquete|%>
 															<tr>
-																<td>投票でポイントもらえるよ</td>
+																<td width=50%><%=enquete.content%>(<%=enquete.votes.length%>)</td>
+																<td width=50%><img src="../imgbar.php?per=48 "></td>
 															</tr>
-														</table>
-													</td>
-												</tr>
-											<%else%>
-												<tr>
-													<td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_vote.png" alt="投票結果"></td>
-													<td class="td_txt_explanation" valign="top" style="padding-top:5px;">
-														<hr>
-														<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
-															<%@enquete.each do |enquete|%>
-																<tr>
-																	<td width=50%><%=enquete.content%>(0)</td>
-																	<td width=50%><img src="../imgbar.php?per=48 "></td>
-																</tr>
-															<%end%>
-														</table>
-													</td>
-												</tr>
-											<% end %>
+														<%end%>
+													</table>
+												</td>
+											</tr>
+										<% elsif @enquete.present? %>
+											<tr id="enquete_topic">
+												<td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_anke.png" alt="アンケート"></td>
+												<td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+													<hr>
+													<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+														<%@enquete.each do |enquete|%>
+															<tr>
+																<td>
+																	<%=enquete.content%>
+																	<%if user_signed_in? %>
+																		<%= link_to image_tag("/assets/bg/icon_vote.png", style:"max-width:40px;padding:0 0 .15rem .25rem;cursor: pointer;"), vote_topic_path(enquete_id: enquete.id), method: :post, remote: true %>
+																	<% end %>
+																</td>
+															</tr>
+														<%end%>
+														<tr>
+															<td>投票でポイントもらえるよ</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+										<%else%>
 										<% end %>
 					<tr><td></td><td><hr>総評価：1　投稿評価：1</td></tr>
                 </table>
