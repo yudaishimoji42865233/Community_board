@@ -75,6 +75,7 @@ class TopicsController < ApplicationController
   def vote
     @votes = Vote.create!(enquete_id: params[:enquete_id], user_id: current_user.id)
     @enquete = Enquete.where(topic_id: params[:id])
+    @total_vote = Vote.where(enquete_id: @enquete.ids)
   end
 
   private
