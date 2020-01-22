@@ -166,8 +166,8 @@ height: 1.5em;
 	<ul class=bbsList>
 		<li>
 			<div class="bbsBox" 						onclick="location.href='/topics/<%=a.id%>'" style="cursor: pointer;" data-turbolinks="false">
-				<% if a.image.present?%>
-					<a><%= image_tag a.image.url, class:"icon80" %></a>
+				<% if a.user.image.present?%>
+					<a><%= image_tag a.user.image.url, class:"icon80" %></a>
 				<%else%>
 					<a><%= image_tag '/assets/bar/noface.jpg', class:"icon80" %></a>
 				<%end%>
@@ -175,15 +175,15 @@ height: 1.5em;
 			</div>
 			<div class="bbsClearfix">
 				<div class="bbsDashed3"></div>
-				<div class="bbsInfoBar bbsInfoBarR">【<%=a.category.name%>】<%=a.username%></div>
+				<div class="bbsInfoBar bbsInfoBarR">【<%=a.category.name%>】<%=a.user.name%></div>
 				<div class="bbsInfoBar bbsInfoBarL"><%=a.updated_at.strftime("%Y/%m/%d")%> 閲覧数80</div>
 			</div>
 		</li>
 		<% if b.present? %>
 			<li>
 				<div class="bbsBox" 						onclick="location.href='/topics/<%=b.id%>'" style="cursor: pointer;" data-turbolinks="false">
-					<% if b.image.present?%>
-						<a><%= image_tag b.image.url, class:"icon80" %></a>
+					<% if b.user.image.present?%>
+						<a><%= image_tag b.user.image.url, class:"icon80" %></a>
 					<%else%>
 						<a><%= image_tag '/assets/bar/noface.jpg', class:"icon80" %></a>
 					<%end%>
@@ -191,7 +191,7 @@ height: 1.5em;
 				</div>
 				<div class="bbsClearfix">
 					<div class="bbsDashed3"></div>
-					<div class="bbsInfoBar bbsInfoBarR">【<%=b.category.name%>】<%=b.username%></div>
+					<div class="bbsInfoBar bbsInfoBarR">【<%=b.category.name%>】<%=b.user.name%></div>
 					<div class="bbsInfoBar bbsInfoBarL"><%=b.updated_at.strftime("%Y/%m/%d")%> 閲覧数79</div>
 				</div>
 			</li>

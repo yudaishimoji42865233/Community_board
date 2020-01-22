@@ -80,11 +80,11 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:username, :title, :content, :image, :category_id, enquetes_attributes: [:id, :content, :topic_id])
+    params.require(:topic).permit(:username, :title, :content, :image, :category_id, enquetes_attributes: [:id, :content, :topic_id]).merge(user_id: current_user.id)
   end
 
   def vote_params
-    params.require(:vote).permit(:enquete_id, :user_id)
+    params.require(:vote).permit(:enquete_id).merge(user_id: current_user.id)
   end
 
 end

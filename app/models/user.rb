@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :vote
   # has_many :topic, dependent: :destroy
   # has_many :comment
+  mount_uploader :image, ImageUploader
 end
