@@ -209,7 +209,8 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
 														<% if @topic.image.present?%>
 														<a class="modalLink" href="#modal1" id='0'>
 															<%= image_tag "/assets/bg/icon_photo.png", style:"max-width:54px;padding:0 0 .15rem .25rem;", alt:"画像"%>
-															<input type=hidden id=image_id_0 name=image_id_0 value=<%=@topic.image%>>
+															<br>
+															<%= image_tag @topic.image.url, size: '72x72', style:"max-width:72px;" %>
 														</a></span>
 														<%end%>
                         </td>
@@ -277,7 +278,8 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
 										<% if comment.image.present?%>
 										<span><a class="modalLink" href="#modal1" id='<%=index%>'>
 											<%= image_tag "/assets/bg/icon_photo.png", style:"max-width:54px;padding:0 0 .15rem .25rem;", alt:"画像" %>
-											<input type=hidden id=image_id_<%=index%> name=image_id_<%=index%> value=<%=@topic.image%>>
+											<br>
+											<%= image_tag comment.image.url, size: '72x72', style:"max-width:72px;" %>
 										</a></span>
 										<%end%>
 									</td>
