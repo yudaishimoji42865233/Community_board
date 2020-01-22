@@ -23,7 +23,8 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     @comment = Comment.where(topic_id: params[:id])
     @enquete = Enquete.where(topic_id: params[:id])
-    @user_vote = Vote.where(enquete_id: @enquete.ids).where(user_id: current_user.id) if user_signed_in?
+    @total_vote = Vote.where(enquete_id: @enquete.ids)
+    @user_vote = @total_vote.find_by(user_id: current_user.id) if user_signed_in?
   end
 
   def index_sort

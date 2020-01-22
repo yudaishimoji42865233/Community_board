@@ -99,7 +99,7 @@ height: 1.5em;
 
 
 
-	<div id="content_main_area" class="in_box_sizing" style="position:absolute;top:2.5rem;z-index:1;width: 98%;" >
+	<div id="content_main_area" class="in_box_sizing" style="position:absolute;top:2.5rem;z-index:1;width: 99.5%;" >
 
     	<div id="content_main_area_in" >
         
@@ -165,7 +165,7 @@ height: 1.5em;
 <% @topic.each_slice(2) do |a,b| %>
 	<ul class=bbsList>
 		<li>
-			<div class="bbsBox" 						onclick="location.href='/topics/<%=a.id%>'" style="cursor: pointer;">
+			<div class="bbsBox" 						onclick="location.href='/topics/<%=a.id%>'" style="cursor: pointer;" data-turbolinks="false">
 				<% if a.image.present?%>
 					<a><%= image_tag a.image.url, class:"icon80" %></a>
 				<%else%>
@@ -176,12 +176,12 @@ height: 1.5em;
 			<div class="bbsClearfix">
 				<div class="bbsDashed3"></div>
 				<div class="bbsInfoBar bbsInfoBarR">【<%=a.category.name%>】<%=a.username%></div>
-				<div class="bbsInfoBar bbsInfoBarL"><%=a.updated_at%> 閲覧数80</div>
+				<div class="bbsInfoBar bbsInfoBarL"><%=a.updated_at.strftime("%Y/%m/%d")%> 閲覧数80</div>
 			</div>
 		</li>
 		<% if b.present? %>
 			<li>
-				<div class="bbsBox" 						onclick="location.href='/topics/<%=b.id%>'" style="cursor: pointer;">
+				<div class="bbsBox" 						onclick="location.href='/topics/<%=b.id%>'" style="cursor: pointer;" data-turbolinks="false">
 					<% if b.image.present?%>
 						<a><%= image_tag b.image.url, class:"icon80" %></a>
 					<%else%>
@@ -192,7 +192,7 @@ height: 1.5em;
 				<div class="bbsClearfix">
 					<div class="bbsDashed3"></div>
 					<div class="bbsInfoBar bbsInfoBarR">【<%=b.category.name%>】<%=b.username%></div>
-					<div class="bbsInfoBar bbsInfoBarL"><%=b.updated_at%> 閲覧数79</div>
+					<div class="bbsInfoBar bbsInfoBarL"><%=b.updated_at.strftime("%Y/%m/%d")%> 閲覧数79</div>
 				</div>
 			</li>
 		<%end%>

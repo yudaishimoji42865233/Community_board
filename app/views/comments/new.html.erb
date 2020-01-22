@@ -43,13 +43,13 @@
           </td>
         </tr>
         <tr>
-          <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
+          <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_name.png" alt="トピック名"></td>
           <td style="cursor: pointer;" class="td_txt_explanation" onclick="document.form_pr.look_pid.value=1642643;document.form_pr.submit();return false;">
 	  	    <span class="txt_contribution_title"><%=@topic.content%></span>
 	  	    </td>
         </tr>
         <tr>
-          <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_name.png" alt="トピック名"></td>
+          <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
           <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
             <%= f.text_area :content, class:"renewal_comment_area in_box_sizing", placeholder:"コメントする内容をこちらに入力してください。" %>
           </td>
