@@ -282,8 +282,8 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
 								<tr>
 									<td style="width:30%;text-align:left;">
 									名前：<span id="n_<%=index%>"><%=comment.user.name%></span></td>
-									<td style="width:40%;text-align:right;">評価：<span id="total_comment<%= comment.id %>"><%=CommentLike.where(comment_id: comment.id).length%></span> </td>
-									<td style="width:5%;text-align:right;" id="like_comment<%=index%>">
+									<td style="width:40%;text-align:right;">評価：<span id="total_comment<%= comment.id %>"><%=instance_variable_get("@comment_like#{comment.id}").to_i%></span> </td>
+									<td style="width:5%;text-align:right;" id="like_comment<%=comment.id%>">
 										<% if instance_variable_get("@user_comment_like#{comment.id}").present? %>
 											<%= button_to '戻す', comment_like_topic_path(comment_id: comment.id), method: :delete, remote: true %>
 										<% elsif user_signed_in? %>
