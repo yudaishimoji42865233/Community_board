@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200122105007) do
+ActiveRecord::Schema.define(version: 20200122162653) do
+
+  create_table "comment_likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "comment_id", null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_comment_likes_on_comment_id", using: :btree
+    t.index ["user_id"], name: "index_comment_likes_on_user_id", using: :btree
+  end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content",    null: false
@@ -29,6 +38,15 @@ ActiveRecord::Schema.define(version: 20200122105007) do
     t.datetime "updated_at", null: false
     t.integer  "topic_id",   null: false
     t.index ["topic_id"], name: "index_enquetes_on_topic_id", using: :btree
+  end
+
+  create_table "topic_likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "topic_id",   null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["topic_id"], name: "index_topic_likes_on_topic_id", using: :btree
+    t.index ["user_id"], name: "index_topic_likes_on_user_id", using: :btree
   end
 
   create_table "topics", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -67,9 +85,13 @@ ActiveRecord::Schema.define(version: 20200122105007) do
     t.index ["user_id"], name: "index_votes_on_user_id", using: :btree
   end
 
+  add_foreign_key "comment_likes", "comments"
+  add_foreign_key "comment_likes", "users"
   add_foreign_key "comments", "topics"
   add_foreign_key "comments", "users"
   add_foreign_key "enquetes", "topics"
+  add_foreign_key "topic_likes", "topics"
+  add_foreign_key "topic_likes", "users"
   add_foreign_key "topics", "users"
   add_foreign_key "votes", "enquetes"
   add_foreign_key "votes", "users"

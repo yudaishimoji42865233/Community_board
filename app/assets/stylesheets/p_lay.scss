@@ -1,3 +1,7 @@
+/* =========
+checkbox and radio
+========= */
+
 .category_pr_report label {
 	display:block;
 	background:url(../img/bg/off.png) no-repeat 99% center;
@@ -505,7 +509,7 @@ col
 }
 
 /******************************************************/
-/*�V�ꗗ���C�A�E�g*/
+/*新一覧レイアウト*/
 /******************************************************/
 ul.bbsList{
 	margin:8px 8px;
@@ -513,7 +517,7 @@ ul.bbsList{
 	display: -moz-box;
 }
 ul.bbsList li{
-	width:49%;
+	width:48%;
 	padding:4px;
 	text-align:center;
 	vertical-align: top;
@@ -523,7 +527,7 @@ ul.bbsList li{
 	border-radius: 6px;
 	border: 1px solid #000;
 }
-/*even=����(����؂�)*/
+/*even=偶数(割り切れ)*/
 ul.bbsList li:nth-child(even) {
     margin-left: 8px;
 }
@@ -615,7 +619,7 @@ p.bbsDetail{
     padding: 0 0 0 .15rem !important ;
 }
 /*****************************************/
-/*�v���t*/
+/*プロフ*/
 /*****************************************/
 .prCateL{
 	border-top-left-radius: 10px;

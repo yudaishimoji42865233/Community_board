@@ -23,6 +23,17 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     @comment = Comment.where(topic_id: params[:id])
     @enquete = Enquete.where(topic_id: params[:id])
+    @topic_like = TopicLike.where(topic_id: params[:id])
+    @user_topic_like = @topic_like.find_by(user_id: current_user.id) if user_signed_in?
+    comment_likes = CommentLike.where(comment_id: @comment.ids)
+    if comment_likes.present?
+      comment_likes.each do |comment_like|
+        products = comment_likes.where(id: comment_like.id)
+        user_products = products.find_by(user_id: current_user.id) if user_signed_in?
+        instance_variable_set("@user_comment_like#{user_products.comment_id}", user_products) if user_products.present?
+        instance_variable_set("@comment_like#{comment_like.comment_id}", products) until instance_variable_get("@comment_like#{comment_like.comment_id}").present?
+      end
+    end
     @total_vote = Vote.where(enquete_id: @enquete.ids)
     @user_vote = @total_vote.find_by(user_id: current_user.id) if user_signed_in?
   end
@@ -73,9 +84,29 @@ class TopicsController < ApplicationController
   end
 
   def vote
-    @votes = Vote.create!(enquete_id: params[:enquete_id], user_id: current_user.id)
+    Vote.create!(vote_params)
     @enquete = Enquete.where(topic_id: params[:id])
     @total_vote = Vote.where(enquete_id: @enquete.ids)
+  end
+
+  def topic_like
+    TopicLike.create!(topic_like_params)
+    @topic_like = TopicLike.where(topic_id: params[:topic_id])
+  end
+
+  def topic_like_destroy
+    TopicLike.find_by(topic_id: params[:topic_id], user_id: current_user.id).delete
+    @topic_like = TopicLike.where(topic_id: params[:topic_id])
+  end
+
+  def comment_like
+    CommentLike.create!(comment_like_params)
+    @comment_like = CommentLike.where(comment_id: params[:comment_id])
+  end
+
+  def comment_like_destroy
+    CommentLike.find_by(comment_id: params[:comment_id], user_id: current_user.id).delete
+    @comment_like = CommentLike.where(comment_id: params[:comment_id])
   end
 
   private
@@ -85,7 +116,15 @@ class TopicsController < ApplicationController
   end
 
   def vote_params
-    params.require(:vote).permit(:enquete_id).merge(user_id: current_user.id)
+    params.permit(:enquete_id).merge(user_id: current_user.id)
+  end
+
+  def topic_like_params
+    params.permit(:topic_id).merge(user_id: current_user.id)
+  end
+
+  def comment_like_params
+    params.permit(:comment_id).merge(user_id: current_user.id)
   end
 
 end

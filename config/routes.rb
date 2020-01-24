@@ -15,6 +15,10 @@ Rails.application.routes.draw do
       get :index_sort, to: 'topics#index_sort'
       get :index_category, to: 'topics#index_category'
       post :vote, to: 'topics#vote',   as: 'vote'
+      post :topic_like, to: 'topics#topic_like'
+      delete :topic_like, to: 'topics#topic_like_destroy'
+      post :comment_like, to: 'topics#comment_like'
+      delete :comment_like, to: 'topics#comment_like_destroy'
     end
   end
 end

@@ -1,4 +1,7 @@
 
+/* =========
+Layout
+========= */
 #content_area {
 	padding:.2rem 0 .5rem;
 }
@@ -27,7 +30,7 @@
 }
 
 .gnav_profile_list img {
-	width:100%; /* max-width���Ɖ摜�̍ő�T�C�Y�܂ł����L����Ȃ� */
+	width:100%; /* max-widthだと画像の最大サイズまでしか広がらない */
 }
 
 .category_area {
@@ -180,9 +183,9 @@ Guild_bbs
 }
 
 /* 
-�Etable���̂�����border-radius�ł͌����Ȃ��itd�ɂ��w��j�B
-�Eborder-collapse�ɂ��Ă�ƌ����Ȃ��i�Z���̌��Ԃ��Ȃ����̂�border-spacing:0;�j�B
-�Eborder��table���̂̏�ƍ���border�Btd�̉��ƉE�Ƀ{�[�_�[�ł��ꂢ�ɕ\���ł���B
+・table自体だけにborder-radiusでは効かない（tdにも指定）。
+・border-collapseにしてると効かない（セルの隙間をなくすのはborder-spacing:0;）。
+・borderはtable自体の上と左にborder。tdの下と右にボーダーできれいに表示できる。
 */
 .contribution_list_table tr:first-child td:first-child {
 	border-radius:10px 0 0 0;
@@ -489,16 +492,16 @@ MediaQuery
 }
 
 @media screen and (max-width : 767px){
-	/* 767�ȉ� */
+	/* 767以下 */
 	.td_txt_explanation{font-size: 100%;}
 }
 
 @media screen and (min-width : 768px){
-	/* 768�ȏ� */
+	/* 768以上 */
 	.td_txt_explanation{font-size: 120%;}
 }
  
 @media screen and (min-width : 1024px) {
-	/* 1024px�ȏ� */
+	/* 1024px以上 */
 	.td_txt_explanation{font-size: 150%;}
 }

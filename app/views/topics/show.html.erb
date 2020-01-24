@@ -210,7 +210,7 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
 														<a class="modalLink" href="#modal1" id='0'>
 															<%= image_tag "/assets/bg/icon_photo.png", style:"max-width:54px;padding:0 0 .15rem .25rem;", alt:"画像"%>
 															<br>
-															<%= image_tag @topic.image.url, size: '72x72', style:"max-width:72px;" %>
+															<%= image_tag @topic.image.url, size: '72x72', style:"max-width:72px;max-height:72px;" %>
 														</a></span>
 														<%end%>
                         </td>
@@ -254,13 +254,26 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
 											</tr>
 										<%else%>
 										<% end %>
-					<tr id="total_vote"><td></td><td><hr>総評価：<%=@total_vote.length%>　投稿評価：1</td></tr>
+									<tr>
+										<td></td>
+										<td>
+											<hr>総評価：<span id="total_vote"><%=@total_vote.length%></span>　投稿評価：<span id="total_topic_like"><%= @topic_like.length %></span>
+											<span id="like_topic">
+												<% unless @user_topic_like.present? %>
+													<%= link_to button_to('評価する'), topic_like_topic_path(topic_id: @topic.id), method: :post, remote: true %>
+												<%else%>
+													<%= link_to button_to('戻す'), topic_like_topic_path(topic_id: @topic.id), method: :delete, remote: true %>
+												<%end%>
+											</span>
+										</td>
+									</tr>
                 </table>
             </form>
 			
 			
 
         </div><!-- category_area -->
+				<%# instance_variable_get("@comment_like#{comment.id}").present? %>
 
 				<% if @comment.present? %>
 					<% @comment.each.with_index(1) do |comment, index|%>
@@ -269,7 +282,15 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
 								<tr>
 									<td style="width:30%;text-align:left;">
 									名前：<span id="n_<%=index%>"><%=comment.user.name%></span></td>
-									<td style="width:40%;text-align:right;">評価：0</td>
+									<td style="width:40%;text-align:right;">評価：<span id="total_comment<%= comment.id %>"><%=CommentLike.where(comment_id: comment.id).length%></span> </td>
+									<td style="width:5%;text-align:right;" id="like_comment<%=index%>">
+										<% if instance_variable_get("@user_comment_like#{comment.id}").present? %>
+											<%= button_to '戻す', comment_like_topic_path(comment_id: comment.id), method: :delete, remote: true %>
+										<% elsif user_signed_in? %>
+											<%= button_to '評価する', comment_like_topic_path(comment_id: comment.id), method: :post, remote: true %>
+										<% else %>
+										<%end%>
+									</td>
 									<td style="width:30%;text-align:right;">日時：<span class="txt_contribution_title"><%=comment.created_at.strftime("%Y/%m/%d %H:%M:%S")%></span></td>
 								</tr>
 								<tr>
