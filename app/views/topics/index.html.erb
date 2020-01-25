@@ -108,9 +108,9 @@ height: 1.5em;
 						<%# <input type=hidden name=page_cate value=0> %>
 
 						<td class="td_txt_explanation" style="width:60%">投稿できます。</td>
-						<%= form_for(:keyword, url:search_topics_path) do |f| %>
-							<%= f.text_field :keyword, class:"contribution_input_txt_area in_box_sizing", style: "width: 50%;",  name:"keyword", placeholder:"トピック名を入力してください。"%>
-							<%= f.submit "トピック検索", class: "nav-link"%>
+						<%= search_form_for @q do |f| %>
+							<%= f.search_field :title_cont, class:"contribution_input_txt_area in_box_sizing", style: "width: 50%;", placeholder:"トピック名を入力してください。"%>
+							<%= f.submit "トピック検索", class: "btn_s_inp", style: "width: auto; display:inline;height:32px;"%>
 						<%end%>
 
   <% if user_signed_in? %>

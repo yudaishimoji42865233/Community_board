@@ -1,11 +1,18 @@
 class TopicsController < ApplicationController
 
   def index
-    @topic = Topic.all
+    @q = Topic.search(params[:q])
+    @topic = @q.result(distinct: true)
   end
 
   def search
-    @topic = Topic.where('title LIKE(?)', "%#{params[:keyword]}%")
+    @q = Topic.search(params[:q])
+    @topic = 
+    if params[:q].present?
+      Topic.none
+    else
+      @q.result
+    end
     render action: :index
   end
 
