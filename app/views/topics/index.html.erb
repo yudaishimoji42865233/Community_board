@@ -46,26 +46,23 @@ height: 1.5em;
 						document.form_comme.submit();
 					}
 				</script>
-				<form name="form_comme" action="" >
-				<input type=hidden name="topic_id" value=0>
-				<input type=hidden name="ibbs_contribution_comment" value=0>
-				<input type=hidden name=page_type value=>
-<input type=hidden name=page value=3>
-<input type=hidden name=page_cate value=0>
-
-				</form>
-				<form name=form_next action="">
-				
-				<input type="hidden" name="page" value="0">
-				<input type="hidden" name="page_type" value="">
-				<input type="hidden" name="page_cate" value="0">
-				</form>
-				<form name=form_rnk action="">
-				
-				<input type="hidden" name="page" value="0">
-				<input type="hidden" name="page_type" value="">
-				<input type="hidden" name="page_cate" value="0">
-				</form>
+				<%# <form name="form_comme" action="" > %>
+				<%# <input type=hidden name="topic_id" value=0> %>
+				<%# <input type=hidden name="ibbs_contribution_comment" value=0> %>
+				<%# <input type=hidden name=page_type value=> %>
+				<%# <input type=hidden name=page value=3> %>
+				<%# <input type=hidden name=page_cate value=0> %>
+				<%# </form> %>
+				<%# <form name=form_next action=""> %>
+				<%# <input type="hidden" name="page" value="0"> %>
+				<%# <input type="hidden" name="page_type" value=""> %>
+				<%# <input type="hidden" name="page_cate" value="0"> %>
+				<%# </form> %>
+				<%# <form name=form_rnk action=""> %>
+				<%# <input type="hidden" name="page" value="0"> %>
+				<%# <input type="hidden" name="page_type" value=""> %>
+				<%# <input type="hidden" name="page_cate" value="0"> %>
+				<%# </form> %>
 
 <section>
 	<a class="alignC" href="/"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></a>
@@ -106,11 +103,15 @@ height: 1.5em;
 					<div class="category_area">
 		    	<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
 			        <tr>
-						<input type=hidden name=page_type value=>
-<input type=hidden name=page value=3>
-<input type=hidden name=page_cate value=0>
+						<%# <input type=hidden name=page_type value=> %>
+						<%# <input type=hidden name=page value=3> %>
+						<%# <input type=hidden name=page_cate value=0> %>
 
 						<td class="td_txt_explanation" style="width:60%">投稿できます。</td>
+						<%= form_for(:keyword, url:search_topics_path) do |f| %>
+							<%= f.text_field :keyword, class:"contribution_input_txt_area in_box_sizing", style: "width: 50%;",  name:"keyword", placeholder:"トピック名を入力してください。"%>
+							<%= f.submit "トピック検索", class: "nav-link"%>
+						<%end%>
 
   <% if user_signed_in? %>
   <ul class="navbar-nav mr-auto">

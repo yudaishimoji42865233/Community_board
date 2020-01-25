@@ -4,6 +4,11 @@ class TopicsController < ApplicationController
     @topic = Topic.all
   end
 
+  def search
+    @topic = Topic.where('title LIKE(?)', "%#{params[:keyword]}%")
+    render action: :index
+  end
+
   def new
     @topic = Topic.new
     @enquete = @topic.enquetes.build
@@ -127,4 +132,7 @@ class TopicsController < ApplicationController
     params.permit(:comment_id).merge(user_id: current_user.id)
   end
 
+  def search_params
+    params.require(:q).permit!
+  end
 end
