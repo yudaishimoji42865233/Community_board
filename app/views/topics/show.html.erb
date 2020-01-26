@@ -166,10 +166,10 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
 
 			<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
 				<tr>
-					<% if 100-@comment.length == 0%>
+					<% if 100-@topic.comments.length == 0%>
 						<td class="td_txt_explanation txt_error" style="width:60%">コメント数が最大数となり、コメントがこれ以上行えません。</td>
 					<% else %>
-						<td class="td_txt_explanation" style="width:60%">このトピックに対してあと<%=100-@comment.length%>件のコメントを行うことができます。</td>
+						<td class="td_txt_explanation" style="width:60%">このトピックに対してあと<%=100-@topic.comments.length%>件のコメントを行うことができます。</td>
 						<td class="btn_submit_area" align="right">
 							<% if user_signed_in? %>
 								<%= button_to 'コメントする', new_topic_comment_path(@topic.id), method: :get, class:"btn_submit in_box_sizing", style:"width:95%" %>
@@ -293,11 +293,11 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
 									<td colspan="3" class="txt_comment">
 										<span id="td_<%=index%>"><%=comment.content%></span>
 										<% if comment.image.present?%>
-										<span><a class="modalLink" href="#modal1" id='<%=index%>'>
-											<%= image_tag "/assets/bg/icon_photo.png", style:"max-width:54px;padding:0 0 .15rem .25rem;", alt:"画像" %>
-											<br>
-											<%= image_tag comment.image.url, size: '72x72', style:"max-width:72px;" %>
-										</a></span>
+											<span><a class="modalLink" href="#modal1" id='<%=index%>'>
+												<%= image_tag "/assets/bg/icon_photo.png", style:"max-width:54px;padding:0 0 .15rem .25rem;", alt:"画像" %>
+												<br>
+												<%= image_tag comment.image.url, size: '72x72', style:"max-height: 4.5rem;max-width: 4.5rem;" %>
+											</a></span>
 										<%end%>
 									</td>
 								</tr>
@@ -313,11 +313,14 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
 						</table>
 					</div><!-- category_area -->
 				<%end%>
-
-        <div class="category_area">
-					<div style="clear:both;"></div>
-        </div><!-- category_area -->
-
+        	<div class="category_area">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+							<tr>
+								<td style="float:left;height:40px;overflow: hidden;" ><%= link_to_prev_page @comment, image_tag("/assets/bg/jmp_prev.png", style:"width:100%;align:left;") %></td>
+								<td style="float:right;height:40px;overflow: hidden;"><%= link_to_next_page @comment, image_tag("/assets/bg/jmp_next.png", style:"width:100%;align:right;") %></td>
+							</tr>
+						</table>
+        	</div><!-- category_area -->
       </div><!-- content_main_area_in -->
     </div><!-- content_main_area -->
 </section>

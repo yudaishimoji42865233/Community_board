@@ -97,7 +97,7 @@ height: 1.5em;
 			<div class="category_area">
 		    <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
 			    <tr>
-						<td class="td_txt_explanation" style="width:60%">
+						<td class="td_txt_explanation" style="width:60%;">
 							<%= search_form_for @q do |f|%>
     						<%= f.select( :sorts, { '並び替え': 'title desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} )%>
 								<%= f.label :category_id_eq_any,'募集' %>
@@ -175,7 +175,7 @@ height: 1.5em;
 			<div class="bbsClearfix">
 				<div class="bbsDashed3"></div>
 				<div class="bbsInfoBar bbsInfoBarR">【<%=a.category.name%>】<%=a.user.name%></div>
-				<div class="bbsInfoBar bbsInfoBarL"><%=a.updated_at.strftime("%Y/%m/%d")%> 閲覧数<%= a.impressionist_count %></div>
+				<div class="bbsInfoBar bbsInfoBarL"><%=a.updated_at.strftime("%Y/%m/%d")%> 閲覧数:<%= a.impressionist_count %> 回答数:<%= a.comments.length %> 評価数:<%= a.topic_likes.length %></div>
 			</div>
 		</li>
 		<% if b.present? %>
@@ -191,17 +191,18 @@ height: 1.5em;
 				<div class="bbsClearfix">
 					<div class="bbsDashed3"></div>
 					<div class="bbsInfoBar bbsInfoBarR">【<%=b.category.name%>】<%=b.user.name%></div>
-					<div class="bbsInfoBar bbsInfoBarL"><%=b.updated_at.strftime("%Y/%m/%d")%> 閲覧数<%= b.impressionist_count %></div>
+					<div class="bbsInfoBar bbsInfoBarL"><%=b.updated_at.strftime("%Y/%m/%d")%> 閲覧数:<%= b.impressionist_count %> 回答数:<%= b.comments.length %> 評価数:<%= b.topic_likes.length %></div>
 				</div>
 			</li>
 		<%end%>
 	</ul>
 <% end %>
 
-			<%# </form> %>
-            
 
-<div style="float:left;height:40px;overflow: hidden;" ><a href="javascript:void(0)" onclick="document.form_next.page.value=2;document.form_next.submit();return false;"><img align=left width=100% src=/assets/bg/jmp_prev.png></a></div><div style="float:right;height:40px;overflow: hidden;"><a href="javascript:void(0)" onclick="document.form_next.page.value=4;document.form_next.submit();return false;"><img align=right width=100% src=/assets/bg/jmp_next.png></a></div><div style="clear:both;"></div>
+
+	<div style="float:left;height:40px;overflow: hidden;" ><%= link_to_prev_page @topic, image_tag("/assets/bg/jmp_prev.png", style:"width:100%;align:left;") %></div>
+	<div style="float:right;height:40px;overflow: hidden;"><%= link_to_next_page @topic, image_tag("/assets/bg/jmp_next.png", style:"width:100%;align:right;") %></div>
+	<div style="clear:both;"></div>
 </div><!-- category_area -->
 
 
