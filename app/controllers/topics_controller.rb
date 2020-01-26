@@ -1,18 +1,24 @@
 class TopicsController < ApplicationController
 
   def index
-    @q = Topic.search(params[:q])
-    @topic = @q.result(distinct: true)
+    if params[:q].present?
+      @q = Topic.search(params[:q])
+      @topic = @q.result(distinct: true)
+    else
+      params[:q] = { sorts: 'id desc' }
+      @q = Topic.search()
+      @topic = @q.result(distinct: true)
+    end
   end
 
   def search
     @q = Topic.search(params[:q])
     @topic = 
-    if params[:q].present?
-      Topic.none
-    else
-      @q.result
-    end
+      if params[:q].present?
+        Topic.none
+      else
+        @q.result(distinct: true)
+      end
     render action: :index
   end
 

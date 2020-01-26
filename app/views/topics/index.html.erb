@@ -72,76 +72,71 @@ height: 1.5em;
 <section id="content_area"  style="position: relative;">
 
 	<div style="position: absolute;top:0;z-index:1000;width: 100%;">
-	<ul id="tmenu" class="menu1" style="width: 97%;position: absolute;margin-left: 3%;margin-right: 0%;margin-top: 0.25em;z-index:1000;">
-	<li id=t1 >
-	<ul>
-		<li style="float:none;width:100%;display: block;margin: 0;position: relative;z-index:1001;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;position: relative;z-index:1002;" onclick="opent('t1');event.preventDefault();return false;" class="white">カテゴリ一覧 ▼</a></li>
-		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/topics'" method=GET class="white">全部</a></li>
-		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/topics/2/index_category'" method=GET class="white">募集</a></li>
-		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/topics/3/index_category'" method=GET class="white">情報</a></li>
-		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/topics/4/index_category'" method=GET class="white">質問</a></li>
-		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/topics/5/index_category'" method=GET class="white">雑記</a></li>
-		<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/topics/6/index_category'" method=GET class="white">競売</a></li>
-	</ul>
-	</li>
-	  <li ><a href="javascript:void(0)" onclick="location.href='/topics/1/index_sort'" class="white">閲覧順</a></li>
-	  <li ><a href="javascript:void(0)" onclick="location.href='/topics/2/index_sort'" class="white">評価順</a></li>
-	  <li ><a href="javascript:void(0)" onclick="location.href='/topics/3/index_sort'" class="white">新着順</a></li>
-	  <li ><a href="javascript:void(0)" onclick="location.href='/topics/4/index_sort'" class="white">更新順</a></li>
-	  <li ><a href="javascript:void(0)" onclick="location.href='/topics/5/index_sort'" class="white">MY投稿</a></li>
-	</ul>
-	<div>
-
+		<ul id="tmenu" class="menu1" style="width: 97%;position: absolute;margin-left: 3%;margin-right: 0%;margin-top: 0.25em;z-index:1000;">
+			<li id=t1 >
+				<ul>
+					<li style="float:none;width:100%;display: block;margin: 0;position: relative;z-index:1001;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;position: relative;z-index:1002;" onclick="opent('t1');event.preventDefault();return false;" class="white">カテゴリ一覧 ▼</a></li>
+					<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/topics'" method=GET class="white">全部</a></li>
+					<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/topics/2/index_category'" method=GET class="white">募集</a></li>
+					<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/topics/3/index_category'" method=GET class="white">情報</a></li>
+					<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/topics/4/index_category'" method=GET class="white">質問</a></li>
+					<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/topics/5/index_category'" method=GET class="white">雑記</a></li>
+					<li style="float:none;width:100%;display: block;margin: 0;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;" onclick="location.href='/topics/6/index_category'" method=GET class="white">競売</a></li>
+				</ul>
+			</li>
+			<li><a href="javascript:void(0)" onclick="location.href='/topics/1/index_sort'" class="white">閲覧順</a></li>
+			<li><a href="javascript:void(0)" onclick="location.href='/topics/2/index_sort'" class="white">評価順</a></li>
+			<li><a href="javascript:void(0)" onclick="location.href='/topics/3/index_sort'" class="white">新着順</a></li>
+			<li><a href="javascript:void(0)" onclick="location.href='/topics/4/index_sort'" class="white">更新順</a></li>
+			<li><a href="javascript:void(0)" onclick="location.href='/topics/5/index_sort'" class="white">MY投稿</a></li>
+		</ul>
+	</div>
 	<div id="overlay" style="width: 100%;height: 100%;position: fixed;top: 0;left: 0;z-index: 100;background: #000;opacity: 0.7; display: none; background-color: rgb(0, 0, 0);" onclick="$('#t1').css({'height':'1.5em'});$(this).hide();"></div>
-
-
-
 	<div id="content_main_area" class="in_box_sizing" style="position:absolute;top:2.5rem;z-index:1;width: 99.5%;" >
-
-    	<div id="content_main_area_in" >
-        
-					<div class="category_area">
-		    	<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
-			        <tr>
-						<%# <input type=hidden name=page_type value=> %>
-						<%# <input type=hidden name=page value=3> %>
-						<%# <input type=hidden name=page_cate value=0> %>
-
-						<td class="td_txt_explanation" style="width:60%">投稿できます。</td>
-						<%= search_form_for @q do |f| %>
-							<%= f.search_field :title_cont, class:"contribution_input_txt_area in_box_sizing", style: "width: 50%;", placeholder:"トピック名を入力してください。"%>
-							<%= f.submit "トピック検索", class: "btn_s_inp", style: "width: auto; display:inline;height:32px;"%>
-						<%end%>
-
-  <% if user_signed_in? %>
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %>
-    </li>
-  </ul>
-  <% else %>
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <%= link_to 'ログイン', new_user_session_path, class: "nav-link" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to '新規登録', new_user_registration_path, class: "nav-link" %>
-    </li>
-  </ul>
-  <% end %>
-
-						<td class="btn_submit_area" align="right">
-							<input name=ibbs_delete type="submit" value="削除する" class="btn_delete in_box_sizing" style="width:95%;">
+    <div id="content_main_area_in" >
+			<div class="category_area">
+		    <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+			    <tr>
+						<td class="td_txt_explanation" style="width:60%">
+							<%= search_form_for @q do |f|%>
+    						<%= f.select( :sorts, { '並び替え': 'title desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} )%>
+								<%= f.label :category_id_eq_any,'募集' %>
+								<%= f.check_box :category_id_eq_any, { multiple: true }, 2, '' %>
+								<%= f.label :category_id_eq_any,'情報' %>
+								<%= f.check_box :category_id_eq_any, { multiple: true }, 3, '' %>
+								<%= f.label :category_id_eq_any,'質問' %>
+								<%= f.check_box :category_id_eq_any, { multiple: true }, 4, '' %>
+								<%= f.label :category_id_eq_any,'雑記' %>
+								<%= f.check_box :category_id_eq_any, { multiple: true }, 5, '' %>
+								<%= f.label :category_id_eq_any,'競売' %>
+								<%= f.check_box :category_id_eq_any, { multiple: true }, 6, '' %>
+								<% if user_signed_in? %>
+									<%= f.label :user_id_eq_any,'MY投稿' %>
+									<%= f.check_box :user_id_eq_any, { multiple: true }, current_user.id, '' %>
+								<%end%>
+								<br>
+								<%= f.search_field :title_cont, class:"contribution_input_txt_area in_box_sizing", style: "width: 50%;", placeholder:"トピック名で検索", value: "#{@q.title_cont}"%>
+								<%= f.submit "トピック検索", class: "btn_s_inp", style: "width: auto; display:inline;height:32px;"%>
+							<%end%>
 						</td>
-										<td class="btn_submit_area" align="right">
-					<%# <input name=ibbs_contribution_input type="submit" value="投稿する" class="btn_submit in_box_sizing" style="width:95%"> %>
-					<%= button_to '投稿する', new_topic_path, method: :get, class:"btn_submit in_box_sizing", style:"width:95%" %>
-				</td>
-						</tr>
 
+						<% if user_signed_in? %>
+							<td class="btn_submit_area" style="align:right;">
+							</td>
+							<td class="btn_submit_area" style="align:right;">
+								<%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn_delete in_box_sizing", style:"width:95%" %>
+							</td>
+						<% else %>
+							<td class="btn_submit_area" style="align:right;">
+								<%= button_to '新規登録', new_user_registration_path, class:"btn_submit in_box_sizing", style:"width:95%;" %>
+							</td>
+							<td class="btn_submit_area" style="align:right;">
+								<%= button_to 'ログイン', new_user_session_path, class:"btn_submit in_box_sizing", style:"width:95%;background-color: #368;border: 1px solid #023;box-shadow: 0 2px 0 #555, inset -2px -2px 0 #033, inset 2px 2px 0 #099;" %>
+							</td>
+						<% end %>
+					</tr>
 						<%#投稿しました%>
 						<%#削除しました%>
-						
 				</table>
 			</div><!-- category_area -->
 		
@@ -149,19 +144,22 @@ height: 1.5em;
         <!-- 投稿一覧 -->
         <div class="category_area">
             <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
-                <tr>
-                    <td class="td_category"><img src="/assets/category/category_contribution_list.png" alt="トピック投稿一覧"></td>
-                    <td class="td_txt_explanation" >今までに投稿したトピックの一覧です。</td>
-                    <td class="td_txt_explanation"  style="display:none;" >以降、投稿したトピックはありません。</td>
-                    <td class="td_txt_explanation"  style="display:none;" >情報交換がありません。</td>
-                </tr>
+              <tr>
+                <td class="td_category"><img src="/assets/category/category_contribution_list.png" alt="トピック投稿一覧"></td>
+                <td class="td_txt_explanation" style="width: auto;">今までに投稿したトピックの一覧です。</td>
+                <td class="td_txt_explanation"  style="display:none;" >以降、投稿したトピックはありません。</td>
+                <td class="td_txt_explanation"  style="display:none;" >情報交換がありません。</td>
+								<% if user_signed_in? %>
+									<td class="btn_submit_area" style="align:right;vertical-align:middle;">
+										<input name=ibbs_delete type="submit" value="削除する" class="btn_delete in_box_sizing" style="width:95%;">
+									</td>
+									<td class="btn_submit_area" style="align:right;vertical-align:middle;">
+										<%# <input name=ibbs_contribution_input type="submit" value="投稿する" class="btn_submit in_box_sizing" style="width:95%"> %>
+										<%= button_to '投稿する', new_topic_path, method: :get, class:"btn_submit in_box_sizing", style:"width:95%;" %>
+									</td>
+								<% end %>
+              </tr>
             </table>
-<!-- style=\"display:none;\" -->
-
-			<form action="">
-			<input type=hidden name=page_type value=>
-<input type=hidden name=page value=3>
-<input type=hidden name=page_cate value=0>
 
 <% @topic.each_slice(2) do |a,b| %>
 	<ul class=bbsList>
@@ -200,12 +198,11 @@ height: 1.5em;
 	</ul>
 <% end %>
 
-			</form>
+			<%# </form> %>
             
 
 <div style="float:left;height:40px;overflow: hidden;" ><a href="javascript:void(0)" onclick="document.form_next.page.value=2;document.form_next.submit();return false;"><img align=left width=100% src=/assets/bg/jmp_prev.png></a></div><div style="float:right;height:40px;overflow: hidden;"><a href="javascript:void(0)" onclick="document.form_next.page.value=4;document.form_next.submit();return false;"><img align=right width=100% src=/assets/bg/jmp_next.png></a></div><div style="clear:both;"></div>
-
-        </div><!-- category_area -->
+</div><!-- category_area -->
 
 
 
