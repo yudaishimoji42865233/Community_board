@@ -7,6 +7,6 @@ class Topic < ApplicationRecord
   belongs_to :user
   
   accepts_nested_attributes_for :enquetes
-
+  is_impressionable counter_cache: true
   mount_uploader :image, ImageUploader
 end

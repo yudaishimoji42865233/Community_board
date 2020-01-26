@@ -175,7 +175,7 @@ height: 1.5em;
 			<div class="bbsClearfix">
 				<div class="bbsDashed3"></div>
 				<div class="bbsInfoBar bbsInfoBarR">【<%=a.category.name%>】<%=a.user.name%></div>
-				<div class="bbsInfoBar bbsInfoBarL"><%=a.updated_at.strftime("%Y/%m/%d")%> 閲覧数80</div>
+				<div class="bbsInfoBar bbsInfoBarL"><%=a.updated_at.strftime("%Y/%m/%d")%> 閲覧数<%= a.impressionist_count %></div>
 			</div>
 		</li>
 		<% if b.present? %>
@@ -191,7 +191,7 @@ height: 1.5em;
 				<div class="bbsClearfix">
 					<div class="bbsDashed3"></div>
 					<div class="bbsInfoBar bbsInfoBarR">【<%=b.category.name%>】<%=b.user.name%></div>
-					<div class="bbsInfoBar bbsInfoBarL"><%=b.updated_at.strftime("%Y/%m/%d")%> 閲覧数79</div>
+					<div class="bbsInfoBar bbsInfoBarL"><%=b.updated_at.strftime("%Y/%m/%d")%> 閲覧数<%= b.impressionist_count %></div>
 				</div>
 			</li>
 		<%end%>

@@ -39,6 +39,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
+    impressionist(@topic, nil, :unique => [:session_hash])
     @comment = Comment.where(topic_id: params[:id])
     @enquete = Enquete.where(topic_id: params[:id])
     @topic_like = TopicLike.where(topic_id: params[:id])
