@@ -11,16 +11,16 @@ class TopicsController < ApplicationController
     end
   end
 
-  def search
-    @q = Topic.search(params[:q])
-    @topic = 
-      if params[:q].present?
-        Topic.none
-      else
-        @q.result(distinct: true)
-      end
-    render action: :index
-  end
+  # def search
+  #   @q = Topic.search(params[:q])
+  #   @topic = 
+  #     if params[:q].present?
+  #       Topic.none
+  #     else
+  #       @q.result(distinct: true)
+  #     end
+  #   render action: :index
+  # end
 
   def new
     @topic = Topic.new
@@ -56,32 +56,32 @@ class TopicsController < ApplicationController
     @user_vote = @total_vote.find_by(user_id: current_user.id) if user_signed_in?
   end
 
-  def index_sort
-    case params[:id].to_i
-      when 1 then
-        # @topic = Topic.order('whatch DESC')
-        redirect_to root_path
-      when 2 then
-        # @topic = Topic.order('like DESC')
-        redirect_to root_path
-      when 3 then
-        @topic = Topic.order('created_at DESC')
-        render action: :index
-      when 4 then
-        @topic = Topic.order('updated_at DESC')
-        render action: :index
-      when 5 then
-        # @topic = Topic.where(user_id: current_user.id)
-        redirect_to root_path
-      else
-        redirect_to root_path
-    end
-  end
+  # def index_sort
+  #   case params[:id].to_i
+  #     when 1 then
+  #       # @topic = Topic.order('whatch DESC')
+  #       redirect_to root_path
+  #     when 2 then
+  #       # @topic = Topic.order('like DESC')
+  #       redirect_to root_path
+  #     when 3 then
+  #       @topic = Topic.order('created_at DESC')
+  #       render action: :index
+  #     when 4 then
+  #       @topic = Topic.order('updated_at DESC')
+  #       render action: :index
+  #     when 5 then
+  #       # @topic = Topic.where(user_id: current_user.id)
+  #       redirect_to root_path
+  #     else
+  #       redirect_to root_path
+  #   end
+  # end
 
-  def index_category
-    @topic = Topic.where(category_id: params[:id])
-    render action: :index
-  end
+  # def index_category
+  #   @topic = Topic.where(category_id: params[:id])
+  #   render action: :index
+  # end
 
   def show2
   end
