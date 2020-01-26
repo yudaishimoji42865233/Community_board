@@ -532,7 +532,10 @@ ul.bbsList li:nth-child(even) {
     margin-left: 8px;
 }
 ul.bbsList li img{
-    border-radius: 5px;
+		border-radius: 5px;
+		max-height: 4.5rem;
+		max-width: 4.5rem;
+		border-radius: 5px;
 }
 
 .bbsBox{
