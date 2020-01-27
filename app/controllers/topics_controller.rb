@@ -2,12 +2,12 @@ class TopicsController < ApplicationController
 
   def index
     if params[:q].present?
-      @q = Topic.search(params[:q])
+      @q = Topic.search(search_params)
       @topic = @q.result(distinct: true)
       @topic = @q.result(distinct: true).page(params[:page]).per(20)
     else
       params[:q] = { sorts: 'id desc' }
-      @q = Topic.search()
+      @q = Topic.search(params[:q])
       @topic = @q.result(distinct: true)
       @topic = @q.result(distinct: true).page(params[:page]).per(20)
     end
@@ -42,7 +42,7 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id])
     impressionist(@topic, nil, :unique => [:session_hash])
-    @comment = Comment.page(params[:page]).where(topic_id: params[:id]).per(50).order('id DESC')
+    @comment = Comment.page(params[:page]).where(topic_id: params[:id]).per(50).order('created_at ASC')
     @enquete = Enquete.where(topic_id: params[:id])
     @topic_like = TopicLike.where(topic_id: params[:id])
     @user_topic_like = @topic_like.find_by(user_id: current_user.id) if user_signed_in?
@@ -149,6 +149,7 @@ class TopicsController < ApplicationController
   end
 
   def search_params
-    params.require(:q).permit(:category_id_eq_any, :user_id_eq_any, :sorts, :title_cont)
+    params.require(:q).permit!
+    # (:category_id_eq_any, :user_id_eq_any, :sorts, :title_cont)
   end
 end

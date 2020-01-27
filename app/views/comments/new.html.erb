@@ -18,10 +18,10 @@
 			      			下記フォームにすべて入力し、投稿確認ボタンを押してください。
 			      		</td>
 			      		<td class="btn_submit_area" align="right">
-			      		  <input type="submit" name="ibbs_contribution_comment_input" value="投稿を確認する" class="btn_submit in_box_sizing" style="width:95%">
+			      	  	<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/topics/<%=@topic.id%>'">
 			      	  </td>				
                 <td class="btn_submit_area" align="right">
-			      	  	<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/topics/<%=@topic.id%>'">
+			      		  <input type="submit" name="ibbs_contribution_comment_input" value="投稿を確認する" class="btn_submit in_box_sizing" style="width:95%">
 			      	  </td>
 			      	</tr>
 			      	<!-- コメント数が最大に達した時に下記エラー分を表示させてください。

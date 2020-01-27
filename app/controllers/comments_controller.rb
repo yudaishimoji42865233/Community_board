@@ -7,6 +7,9 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.create!(comment_params)
+    topic_update = Topic.find(params[:topic_id])
+    topic_update.touch
+    topic_update.updated_at
     redirect_to topic_path(params[:topic_id]), method: :get
   end
 

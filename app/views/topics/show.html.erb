@@ -166,20 +166,22 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
 
 			<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
 				<tr>
-					<% if 100-@topic.comments.length == 0%>
-						<td class="td_txt_explanation txt_error" style="width:60%">コメント数が最大数となり、コメントがこれ以上行えません。</td>
-					<% else %>
+					<% unless 100-@topic.comments.length <= 0%>
 						<td class="td_txt_explanation" style="width:60%">このトピックに対してあと<%=100-@topic.comments.length%>件のコメントを行うことができます。</td>
-						<td class="btn_submit_area" align="right">
+					<% else %>
+						<td class="td_txt_explanation txt_error" style="width:60%">コメント数が最大数となり、コメントがこれ以上行えません。</td>
+					<% end %>
+					<td class="btn_submit_area" align="right">
+						<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/'">
+					</td>
+					<td class="btn_submit_area" align="right">
+						<% unless 100-@topic.comments.length <= 0%>
 							<% if user_signed_in? %>
 								<%= button_to 'コメントする', new_topic_comment_path(@topic.id), method: :get, class:"btn_submit in_box_sizing", style:"width:95%" %>
 							<% else %>
 								<%= button_to 'ログイン', new_user_session_path, class:"btn_submit in_box_sizing", style:"width:95%;background-color: #368;border: 1px solid #023;box-shadow: 0 2px 0 #555, inset -2px -2px 0 #033, inset 2px 2px 0 #099;" %>
 							<% end %>
-						</td>
-					<% end %>
-					<td class="btn_submit_area" align="right">
-						<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/'">
+						<% end %>
 					</td>
 				</tr>
       </table>
@@ -191,7 +193,7 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
                 <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
                     <tr>
                         <td class="td_category"><img src="/assets/category/category_name2.png" alt="投稿入力フォーム"></td>
-                        <td style="cursor: pointer;" class="td_txt_explanation" onclick="document.form_pr.look_pid.value=41055;document.form_pr.submit();return false;">
+                        <td style="cursor: pointer;" class="td_txt_explanation">
 													<span id="n_0"><%=@topic.user.name%></span>
 												</td>
                     </tr>
@@ -204,14 +206,16 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
                     <tr>
                         <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
                         <td class="td_txt_explanation" style="padding-top:5px;">
-                            <span class="txt_contribution_content"><span id="td_0"><%=@topic.content%></span>
+                          <span class="txt_contribution_content">
+														<span id="td_0"><%=@topic.content%></span>
 														<% if @topic.image.present?%>
-														<a class="modalLink" href="#modal1" id='0'>
-															<%= image_tag "/assets/bg/icon_photo.png", style:"max-width:54px;padding:0 0 .15rem .25rem;", alt:"画像"%>
-															<br>
-															<%= image_tag @topic.image.url, size: '72x72', style:"max-width:72px;max-height:72px;" %>
-														</a></span>
+															<a class="modalLink" href="#modal1" id='0'>
+																<%= image_tag "/assets/bg/icon_photo.png", style:"max-width:54px;padding:0 0 .15rem .25rem;", alt:"画像"%>
+																<br>
+																<%= image_tag @topic.image.url, size: '72x72', style:"max-width:72px;max-height:72px;" %>
+															</a>
 														<%end%>
+													</span>
                         </td>
                     </tr>
 										<% if @user_vote.present? %>

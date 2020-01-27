@@ -99,7 +99,9 @@ height: 1.5em;
 			    <tr>
 						<td class="td_txt_explanation" style="width:60%;">
 							<%= search_form_for @q do |f|%>
-    						<%= f.select( :sorts, { '並び替え': 'title desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} )%>
+								<%= f.label :sorts,'並び替え:' %>
+    						<%= f.select( :sorts, { '並び替え': 'title desc', '閲覧順': 'impressions_count desc', '評価順': 'topic_likes_count desc', '新着順': 'created_at desc', '更新順': 'updated_at desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} )%><br>
+								<%= f.label :category_id_eq_any,'カテゴリー:' %>
 								<%= f.label :category_id_eq_any,'募集' %>
 								<%= f.check_box :category_id_eq_any, { multiple: true }, 2, '' %>
 								<%= f.label :category_id_eq_any,'情報' %>
@@ -154,7 +156,6 @@ height: 1.5em;
 										<input name=ibbs_delete type="submit" value="削除する" class="btn_delete in_box_sizing" style="width:95%;">
 									</td>
 									<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-										<%# <input name=ibbs_contribution_input type="submit" value="投稿する" class="btn_submit in_box_sizing" style="width:95%"> %>
 										<%= button_to '投稿する', new_topic_path, method: :get, class:"btn_submit in_box_sizing", style:"width:95%;" %>
 									</td>
 								<% end %>
