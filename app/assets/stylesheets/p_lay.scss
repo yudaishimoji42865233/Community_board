@@ -112,12 +112,12 @@ Btn
 .btn_s_off,
 .btn_s_inp {
 	width:100%;
-	padding:4px 8px;
+	padding:7px 14px;
 	color:#fff;
-	font-size:10px;
 	font-weight:bold;
+	font-size:.6rem;
 	position:relative;
-	top:.1rem;
+	top:-.15rem;
 	display:block;
 	border-radius:10px;
 	-webkit-appearance:none;
@@ -127,7 +127,7 @@ Btn
 .btn_s_inp {
 	background-color:#368;
 	border:1px solid #023;
-	box-shadow:0 2px 0 #555, inset -2px -2px 0 #033, inset 2px 2px 0 #099;
+	box-shadow:0 3px 0 #555, inset -2px -2px 0 #033, inset 2px 2px 0 #099;
 }
 
 /* btn_s_inp */
@@ -138,17 +138,17 @@ Btn
 }
 
 
-/*
+
 .btn_s_inp:hover {
-	top:.35rem;
-	box-shadow:0 0px 0 #055, inset -2px -2px 0 #033, inset 2px 2px 0 #099;
+	top:.1rem;
+	box-shadow:0 1px 0 #055, inset -2px -2px 0 #033, inset 2px 2px 0 #099;
 	background-color:#279;
 }
 
 .btn_s_inp:active {
 	background-color:#279;
 }
-*/
+
 
 /* =========
 col
@@ -532,7 +532,6 @@ ul.bbsList li:nth-child(even) {
     margin-left: 8px;
 }
 ul.bbsList li img{
-		border-radius: 5px;
 		max-height: 4.5rem;
 		max-width: 4.5rem;
 		border-radius: 5px;
