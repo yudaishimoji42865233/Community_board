@@ -49,9 +49,10 @@ test:
 #
 production:
   <<: *default
+  database: <%= ENV['DB_NAME'] %> 
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
   url: <%= ENV['DATABASE_URL'] %>
-  username: <%= ENV['DATABASE_USERNAME'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
   master_key: <%= ENV['RAILS_MASTER_KEY'] %>
 
   # database: Community_board_production
