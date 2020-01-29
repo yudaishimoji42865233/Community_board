@@ -13,17 +13,6 @@ class TopicsController < ApplicationController
     end
   end
 
-  # def search
-  #   @q = Topic.search(params[:q])
-  #   @topic = 
-  #     if params[:q].present?
-  #       Topic.none
-  #     else
-  #       @q.result(distinct: true)
-  #     end
-  #   render action: :index
-  # end
-
   def new
     @topic = Topic.new
     @enquete = @topic.enquetes.build
@@ -58,33 +47,6 @@ class TopicsController < ApplicationController
     @total_vote = Vote.where(enquete_id: @enquete.ids)
     @user_vote = @total_vote.find_by(user_id: current_user.id) if user_signed_in?
   end
-
-  # def index_sort
-  #   case params[:id].to_i
-  #     when 1 then
-  #       # @topic = Topic.order('whatch DESC')
-  #       redirect_to root_path
-  #     when 2 then
-  #       # @topic = Topic.order('like DESC')
-  #       redirect_to root_path
-  #     when 3 then
-  #       @topic = Topic.order('created_at DESC')
-  #       render action: :index
-  #     when 4 then
-  #       @topic = Topic.order('updated_at DESC')
-  #       render action: :index
-  #     when 5 then
-  #       # @topic = Topic.where(user_id: current_user.id)
-  #       redirect_to root_path
-  #     else
-  #       redirect_to root_path
-  #   end
-  # end
-
-  # def index_category
-  #   @topic = Topic.where(category_id: params[:id])
-  #   render action: :index
-  # end
 
   def show2
   end
@@ -133,7 +95,7 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:username, :title, :content, :image, :category_id, enquetes_attributes: [:id, :content, :topic_id]).merge(user_id: current_user.id)
+    params.require(:topic).permit(:title, :content, :image, :category_id, enquetes_attributes: [:id, :content, :topic_id]).merge(user_id: current_user.id)
   end
 
   def vote_params

@@ -42,7 +42,6 @@ group :development, :test do
 end
 
 group :production do
-  gem 'rails_12factor'
 end
 
 group :development do
@@ -65,3 +64,5 @@ gem 'bullet'
 gem 'ransack'
 gem 'kaminari'
 gem 'impressionist'
+gem 'fog-aws'
+gem 'seed_dump'

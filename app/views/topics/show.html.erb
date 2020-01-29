@@ -34,39 +34,25 @@ $(document).ready(function(){
     });
 });
 
-var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pid:1845725};idx[2]={img:0,next:0,befo:1,pid:41055};
+
+
+var idx={};
+idx[0]={img:1,next:1,befo:2};
+idx[1]={img:1,next:2,befo:0};
+idx[2]={img:1,next:0,befo:1};
 
 </script>
 
-<style type="text/css">
-.cs1 {
-    position:relative;
-    display:inline-block;
-    line-height:0;
-    border-radius:10px;
-    overflow:hidden;
+<script type="text/javascript">
+function comeDelete(delno){
+	document.form_del_come.del_come.value=delno;
+	document.form_del_come.submit();
 }
-.cs1::after {
-    content:"";
-    position:absolute;
-    top:0; right:0; bottom:0; left:0;
-    border-radius:10px;
-    box-shadow:inset 0 5px 10px rgba(0,0,0,.5);
-}
-</style>
+</script>
 
 </head>
 
 <body>
-
-				<script type="text/javascript"><!--
-				function comeDelete(delno){
-					document.form_del_come.del_come.value=delno;
-					document.form_del_come.submit();
-				}
-				// --></script>
-
-
 
 <section>
 	<a class="alignC" href="/"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></a>
@@ -132,8 +118,7 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
 														<% if @topic.image.present?%>
 															<a class="modalLink" href="#modal1" id='0'>
 																<%= image_tag "/assets/bg/icon_photo.png", style:"max-width:54px;padding:0 0 .15rem .25rem;", alt:"画像"%>
-																<br>
-																<%= image_tag @topic.image.url, style:"max-width:72px;max-height:72px;border-radius: 5px;" %>
+																<input type=hidden id=topic_id_0 name=topic_id_0 value=<%=@topic.image.url%>>
 															</a>
 														<%end%>
 													</span>
@@ -222,8 +207,8 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
 										<% if comment.image.present?%>
 											<span><a class="modalLink" href="#modal1" id='<%=index%>'>
 												<%= image_tag "/assets/bg/icon_photo.png", style:"max-width:54px;padding:0 0 .15rem .25rem;", alt:"画像" %>
-												<br>
-												<%= image_tag comment.image.url, size: '72x72', style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
+												<input type=hidden id=topic_id_<%=index%> name=topic_id_<%=index%> value=<%=comment.image.url%>>
+												<%# image_tag comment.image.url, size: '72x72', style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
 											</a></span>
 										<%end%>
 									</td>
@@ -267,7 +252,8 @@ var idx={};idx[0]={img:1,next:1,befo:2,pid:41055};idx[1]={img:0,next:2,befo:0,pi
 				margin-left:auto;
 				margin-right:auto;
 				text-align:center;
-				width:100%;
+				height:40rem;
+				width:40rem;
 				border-radius:10px;
 		" %>
 	</div>
