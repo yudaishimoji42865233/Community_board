@@ -33,14 +33,14 @@ $(document).ready(function(){
         close:'.closeBtn'               // id or class of close button
     });
 });
-
-
-
 var idx={};
-idx[0]={img:1,next:1,befo:2};
-idx[1]={img:1,next:2,befo:0};
-idx[2]={img:1,next:0,befo:1};
-
+idx[0]={img:<%if @topic.image.present?%>1<%else%>0<%end%>,next:<%if @comment.present?%>1<%else%>0<%end%>,befo:<%if @comment.present?%><%=@comment.length%><%else%>0<%end%>};
+<% @comment.each.with_index(1) do |comment, i| %>
+<%if i == @comment.length%>
+idx[<%=i%>]={img:<%if comment.image.present?%>1<%else%>0<%end%>,next:0,befo:<%=i-1%>};
+<%else%>
+idx[<%=i%>]={img:<%if comment.image.present?%>1<%else%>0<%end%>,next:<%=i+1%>,befo:<%=i-1%>};
+<%end%><% end %>
 </script>
 
 <script type="text/javascript">
@@ -252,8 +252,7 @@ function comeDelete(delno){
 				margin-left:auto;
 				margin-right:auto;
 				text-align:center;
-				height:40rem;
-				width:40rem;
+				min-height:43rem;
 				border-radius:10px;
 		" %>
 	</div>

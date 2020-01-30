@@ -113,7 +113,7 @@
         url = topic_id;
         iop=1;
       }else{
-        url = "../image/px1.png";
+        url = "/assets/px1.png";
         iop=0;
       }
       var imgPreloader=new Image();
@@ -133,12 +133,8 @@
       
       //名前
       var pcname="";
-      if( typeof idx[0] === 'undefined' || typeof idx[tno] === 'undefined' || idx[tno]['pid']!=idx[0]['pid']){
-        pcname = $('#n_'+tno).html() + "<br>";
-        $("#come").css({'text-indent':'-1em','padding-left':'1em','padding-top':''});
-      }else{
-        $("#come").css({'text-indent':'','padding-left':'','padding-top':'1em'});
-      }
+      pcname = $('#n_'+tno).html() + "<br>";
+      $("#come").css({'text-indent':'-1em','padding-left':'1em','padding-top':''});
 
       //メッセージ
       $("#come").html( pcname+$('#td_'+tno).html() );
