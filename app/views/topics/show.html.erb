@@ -81,15 +81,17 @@ function comeDelete(delno){
 					<td class="btn_submit_area" align="right">
 						<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/'">
 					</td>
-					<td class="btn_submit_area" align="right">
 						<% unless 100-@topic.comments.length <= 0%>
 							<% if user_signed_in? %>
-								<%= button_to 'コメントする', new_topic_comment_path(@topic.id), method: :get, class:"btn_submit in_box_sizing", style:"width:95%" %>
+								<td class="btn_submit_area" align="right">
+									<%= button_to 'コメントする', new_topic_comment_path(@topic.id), method: :get, class:"btn_submit in_box_sizing", style:"width:95%" %>
+								</td>
 							<% else %>
-								<%= button_to 'ログイン', new_user_session_path, class:"btn_submit in_box_sizing", style:"width:95%;background-color: #368;border: 1px solid #023;box-shadow: 0 2px 0 #555, inset -2px -2px 0 #033, inset 2px 2px 0 #099;" %>
+								<td class="btn_submit_area" align="right">
+									<%= button_to 'ログイン', new_user_session_path, class:"btn_submit in_box_sizing", style:"width:95%;background-color: #368;border: 1px solid #023;box-shadow: 0 2px 0 #555, inset -2px -2px 0 #033, inset 2px 2px 0 #099;" %>
+								</td>
 							<% end %>
 						<% end %>
-					</td>
 				</tr>
       </table>
         </div><!-- category_area -->
