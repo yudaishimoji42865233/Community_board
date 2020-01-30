@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :topics do
     resources :comments, only: [:create, :new]
     collection do
-      get :new_check, to: 'topics#new_check'
+      post :new_confirm, to: 'topics#new_confirm'
+      post :new, path: :new, as: :new, action: :back
       get :delete_select, to: 'topics#delete_select'
       get :delete_check, to: 'topics#delete_check'
       get :show2, to: 'topics#show2'

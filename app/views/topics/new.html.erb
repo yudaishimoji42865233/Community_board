@@ -5,22 +5,18 @@
   
   <section id="content_area">
   	<div id="content_main_area" class="in_box_sizing" style="z-index:2;">
-      <%= form_for @topic do |f| %>
+      <%= form_for @topic, url:new_confirm_topics_path do |f| %>
         <div id="content_main_area_in">
           <div class="category_area">
-  			    <input type=hidden name=topic_id value=113019>
-  			    <input type=hidden name=page_type value=>
-            <input type=hidden name=page value=3>
-            <input type=hidden name=page_cate value=0>
 			      <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
 			      	<tr>
 			      		<td class="td_txt_explanation" style="width:60%">
 			      			下記フォームにすべて入力し、投稿確認ボタンを押してください。
 			      		</td>
-			      		<td class="btn_submit_area" align="right">
+			      		<td class="btn_submit_area" style="align:right;vertical-align:middle;">
 			      	  	<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/'">
 			      	  </td>				
-                <td class="btn_submit_area" align="right">
+                <td class="btn_submit_area" style="align:right;vertical-align:middle;">
 			      		  <input type="submit" name="ibbs_contribution_comment_input" value="投稿を確認する" class="btn_submit in_box_sizing" style="width:95%">
 			      	  </td>
 			      	</tr>
@@ -64,7 +60,7 @@
                 <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
                 <td class="td_txt_explanation" style="padding-top:5px;">
                   <span class="small bold">画像を1つ追加できます。</span>
-                  <%= f.file_field :image %>
+                  <%= f.file_field :image %><%= f.hidden_field :image_cache %>
                 </td>
               </tr>
               <tr>

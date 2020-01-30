@@ -18,11 +18,27 @@ class TopicsController < ApplicationController
     @enquete = @topic.enquetes.build
   end
 
+  def new_confirm
+    @topic = Topic.new(topic_params)
+    render :new if @topic.invalid?
+    @enquete = @topic.enquetes.build
+  end
+
+  def back
+    @topic = Topic.new(topic_params)
+    @enquete = @topic.enquetes.build
+    render :new
+  end
+
   def create
-    @topic = Topic.create!(topic_params)
-    params[:enquetes]['content'].each do |i|
-      if i.present?
-        @enquete = @topic.enquetes.create!(content: i, topic_id: @topic.id)
+    @topic = Topic.new(topic_params)
+    render :new_confirm if @topic.invalid?
+    @topic = Topic.create(topic_params)
+    if @enquete.present?
+      params[:enquetes]['content'].each do |i|
+        if i.present?
+          @enquete = @topic.enquetes.create!(content: i, topic_id: @topic.id)
+        end
       end
     end
     redirect_to root_path
@@ -54,11 +70,6 @@ class TopicsController < ApplicationController
   def show3
   end
 
-  def new_check
-    @topic = Topic.find(1)
-    @title = params[:title]
-    @content = params[:content]
-  end
 
   def delete_select
   end
@@ -95,7 +106,7 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:title, :content, :image, :category_id, enquetes_attributes: [:id, :content, :topic_id]).merge(user_id: current_user.id)
+    params.require(:topic).permit(:title, :content, :image, :image_cache, :category_id, enquetes_attributes: [:id, :content, :topic_id]).merge(user_id: current_user.id)
   end
 
   def vote_params
