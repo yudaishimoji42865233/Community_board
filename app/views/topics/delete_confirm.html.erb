@@ -7,20 +7,19 @@
   	<div id="content_main_area" class="in_box_sizing" style="z-index:2;">
       <div id="content_main_area_in">
         <div class="category_area">
-          <%= form_for @select_topics, url: delete_confirm_topics_path do |f| %>
 			      <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
 			      	<tr>
 			      		<td class="td_txt_explanation" style="width:60%">
-			      			削除する投稿トピックにチェックを入れてください。<br>※削除を行った項目は復旧させることはできませんのであらかじめご了承ください。
+						      以下のトピックを削除致します。よろしければ【削除する】ボタンを押してください。<br>
+                  ※削除を行った項目は復旧させることはできませんのであらかじめご了承ください。
 			      		</td>
-			      		<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-			      	  	<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/'">
+				  	  <td class="btn_submit_area" style="align:right;vertical-align:middle;">
+						  	<%= button_to '戻る', delete_select_topics_path, method: :get, class:"btn_delete in_box_sizing", style:"width:95%;" %>
+				  	  </td>
+                <td class="btn_submit_area" style="align:right;vertical-align:middle;">
+                  <%= form_for @confirm_topics,url: delete_topics_path, method: :delete do |f| %>
+			      		  <input type="submit" value="削除する" class="btn_submit in_box_sizing" style="width:95%">
 			      	  </td>
-                <% if @topic.present? %>
-                  <td class="btn_submit_area" style="align:right;vertical-align:middle;">
-			      		    <input type="submit" name="ibbs_contribution_comment_input" value="削除を確認する" class="btn_submit in_box_sizing" style="width:95%">
-			      	    </td>
-                <%end%>
 			      	</tr>
             </table>
         </div><!-- category_area -->
@@ -40,11 +39,11 @@
             <td class="contribution_date_first">日付</td>
             <td class="contribution_delete_first">削除選択</td>
           </tr>
-          <% @topic.each.with_index do |topic, i| %>
+          <% @select_topics.each.with_index do |topic, i| %>
           <tr>
             <td class="txt_comment_name" align="left"><%= link_to "#{topic.title}", topic_path(topic.id) %></td>
             <td class="txt_comment_date"><%= topic.created_at.strftime("%Y/%m/%d") %></td>
-            <td class="contribution_delete"><%= check_box_tag 'topic[id][]', topic,false, value:"#{topic.id}",id:"#{i}" %><%= label_tag :id, "削除する" %></td>
+            <td class="contribution_delete"><%= check_box_tag 'topic[id][]', topic,false, value:"#{topic.id}",id:"#{i}", checked:true %><%= label_tag :id, "削除する" %></td>
           </tr>
           <%end%>
         </table>

@@ -24,7 +24,7 @@ class TopicsController < ApplicationController
     @enquete = @topic.enquetes.build
   end
 
-  def back
+  def new_back
     @topic = Topic.new(topic_params)
     @enquete = @topic.enquetes.build
     render :new
@@ -45,36 +45,71 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic = Topic.find(params[:id])
-    impressionist(@topic, nil, :unique => [:session_hash])
-    @comment = Comment.page(params[:page]).where(topic_id: params[:id]).per(50).order('created_at ASC')
-    @enquete = Enquete.where(topic_id: params[:id])
-    @topic_like = TopicLike.where(topic_id: params[:id])
-    @user_topic_like = @topic_like.find_by(user_id: current_user.id) if user_signed_in?
-    comment_likes = CommentLike.where(comment_id: @comment.ids)
-    if comment_likes.present?
-      comment_likes.each do |comment_like|
-        products = comment_likes.where(comment_id: comment_like.comment_id)
-        user_products = products.find_by(user_id: current_user.id) if user_signed_in?
-        instance_variable_set("@user_comment_like#{user_products.comment_id}", user_products) if user_products.present?
-        instance_variable_set("@comment_like#{comment_like.comment_id}", products.length)
+    if (params[:id] =~ /\A[0-9]+\z/)
+      @topic = Topic.find(params[:id])
+      impressionist(@topic, nil, :unique => [:session_hash])
+      @comment = Comment.page(params[:page]).where(topic_id: params[:id]).per(50).order('created_at ASC')
+      @enquete = Enquete.where(topic_id: params[:id])
+      @topic_like = TopicLike.where(topic_id: params[:id])
+      @user_topic_like = @topic_like.find_by(user_id: current_user.id) if user_signed_in?
+      comment_likes = CommentLike.where(comment_id: @comment.ids)
+      if comment_likes.present?
+        comment_likes.each do |comment_like|
+          products = comment_likes.where(comment_id: comment_like.comment_id)
+          user_products = products.find_by(user_id: current_user.id) if user_signed_in?
+          instance_variable_set("@user_comment_like#{user_products.comment_id}", user_products) if user_products.present?
+          instance_variable_set("@comment_like#{comment_like.comment_id}", products.length)
+        end
       end
+      @total_vote = Vote.where(enquete_id: @enquete.ids)
+      @user_vote = @total_vote.find_by(user_id: current_user.id) if user_signed_in?
+    else
+      redirect_to root_path 
     end
-    @total_vote = Vote.where(enquete_id: @enquete.ids)
-    @user_vote = @total_vote.find_by(user_id: current_user.id) if user_signed_in?
+  end
+
+  def delete_select
+    @topic = Topic.where(user_id: current_user.id).order('created_at ASC')
+    @select_topics = Topic.new
+  end
+
+  def delete_confirm
+    @params = params[:topic]
+    if @params.present?
+      @select_topics = Topic.where(delete_params).order('created_at ASC')
+      @confirm_topics = Topic.new
+    else
+      redirect_to delete_select_topics_path
+    end
+  end
+
+  # def delete_back
+    # @topic = Topic.where(user_id: current_user.id).order('created_at ASC')
+    # @select_topics = Topic.new(delete_params)
+  # end
+
+  def delete
+    @params = params[:topic]
+    if @params.present?
+      @confirm_topics = Topic.where(delete_params)
+      @topic_like = TopicLike.where(topic_id: @confirm_topics.ids).delete_all
+      @comment = Comment.where(topic_id: @confirm_topics.ids)
+      @comment_like = CommentLike.where(comment_id: @comment.ids).delete_all
+      @enquete = Enquete.where(topic_id: @confirm_topics.ids)
+      @vote = Vote.where(enquete_id: @enquete.ids).delete_all
+      @enquete.delete_all
+      @comment.delete_all
+      @confirm_topics.delete_all
+      redirect_to root_path
+    else
+      redirect_to delete_select_topics_path
+    end
   end
 
   def show2
   end
 
   def show3
-  end
-
-
-  def delete_select
-  end
-
-  def delete_check
   end
 
   def vote
@@ -124,5 +159,9 @@ class TopicsController < ApplicationController
   def search_params
     params.require(:q).permit!
     # (:category_id_eq_any, :user_id_eq_any, :sorts, :title_cont)
+  end
+
+  def delete_params
+    params.require(:topic).permit(id:[])
   end
 end

@@ -161,7 +161,7 @@ height: 1.5em;
                 <td class="td_txt_explanation"  style="display:none;" >情報交換がありません。</td>
 								<% if user_signed_in? %>
 									<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-										<input name=ibbs_delete type="submit" value="削除する" class="btn_delete in_box_sizing" style="width:95%;">
+										<%= button_to '削除する', delete_select_topics_path, method: :get, class:"btn_delete in_box_sizing", style:"width:95%;" %>
 									</td>
 									<td class="btn_submit_area" style="align:right;vertical-align:middle;">
 										<%= button_to '投稿する', new_topic_path, method: :get, class:"btn_submit in_box_sizing", style:"width:95%;" %>

@@ -183,8 +183,6 @@ function comeDelete(delno){
 			
 
         </div><!-- category_area -->
-				<%# instance_variable_get("@comment_like#{comment.id}").present? %>
-
 				<% if @comment.present? %>
 					<% @comment.each.with_index(1) do |comment, index|%>
 						<div class="category_area">
@@ -210,7 +208,6 @@ function comeDelete(delno){
 											<span><a class="modalLink" href="#modal1" id='<%=index%>'>
 												<%= image_tag "/assets/bg/icon_photo.png", style:"max-width:54px;padding:0 0 .15rem .25rem;", alt:"画像" %>
 												<input type=hidden id=topic_id_<%=index%> name=topic_id_<%=index%> value=<%=comment.image.url%>>
-												<%# image_tag comment.image.url, size: '72x72', style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
 											</a></span>
 										<%end%>
 									</td>
