@@ -5,7 +5,7 @@
   
   <section id="content_area">
   	<div id="content_main_area" class="in_box_sizing" style="z-index:2;">
-      <%= form_for @topic, url:new_confirm_topics_path do |f| %>
+      <%= form_for [ :confirm, @topic ] do |f| %>
         <div id="content_main_area_in">
           <div class="category_area">
 			      <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">

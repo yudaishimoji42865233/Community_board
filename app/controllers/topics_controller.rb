@@ -15,26 +15,31 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
+    @topic.attributes = topic_params if request.post?
     @enquete = @topic.enquetes.build
   end
 
-  def new_confirm
-    @topic = Topic.new(topic_params)
-    render :new if @topic.invalid?
-    @enquete = @topic.enquetes.build
-  end
-
-  def new_back
-    @topic = Topic.new(topic_params)
-    @enquete = @topic.enquetes.build
-    render :new
+  def confirm
+    if request.post?
+      @topic = Topic.new(topic_params)
+    else
+      @topic = Topic.find(params[:id])
+      @topic.attributes = topic_params if request.patch?
+    end
+    if @topic.valid?
+      @enquete = @topic.enquetes.build
+      render :action => 'confirm'
+    else
+      @enquete = @topic.enquetes.build
+      render :action => request.post? ? 'new' : 'edit'
+    end
   end
 
   def create
     @topic = Topic.new(topic_params)
-    render :new_confirm if @topic.invalid?
+    render :confirm if @topic.invalid?
     @topic = Topic.create(topic_params)
-    if @enquete.present?
+    if params[:enquetes].present?
       params[:enquetes]['content'].each do |i|
         if i.present?
           @enquete = @topic.enquetes.create!(content: i, topic_id: @topic.id)
@@ -74,8 +79,7 @@ class TopicsController < ApplicationController
   end
 
   def delete_confirm
-    @params = params[:topic]
-    if @params.present?
+    if params[:topic].present?
       @select_topics = Topic.where(delete_params).order('created_at ASC')
       @confirm_topics = Topic.new
     else
@@ -89,9 +93,9 @@ class TopicsController < ApplicationController
   # end
 
   def delete
-    @params = params[:topic]
-    if @params.present?
+    if params[:topic].present?
       @confirm_topics = Topic.where(delete_params)
+      @impression = Impression.where(impressionable_id: @confirm_topics.ids).delete_all
       @topic_like = TopicLike.where(topic_id: @confirm_topics.ids).delete_all
       @comment = Comment.where(topic_id: @confirm_topics.ids)
       @comment_like = CommentLike.where(comment_id: @comment.ids).delete_all
@@ -106,10 +110,16 @@ class TopicsController < ApplicationController
     end
   end
 
-  def show2
+  def edit
+    @topic = Topic.find(params[:id])
+    @topic.image.cache! unless @topic.image.blank?
+    @topic.attributes = topic_params if request.patch?
   end
 
-  def show3
+  def update
+    @topic = Topic.find(params[:id])
+    @topic.update(topic_params)
+    redirect_to delete_select_topics_path
   end
 
   def vote
