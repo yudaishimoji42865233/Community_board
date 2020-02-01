@@ -1,14 +1,4 @@
-<!DOCTYPE HTML>
-<html>
 <head>
-
-<meta charset="utf-8">
-<title>情報交換BBS一覧｜ぷちっとくろにくる</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
-<meta name="format-detection" content="telephone=no,address=no,email=no">
-
 <script type="text/javascript">
 function opent(oid){
 	$('#'+oid).css({'height':'20em'});
@@ -27,43 +17,24 @@ $(function () {
 
 </script>
 
-
 <style type="text/css">
 #t1{
 height: 1.5em;
 }
+
 </style>
+
+<script language="JavaScript">
+	function comme_call(num)
+	{
+		document.form_comme.topic_id.value=num;
+		document.form_comme.submit();
+	}
+</script>
 
 </head>
 
 <body>
-
-
-				<script language="JavaScript">
-					function comme_call(num)
-					{
-						document.form_comme.topic_id.value=num;
-						document.form_comme.submit();
-					}
-				</script>
-				<%# <form name="form_comme" action="" > %>
-				<%# <input type=hidden name="topic_id" value=0> %>
-				<%# <input type=hidden name="ibbs_contribution_comment" value=0> %>
-				<%# <input type=hidden name=page_type value=> %>
-				<%# <input type=hidden name=page value=3> %>
-				<%# <input type=hidden name=page_cate value=0> %>
-				<%# </form> %>
-				<%# <form name=form_next action=""> %>
-				<%# <input type="hidden" name="page" value="0"> %>
-				<%# <input type="hidden" name="page_type" value=""> %>
-				<%# <input type="hidden" name="page_cate" value="0"> %>
-				<%# </form> %>
-				<%# <form name=form_rnk action=""> %>
-				<%# <input type="hidden" name="page" value="0"> %>
-				<%# <input type="hidden" name="page_type" value=""> %>
-				<%# <input type="hidden" name="page_cate" value="0"> %>
-				<%# </form> %>
-
 <section>
 	<a class="alignC" href="/"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></a>
 </section>

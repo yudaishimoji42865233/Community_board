@@ -20,7 +20,7 @@
 								<% [ :title, :content, :category_id, :image, :image_cache ].each do |attr| %>
   							  <%= b.hidden_field attr %>
   							<% end %>
-								<%= b.submit '戻る', class:"btn_delete in_box_sizing", style:"width:95%;" %>
+								<%= b.submit '訂正する', class:"btn_delete in_box_sizing", style:"width:95%;" %>
 							<% end %>
 				  	</td>
           <td class="btn_submit_area" style="align:right;vertical-align:middle;">
@@ -70,10 +70,10 @@
               				  <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
               				  <td class="td_txt_explanation" style="padding-top:5px;">
               				    <%= image_tag @topic.image.url, class:"icon80", style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
+                          <%= f.check_box :remove_image %><span class="small bold">画像を削除する（投稿後に反映されます）</span>
               				  </td>
               				</tr>
 										<%end%>
-										<tr><td></td><td><hr width="99%"></td></tr>
                     <% if request.post? %>
               			  <%= f.fields_for @enquete do |i| %>
 										  	<% params[:enquetes]['content'].each.with_index(1) do |enquete, index| %>
