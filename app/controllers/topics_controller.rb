@@ -62,8 +62,8 @@ class TopicsController < ApplicationController
         comment_likes.each do |comment_like|
           products = comment_likes.where(comment_id: comment_like.comment_id)
           user_products = products.find_by(user_id: current_user.id) if user_signed_in?
-          instance_variable_set("@user_comment_like#{user_products.comment_id}", user_products) if user_products.present?
-          instance_variable_set("@comment_like#{comment_like.comment_id}", products.length)
+          instance_variable_set("@user_comment_like_#{user_products.comment_id}", user_products) if user_products.present?
+          instance_variable_set("@comment_like_#{comment_like.comment_id}", products.length)
         end
       end
       @total_vote = Vote.where(enquete_id: @enquete.ids)

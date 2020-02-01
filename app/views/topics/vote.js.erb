@@ -4,8 +4,8 @@ $('#enquete_topic').html(`<td class="td_category" style="padding-top:5px;"><img 
 												  		<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
 												  			<%@enquete.each do |enquete|%>
 												  				<tr>
-												  					<td width=50%><%=enquete.content%>(<%=enquete.votes.length%>)</td>
-												  					<td width=50%><img src="../imgbar.php?per=48 "></td>
+												  					<td width=30%><%=enquete.content%></td>
+																		<td><%=enquete.votes.length%>票</td>
 												  				</tr>
 												  			<%end%>
 												  		</table>

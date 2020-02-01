@@ -42,13 +42,13 @@
             <td class="contribution_no_first">トピック名</td>
             <td class="contribution_no_first">ステータス</td>
             <td class="contribution_no_first">カテゴリー</td>
-            <td class="contribution_no_first">日付</td>
+            <td class="contribution_no_first">作成日</td>
             <td class="contribution_no_first">削除選択/編集</td>
           </tr>
           <% @topic.each.with_index do |topic, i| %>
           <tr>
             <td class="txt_comment_name" align="left"><%= link_to "#{topic.title}", topic_path(topic.id) %></td>
-            <td class="txt_comment_date">閲覧数:<%= topic.impressions.length %>/回答数:<%= topic.comments.length %>/評価数:<%= topic.topic_likes.length %></td>
+            <td class="txt_comment_date">閲覧数:<%= topic.impressions.length %>　回答数:<%= topic.comments.length %>　評価数:<%= topic.topic_likes.length %></td>
             <td class="txt_comment_date"><%= topic.category.name %></td>
             <td class="txt_comment_date"><%= topic.created_at.strftime("%Y/%m/%d") %></td>
             <td class="contribution_delete"><%= check_box_tag 'topic[id][]', topic,false, value:"#{topic.id}",id:"#{i}" %><%= label_tag :id, "削除する" %>/<%= link_to "トピックを編集する", "/topics/#{topic.id}/edit", method: :get %></td>

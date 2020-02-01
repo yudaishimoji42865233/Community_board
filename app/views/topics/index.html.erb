@@ -155,7 +155,7 @@ height: 1.5em;
 			<div class="bbsClearfix">
 				<div class="bbsDashed3"></div>
 				<div class="bbsInfoBar bbsInfoBarR">【<%=a.category.name%>】<%=a.user.name%></div>
-				<div class="bbsInfoBar bbsInfoBarL"><%=a.updated_at.strftime("%Y/%m/%d")%>　閲覧数:<%= a.impressionist_count %>　回答数:<%= a.comments.length %>　評価数:<%= a.topic_likes.length %></div>
+				<div class="bbsInfoBar bbsInfoBarL">更新日:<%=a.updated_at.strftime("%Y/%m/%d")%>　閲覧数:<%= a.impressionist_count %>　回答数:<%= a.comments.length %>　評価数:<%= a.topic_likes.length %></div>
 			</div>
 		</li>
 		<% if b.present? %>
@@ -171,15 +171,12 @@ height: 1.5em;
 				<div class="bbsClearfix">
 					<div class="bbsDashed3"></div>
 					<div class="bbsInfoBar bbsInfoBarR">【<%=b.category.name%>】<%=b.user.name%></div>
-					<div class="bbsInfoBar bbsInfoBarL"><%=b.updated_at.strftime("%Y/%m/%d")%>　閲覧数:<%= b.impressionist_count %>　回答数:<%= b.comments.length %>　評価数:<%= b.topic_likes.length %></div>
+					<div class="bbsInfoBar bbsInfoBarL">更新日:<%=b.updated_at.strftime("%Y/%m/%d")%>　閲覧数:<%= b.impressionist_count %>　回答数:<%= b.comments.length %>　評価数:<%= b.topic_likes.length %></div>
 				</div>
 			</li>
 		<%end%>
 	</ul>
 <% end %>
-
-
-
 	<div style="float:left;height:40px;overflow: hidden;" ><%= link_to_prev_page @topic, image_tag("/assets/bg/jmp_prev.png", style:"width:100%;align:left;") %></div>
 	<div style="float:right;height:40px;overflow: hidden;"><%= link_to_next_page @topic, image_tag("/assets/bg/jmp_next.png", style:"width:100%;align:right;") %></div>
 	<div style="clear:both;"></div>
