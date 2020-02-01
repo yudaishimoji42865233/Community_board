@@ -11,7 +11,9 @@
 			      <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
 			      	<tr>
 			      		<td class="td_txt_explanation" style="width:60%">
-			      			削除する投稿トピックにチェックを入れてください。<br>※削除を行った項目は復旧させることはできませんのであらかじめご了承ください。
+			      			削除する投稿トピックにチェックを入れてください。<br>
+                  ※削除を行った項目は復旧させることはできませんのであらかじめ<br>
+                  ご了承ください。
 			      		</td>
 			      		<td class="btn_submit_area" style="align:right;vertical-align:middle;">
 			      	  	<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/'">
@@ -33,7 +35,7 @@
 	  		    <span class="txt_contribution_title">削除するトピックを選択してください。</span>
 	  	      </td>
           </tr>
-          <tr><td></td><td><hr width="99%"></td></tr>
+          <tr><td></td><td><hr style="visibility:hidden"></td></tr>
         </table>
         <table class="contribution_list_table" width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
           <tr>
@@ -45,7 +47,7 @@
           </tr>
           <% @topic.each.with_index do |topic, i| %>
           <tr>
-            <td class="txt_comment_name" align="left"><%= link_to "#{topic.title}", topic_path(topic.id), data: {"turbolinks" => false} %></td>
+            <td class="txt_comment_name" align="left"><%= link_to "#{topic.title}", topic_path(topic.id) %></td>
             <td class="txt_comment_date">閲覧数:<%= topic.impressions.length %>/回答数:<%= topic.comments.length %>/評価数:<%= topic.topic_likes.length %></td>
             <td class="txt_comment_date"><%= topic.category.name %></td>
             <td class="txt_comment_date"><%= topic.created_at.strftime("%Y/%m/%d") %></td>

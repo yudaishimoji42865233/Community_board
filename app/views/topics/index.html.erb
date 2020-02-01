@@ -68,11 +68,11 @@ height: 1.5em;
 			<div class="category_area">
 		    <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
 			    <tr>
-						<td class="td_txt_explanation" style="width:60%;">
+						<td class="td_txt_explanation" style="width:60%;font-size:16px;">
 							<%= search_form_for @q do |f|%>
-								<%= f.label :sorts,'並び替え:' %>
+								<%= f.label :sorts,'ソート：' %>
     						<%= f.select( :sorts, { '並び替え': 'title desc', '閲覧順': 'impressions_count desc', '評価順': 'topic_likes_count desc', '新着順': 'created_at desc', '更新順': 'updated_at desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} )%><br>
-								<%= f.label :category_id_eq_any,'カテゴリー:' %>
+								<%= f.label :category_id_eq_any,'カテゴリー：' %>
 								<%= f.label :category_id_eq_any,'募集' %>
 								<%= f.check_box :category_id_eq_any, { multiple: true }, 2, '' %>
 								<%= f.label :category_id_eq_any,'情報' %>
@@ -101,8 +101,8 @@ height: 1.5em;
 									<%= image_tag '/assets/bar/noface.jpg', class:"icon80", style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
 								<% end %>
 							</td>
-							<td class="td_txt_explanation" style="align:right;vertical-align:middle;width:14%;">
-								: <%= current_user.name %>
+							<td class="td_txt_explanation" style="align:right;vertical-align:middle;width:14%;font-size:32px;">
+								<%= current_user.name %>
 							</td>
 							<td class="btn_submit_area" style="align:right;vertical-align:middle;">
 								<%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn_delete in_box_sizing", style:"width:95%" %>
@@ -132,7 +132,7 @@ height: 1.5em;
                 <td class="td_txt_explanation"  style="display:none;" >情報交換がありません。</td>
 								<% if user_signed_in? %>
 									<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-										<%= button_to '削除する', delete_select_topics_path, method: :get, class:"btn_delete in_box_sizing", style:"width:95%;" %>
+										<%= button_to 'トピックの編集・削除', delete_select_topics_path, method: :get, class:"btn_s_inp in_box_sizing", style:"width:95%;" %>
 									</td>
 									<td class="btn_submit_area" style="align:right;vertical-align:middle;">
 										<%= button_to '投稿する', new_topic_path, method: :get, class:"btn_submit in_box_sizing", style:"width:95%;" %>
@@ -144,7 +144,7 @@ height: 1.5em;
 <% @topic.each_slice(2) do |a,b| %>
 	<ul class=bbsList>
 		<li>
-			<div class="bbsBox" 						onclick="location.href='/topics/<%=a.id%>'" style="cursor: pointer;" data-turbolinks="false">
+			<div class="bbsBox" 						onclick="location.href='/topics/<%=a.id%>'" style="cursor: pointer;">
 				<% if a.user.image.present?%>
 					<a><%= image_tag a.user.image.url, class:"icon80" %></a>
 				<%else%>
@@ -160,7 +160,7 @@ height: 1.5em;
 		</li>
 		<% if b.present? %>
 			<li>
-				<div class="bbsBox" 						onclick="location.href='/topics/<%=b.id%>'" style="cursor: pointer;" data-turbolinks="false">
+				<div class="bbsBox" 						onclick="location.href='/topics/<%=b.id%>'" style="cursor: pointer;">
 					<% if b.user.image.present?%>
 						<a><%= image_tag b.user.image.url, class:"icon80" %></a>
 					<%else%>
