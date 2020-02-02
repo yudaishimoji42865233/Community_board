@@ -112,8 +112,11 @@
 										<% end %>
 									<tr>
 										<td></td>
-										<td>
-											<hr>合計投票数：<span id="total_vote"><%=@total_vote.length%>票</span>　評価：<span id="total_topic_like"><%= @topic_like.length %></span>
+										<td><hr>
+											<% if @enquete.present? %>
+												合計投票数：<span id="total_vote"><%= @total_vote.length%>票</span>　
+											<% end %>
+											評価：<span id="total_topic_like"><%= @topic_like.length %></span>
 											<span id="like_topic">
 												<% if user_signed_in? %>
 													<% unless @user_topic_like.present? %>

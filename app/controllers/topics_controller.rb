@@ -56,6 +56,10 @@ class TopicsController < ApplicationController
       impressionist(@topic, nil, :unique => [:session_hash])
       @comment = Comment.page(params[:page]).where(topic_id: params[:id]).per(50).order('created_at ASC')
       @enquete = Enquete.where(topic_id: params[:id])
+      if @enquete.present?
+        @total_vote = Vote.where(enquete_id: @enquete.ids)
+        @user_vote = @total_vote.find_by(user_id: current_user.id) if user_signed_in?
+      end
       @topic_like = TopicLike.where(topic_id: params[:id])
       @user_topic_like = @topic_like.find_by(user_id: current_user.id) if user_signed_in?
       comment_likes = CommentLike.where(comment_id: @comment.ids)
@@ -67,8 +71,6 @@ class TopicsController < ApplicationController
           instance_variable_set("@comment_like_#{comment_like.comment_id}", products.length)
         end
       end
-      @total_vote = Vote.where(enquete_id: @enquete.ids)
-      @user_vote = @total_vote.find_by(user_id: current_user.id) if user_signed_in?
     else
       redirect_to root_path 
     end

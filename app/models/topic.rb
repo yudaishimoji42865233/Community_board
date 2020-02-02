@@ -14,4 +14,6 @@ class Topic < ApplicationRecord
   accepts_nested_attributes_for :enquetes
   is_impressionable counter_cache: true
   mount_uploader :image, ImageUploader
+
+  validates :title, :content, :category_id, :user_id, presence: true
 end
