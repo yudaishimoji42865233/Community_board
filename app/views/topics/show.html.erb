@@ -1,46 +1,3 @@
-<head>
-<script type="text/javascript">
-$(document).ready(function(){
-    $('.modalLink').modal({
-        trigger: '.modalLink',          // id or class of link or button to trigger modal
-        olay:'div.overlay',             // id or class of overlay
-        modals:'div.modal',             // id or class of modal
-        animationEffect: 'fadeIn',   // overlay effect | slideDown or fadeIn | default=fadeIn
-        animationSpeed: 100,            // speed of overlay in milliseconds | default=400
-        moveModalSpeed: 'fast',         // speed of modal movement when window is resized | slow or fast | default=false
-        background: '000',           // hexidecimal color code - DONT USE #
-        opacity: 0.5,                   // opacity of modal |  0 - 1 | default = 0.8
-        openOnLoad: false,              // open modal on page load | true or false | default=false
-        docClose: true,                 // click document to close | true or false | default=true    
-        closeByEscape: true,            // close modal by escape key | true or false | default=true
-        moveOnScroll: false,             // move modal when window is scrolled | true or false | default=false
-        resizeWindow: true,             // move modal when window is resized | true or false | default=false
-        video: '',                      // enter the url of the video
-        videoClass:'video',             // class of video element(s)
-        close:'.closeBtn'               // id or class of close button
-    });
-});
-var idx={};
-idx[0]={img:<%if @topic.image.present?%>1<%else%>0<%end%>,next:<%if @comment.present?%>1<%else%>0<%end%>,befo:<%if @comment.present?%><%=@comment.length%><%else%>0<%end%>};
-<% @comment.each.with_index(1) do |comment, i| %>
-<%if i == @comment.length%>
-idx[<%=i%>]={img:<%if comment.image.present?%>1<%else%>0<%end%>,next:0,befo:<%=i-1%>};
-<%else%>
-idx[<%=i%>]={img:<%if comment.image.present?%>1<%else%>0<%end%>,next:<%=i+1%>,befo:<%=i-1%>};
-<%end%><% end %>
-</script>
-
-<script type="text/javascript">
-function comeDelete(delno){
-	document.form_del_come.del_come.value=delno;
-	document.form_del_come.submit();
-}
-</script>
-
-</head>
-
-<body>
-
 <section>
 	<a class="alignC" href="/"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></a>
 </section>
@@ -122,7 +79,11 @@ function comeDelete(delno){
 														<%@enquete.each do |enquete|%>
 															<tr>
 																<td width=30%><%=enquete.content%></td>
-																<td><%=enquete.votes.length%>票</td>
+																<td><%=enquete.votes.length%>票
+																	<% if @user_vote.present? && @user_vote.enquete_id == enquete.id%>
+																		<span style="font-size:16px;font-weight:bold;">（この回答に投票しています）</span>
+																	<%end%>
+																</td>
 															</tr>
 														<%end%>
 													</table>
@@ -203,28 +164,21 @@ function comeDelete(delno){
 							</table>
 						</div><!-- category_area -->
 					<%end%>
-				<% else %>
-					<div class="category_area">
-						<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
-							<tr>
-								<td colspan="2" class="alignC">現在このトピックへのコメントはありません。</td>
-							</tr>
-						</table>
-					</div><!-- category_area -->
 				<%end%>
         <div class="category_area">
-					<div style="float:left;height:40px;overflow: hidden;" ><%= link_to_prev_page @comment, image_tag("/assets/bg/jmp_prev.png", style:"width:100%;align:left;") %></div>
-					<div style="float:right;height:40px;overflow: hidden;"><%= link_to_next_page @comment, image_tag("/assets/bg/jmp_next.png", style:"width:100%;align:right;") %></div>
-			  	<div style="clear:both;"></div>
+					<% if @comment.present? %>
+						<div style="float:left;height:40px;overflow: hidden;" ><%= link_to_prev_page @comment, image_tag("/assets/bg/jmp_prev.png", style:"width:100%;align:left;") %></div>
+						<div style="float:right;height:40px;overflow: hidden;"><%= link_to_next_page @comment, image_tag("/assets/bg/jmp_next.png", style:"width:100%;align:right;") %></div>
+			  		<div style="clear:both;"></div>
+					<%else%>
+						<div colspan="2" class="alignC">現在このトピックへのコメントはありません。</div>
+					<%end%>
         </div><!-- category_area -->
       </div><!-- content_main_area_in -->
     </div><!-- content_main_area -->
 </section>
 
-
-
 <!-- モーダル部分 -->
-
 
 <input id=next_no type=hidden name=next_no value=1>
 <div class="overlay"></div>
@@ -264,8 +218,16 @@ function comeDelete(delno){
 
 </section>
 </div>
-
 <!-- モーダル部分 -->
 <div id="graydisplay"></div>
-</body>
-</html>
+
+<script type="text/javascript">
+var idx={};
+idx[0]={img:<%if @topic.image.present?%>1<%else%>0<%end%>,next:<%if @comment.present?%>1<%else%>0<%end%>,befo:<%if @comment.present?%><%=@comment.length%><%else%>0<%end%>};
+<% @comment.each.with_index(1) do |comment, i| %>
+<%if i == @comment.length%>
+idx[<%=i%>]={img:<%if comment.image.present?%>1<%else%>0<%end%>,next:0,befo:<%=i-1%>};
+<%else%>
+idx[<%=i%>]={img:<%if comment.image.present?%>1<%else%>0<%end%>,next:<%=i+1%>,befo:<%=i-1%>};
+<%end%><% end %>
+</script>

@@ -5,7 +5,11 @@ $('#enquete_topic').html(`<td class="td_category" style="padding-top:5px;"><img 
 												  			<%@enquete.each do |enquete|%>
 												  				<tr>
 												  					<td width=30%><%=enquete.content%></td>
-																		<td><%=enquete.votes.length%>票</td>
+																		<td><%=enquete.votes.length%>票
+																			<% if @user_vote.present? && @user_vote.enquete_id == enquete.id%>
+																				<span style="font-size:16px;font-weight:bold;">（この回答に投票しました）</span>
+																			<%end%>
+																		</td>
 												  				</tr>
 												  			<%end%>
 												  		</table>

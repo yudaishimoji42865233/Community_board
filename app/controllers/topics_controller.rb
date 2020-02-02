@@ -3,12 +3,13 @@ class TopicsController < ApplicationController
   def index
     if params[:q].present?
       @q = Topic.search(search_params)
-      @topic = @q.result(distinct: true)
+      @q.sorts = 'created_at desc' if @q.sorts.empty?
+      params[:page] ||= 1
       @topic = @q.result(distinct: true).page(params[:page]).per(20)
     else
-      params[:q] = { sorts: 'id desc' }
-      @q = Topic.search(params[:q])
-      @topic = @q.result(distinct: true)
+      params[:q] = { sorts: 'created_at desc' }
+      @q = Topic.ransack(params[:q])
+      params[:page] ||= 1
       @topic = @q.result(distinct: true).page(params[:page]).per(20)
     end
   end
@@ -87,11 +88,6 @@ class TopicsController < ApplicationController
     end
   end
 
-  # def delete_back
-    # @topic = Topic.where(user_id: current_user.id).order('created_at ASC')
-    # @select_topics = Topic.new(delete_params)
-  # end
-
   def delete
     if params[:topic].present?
       @confirm_topics = Topic.where(delete_params)
@@ -123,9 +119,13 @@ class TopicsController < ApplicationController
   end
 
   def vote
-    Vote.create!(vote_params)
     @enquete = Enquete.where(topic_id: params[:id])
     @total_vote = Vote.where(enquete_id: @enquete.ids)
+    unless @total_vote.find_by(user_id: current_user.id)
+      Vote.create!(vote_params)
+      @total_vote = Vote.where(enquete_id: @enquete.ids)
+    end
+    @user_vote = @total_vote.find_by(user_id: current_user.id)
   end
 
   def topic_like

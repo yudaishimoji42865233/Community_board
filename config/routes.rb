@@ -9,10 +9,8 @@ Rails.application.routes.draw do
       post :new, path: :new, as: :new, action: :new
       post :confirm, to: 'topics#confirm'
       get :delete_select, to: 'topics#delete_select'
-      # post :delete_select, path: :delete_select, as: :delete_back, action: :delete_back
       post :delete_confirm, to: 'topics#delete_confirm'
       delete :delete, to: 'topics#delete'
-      match :search, to: 'topics#search', via: [:get, :post]
     end
     member do
       patch :edit, path: :edit, as: :edit, action: :edit
