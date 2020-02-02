@@ -1,6 +1,6 @@
 class Vote < ApplicationRecord
   belongs_to :user
-  belongs_to :enquete_id
+  belongs_to :enquete
 
   validates :enquete_id, :user_id, presence: true
   

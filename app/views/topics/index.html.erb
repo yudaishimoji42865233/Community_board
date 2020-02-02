@@ -39,7 +39,6 @@ height: 1.5em;
 	<a class="alignC" href="/"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></a>
 </section>
 
-
 <section id="content_area"  style="position: relative;">
 
 	<div style="position: absolute;top:0;z-index:1000;width: 100%;">
@@ -160,7 +159,7 @@ height: 1.5em;
 		</li>
 		<% if b.present? %>
 			<li>
-				<div class="bbsBox" 						onclick="location.href='/topics/<%=b.id%>'" style="cursor: pointer;">
+				<div class="bbsBox" onclick="location.href='/topics/<%=b.id%>'" style="cursor: pointer;">
 					<% if b.user.image.present?%>
 						<a><%= image_tag b.user.image.url, class:"icon80" %></a>
 					<%else%>
