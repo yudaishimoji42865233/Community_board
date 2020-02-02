@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root :controller => 'topics', :action => 'index'
   resources :topics, except: [:destroy] do
-    resources :comments, only: [:create, :new]
+    resources :comments, only: [:create, :new] do
+      collection do
+        post :new, path: :new, as: :new, action: :new
+        match :confirm, to: 'comments#confirm', via: [:get, :post]
+      end
+    end
     collection do
       post :new, path: :new, as: :new, action: :new
       post :confirm, to: 'topics#confirm'

@@ -30,8 +30,7 @@ $(function() {
 			      <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
 			      	<tr>
 			      		<td class="td_txt_explanation" style="width:60%">
-			      			下記フォームにすべて入力し、投稿確認ボタンを押してください。<br>
-                  （投稿後はアンケートのみ編集できません）
+			      			トピック新規作成
 			      		</td>
 			      		<td class="btn_submit_area" style="align:right;vertical-align:middle;">
 			      	  	<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/'">
@@ -51,10 +50,11 @@ $(function() {
           <div class="category_area" style="position:relative;">
             <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
               <tr>
-                <td class="td_category"><img src="/assets/category/category_name2.png" alt="投稿入力フォーム"></td>
+                <td class="td_category"></td>
                 <td style="cursor: pointer;" class="td_txt_explanation">
 	        	      <span class="txt_contribution_title">
-                    下記フォームにすべて入力し、投稿確認ボタンを押してください。
+                    下記フォームに入力し、投稿確認ボタンを押してください。<br>
+                    （投稿後はアンケートのみ編集できません）
                   </span>
 	        	    </td>
               </tr>
@@ -89,15 +89,15 @@ $(function() {
                   <%= f.file_field :image, id: :topic_image %><%= f.hidden_field :image_cache %>
                 </td>
               </tr>
-              <tr><td></td>
-                <td>
-                  <% if @topic.image.present? %>
-                    <%= image_tag @topic.image.url, id: :img_prev, style:"max-height: 20rem;max-width: 20rem;border-radius: 5px;" %>
-                  <%else%>
-                    <%= image_tag "", id: :img_prev, style:"max-height: 20rem;max-width: 20rem;border-radius: 5px;" %>
-                  <%end%>
-                </td>
-              </tr>
+            </table>
+            <div colspan="3" class="alignC">
+              <% if @topic.image.present? %>
+                <%= image_tag @topic.image.url, id: :img_prev, style:"max-height: 20rem;max-width: 20rem;border-radius: 5px;" %>
+              <%else%>
+                <%= image_tag "", id: :img_prev, style:"max-height: 20rem;max-width: 20rem;border-radius: 5px;" %>
+              <%end%>
+            </div>
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
               <tr>
                 <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_anke.png" alt="トピック名"></td>
                 <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
@@ -138,7 +138,6 @@ $(function() {
                   </td>
                 </tr>
               <%end%>
-            </table>
           </div>
         </div>
       <% end %>

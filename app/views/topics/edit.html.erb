@@ -29,7 +29,7 @@ $(function() {
 			      <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
 			      	<tr>
 			      		<td class="td_txt_explanation" style="width:60%">
-			      			下記フォームにすべて入力し、投稿確認ボタンを押してください。
+			      			トピックの編集
 			      		</td>
 				  	    <td class="btn_submit_area" style="align:right;vertical-align:middle;">
 						    	<%= button_to '戻る', delete_select_topics_path, method: :get, class:"btn_delete in_box_sizing", style:"width:95%;" %>
@@ -53,7 +53,7 @@ $(function() {
                 <td class="td_category"><img src="/assets/category/category_name2.png" alt="投稿入力フォーム"></td>
                 <td style="cursor: pointer;" class="td_txt_explanation">
 	        	      <span class="txt_contribution_title">
-                    下記フォームにすべて入力し、投稿確認ボタンを押してください。
+                    下記フォームに入力し、投稿確認ボタンを押してください。
                   </span>
 	        	    </td>
               </tr>
@@ -88,16 +88,14 @@ $(function() {
                   <%= f.file_field :image, id: :topic_image %><%= f.hidden_field :image_cache %>
                 </td>
               </tr>
-              <tr><td></td>
-                <td>
-                  <% if @topic.image.present? %>
-                    <%= image_tag @topic.image.url, id: :img_prev, style:"max-height: 20rem;max-width: 20rem;border-radius: 5px;" %>
-                  <%else%>
-                    <%= image_tag "", id: :img_prev, style:"max-height: 20rem;max-width: 20rem;border-radius: 5px;" %>
-                  <%end%>
-                </td>
-              </tr>
             </table>
+            <div colspan="3" class="alignC">
+              <% if @topic.image.present? %>
+                <%= image_tag @topic.image.url, id: :img_prev, style:"max-height: 20rem;max-width: 20rem;border-radius: 5px;" %>
+              <%else%>
+                <%= image_tag "", id: :img_prev, style:"max-height: 20rem;max-width: 20rem;border-radius: 5px;" %>
+              <%end%>
+            </div>
           </div>
         </div>
       <% end %>

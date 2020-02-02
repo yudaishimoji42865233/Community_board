@@ -1,6 +1,6 @@
 <div class="vsc-initialized">
 <section>
-	<p class="alignC"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></p>
+	<a class="alignC" href="/"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></a>
 </section>
 
 <section id="content_area">
@@ -65,15 +65,16 @@
               			    <%= @topic.category.name %>
               			  </td>
               			</tr>
-										<% if @topic.image.present? %>
-              				<tr>
-              				  <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
-              				  <td class="td_txt_explanation" style="padding-top:5px;">
-              				    <%= image_tag @topic.image.url, class:"icon80", style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
-                          <%= f.check_box :remove_image %><span class="small bold">画像を削除する（投稿後に反映されます）</span>
-              				  </td>
-              				</tr>
-										<%end%>
+									</table>
+        					<% if @topic.image.present? %>
+        					  <div colspan="3" class="alignC">
+											<%= image_tag @topic.image.url, id: :img_prev, style:"max-height: 20rem;max-width: 20rem;border-radius: 5px;" %>
+        					    <%= f.check_box :remove_image %><span class="small bold">画像を削除する（投稿後に反映されます）</span>
+										</div>
+        					<%else%>
+			  						<div style="clear:both;"></div>
+									<%end%>
+									<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
                     <% if request.post? %>
               			  <%= f.fields_for @enquete do |i| %>
 										  	<% params[:enquetes]['content'].each.with_index(1) do |enquete, index| %>

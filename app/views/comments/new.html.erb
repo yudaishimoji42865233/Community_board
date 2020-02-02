@@ -1,26 +1,41 @@
+<head>
+<script type="text/javascript">
+$(function() {
+ function readURL(input) {
+   if (input.files && input.files[0]) {
+     var reader = new FileReader();
+     reader.onload = function (e) {
+       $('#img_prev').attr('src', e.target.result);
+     }
+     reader.readAsDataURL(input.files[0]);
+   }
+ }
+ $("#topic_image").change(function(){
+   readURL(this);
+ });
+});
+</script>
+</head>
+
 <div class="vsc-initialized">
   <section>
-  	<p class="alignC"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></p>
+  	<a class="alignC" href="/"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></a>
   </section>
   
   <section id="content_area">
   	<div id="content_main_area" class="in_box_sizing" style="z-index:2;">
-      <%= form_for @comment, url: topic_comments_path do |f| %>
+      <%= form_for [ :confirm, :topic, @comment ] do |f| %>
         <div id="content_main_area_in">
           <div class="category_area">
-  			    <input type=hidden name=topic_id value=113019>
-  			    <input type=hidden name=page_type value=>
-            <input type=hidden name=page value=3>
-            <input type=hidden name=page_cate value=0>
 			      <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
 			      	<tr>
 			      		<td class="td_txt_explanation" style="width:60%">
 			      			下記フォームにすべて入力し、投稿確認ボタンを押してください。
 			      		</td>
-			      		<td class="btn_submit_area" align="right">
-			      	  	<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/topics/<%=@topic.id%>'">
-			      	  </td>				
-                <td class="btn_submit_area" align="right">
+                <td class="btn_submit_area" style="align:right;vertical-align:middle;">
+			      	  	<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/topics/<%=params[:topic_id]%>'">
+			      	  </td>	
+                <td class="btn_submit_area" style="align:right;vertical-align:middle;">
 			      		  <input type="submit" name="ibbs_contribution_comment_input" value="投稿を確認する" class="btn_submit in_box_sizing" style="width:95%">
 			      	  </td>
 			      	</tr>
@@ -43,7 +58,7 @@
         </tr>
         <tr>
           <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_name.png" alt="トピック名"></td>
-          <td style="cursor: pointer;" class="td_txt_explanation" onclick="document.form_pr.look_pid.value=1642643;document.form_pr.submit();return false;">
+          <td style="cursor: pointer;" class="td_txt_explanation">
 	  	    <span class="txt_contribution_title"><%=@topic.content%></span>
 	  	    </td>
         </tr>
@@ -56,11 +71,26 @@
         <tr>
           <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
           <td class="td_txt_explanation" style="padding-top:5px;">
-            <span class="small bold">画像を1つ追加できます。</span>
-            <%= f.file_field :image %>
+            <span class="small bold" id="input_form">
+              <% if @comment.image.present? %>
+                （画像の削除は次の投稿確認画面でできます）
+              <%else%>
+                （任意）画像を1つ追加できます。
+              <%end%>
+            </span>
+            <%= f.file_field :image, id: :topic_image %><%= f.hidden_field :image_cache %>
           </td>
         </tr>
       </table>
+    </div>
+    <div class="category_area">
+      <div colspan="3" class="alignC">
+        <% if @comment.image.present? %>
+          <%= image_tag @comment.image.url, id: :img_prev, style:"max-height: 20rem;max-width: 20rem;border-radius: 5px;" %>
+        <%else%>
+          <%= image_tag "", id: :img_prev, style:"max-height: 20rem;max-width: 20rem;border-radius: 5px;" %>
+        <%end%>
+      </div>
     </div>
 
     
