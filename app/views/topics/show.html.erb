@@ -170,8 +170,8 @@
 				<%end%>
         <div class="category_area">
 					<% if @comment.present? %>
-						<div style="float:left;height:40px;overflow: hidden;" ><%= link_to_prev_page @comment, image_tag("/assets/bg/jmp_prev.png", style:"width:100%;align:left;") %></div>
-						<div style="float:right;height:40px;overflow: hidden;"><%= link_to_next_page @comment, image_tag("/assets/bg/jmp_next.png", style:"width:100%;align:right;") %></div>
+						<div style="float:left;height:40px;overflow: hidden;" ><%= link_to_prev_page @comment, image_tag("/assets/bg/jmp_prev.png", style:"width:100%;align:left;"),data: {"turbolinks"=>false} %></div>
+						<div style="float:right;height:40px;overflow: hidden;"><%= link_to_next_page @comment, image_tag("/assets/bg/jmp_next.png", style:"width:100%;align:right;"),data: {"turbolinks"=>false} %></div>
 			  		<div style="clear:both;"></div>
 					<%else%>
 						<div colspan="2" class="alignC">現在このトピックへのコメントはありません。</div>
