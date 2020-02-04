@@ -17,7 +17,7 @@
 					</td>
 				  	<td class="btn_submit_area" style="align:right;vertical-align:middle;">
               <%= form_for(@topic, url: @topic.new_record? ? [ :new, :topic ] : [ :edit, @topic ]) do |b| %>
-								<% [ :title, :content, :category_id, :image, :image_cache ].each do |attr| %>
+								<% [ :title, :content, :category_id, :image, :image_cache, :remove_image ].each do |attr| %>
   							  <%= b.hidden_field attr %>
   							<% end %>
 								<%= b.submit '訂正する', class:"btn_delete in_box_sizing", style:"width:95%;" %>
@@ -54,9 +54,6 @@
                         <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
                         <td class="td_txt_explanation" style="padding-top:5px;">
                             <span class="txt_contribution_content"><span id=td_0><%=@topic.content%></span>
-														<% if @image.present?%>
-															<a class="modalLink" href="#modal1" id='0'><img style="max-width:54px;padding:0 0 .15rem .25rem;" src="/assets/bg/icon_photo.png" alt="画像"></a></span>
-														<%end%>
                         </td>
                     </tr>
               			<tr>

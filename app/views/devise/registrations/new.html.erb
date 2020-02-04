@@ -19,18 +19,20 @@
 
         <div class="field">
           <%= f.label :image, "ユーザーアイコン(任意)"%><br />
-          <%= f.file_field :image, autofocus: true, autocomplete: "image" %>
+          <%= f.file_field :image, id: :topic_image, autofocus: true, autocomplete: "image" %><br>
+          <%= image_tag "", id: :img_prev, style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %><br>
+          <div class="small bold " id="input_form_user"></div>
         </div><br>
 
         <div class="field">
-          <%= f.label :email, "Eメール" %><br />
+          <%= f.label :email, "Eメールアドレス" %><br />
           <%= f.email_field :email, class:"contribution_input_txt_area in_box_sizing", autofocus: true, autocomplete: "email" %>
         </div><br>
 
         <div class="field">
           <%= f.label :password, "パスワード" %>
           <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <em>(<%= @minimum_password_length %>文字以上)</em>
           <% end %><br />
           <%= f.password_field :password, class:"contribution_input_txt_area in_box_sizing", autocomplete: "new-password" %>
         </div><br>

@@ -18,7 +18,7 @@
 					</td>
 				  <td class="btn_submit_area" style="align:right;vertical-align:middle;">
             <%= form_for @comment, url: new_topic_comment_path(@topic.id) do |b| %>
-							<% [ :content, :image, :image_cache ].each do |attr| %>
+							<% [ :content, :image, :image_cache, :remove_image ].each do |attr| %>
   						  <%= b.hidden_field attr %>
   						<% end %>
 							<%= b.submit '訂正する', class:"btn_delete in_box_sizing", style:"width:95%;" %>
@@ -26,7 +26,7 @@
 				  </td>				
           <td class="btn_submit_area" style="align:right;vertical-align:middle;">
 						<%= form_for @comment, url: topic_comments_path(@topic.id), method: :post do |f| %>
-							<% [ :content, :image, :image_cache ].each do |attr| %>
+							<% [ :content, :image, :image_cache, :remove_image ].each do |attr| %>
   						  <%= f.hidden_field attr %>
   						<% end %>
 							<%= f.submit 'コメントする', class:"btn_submit in_box_sizing", style:"width:95%;" %>
