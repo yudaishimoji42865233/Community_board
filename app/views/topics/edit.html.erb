@@ -1,3 +1,22 @@
+<head>
+  <script type="text/javascript">
+    $(function() {
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            $('#img_prev').attr('src', e.target.result);
+            $('#input_form_edit').html(`<span class="small bold">画像の削除は次の投稿確認画面で可能です</span>`);
+          };
+          reader.readAsDataURL(input.files[0]);
+        };
+      };
+      $("#topic_image").change(function(){
+        readURL(this);
+      });
+    });
+  </script>
+</head>
 <div class="vsc-initialized">
   <section>
   	<a class="alignC" href="/"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></a>
