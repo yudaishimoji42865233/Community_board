@@ -8,9 +8,9 @@ $(function() {
         $('#input_form_edit').html(`<span class="small bold">画像の削除は次の投稿確認画面で可能です</span>`);
         $('#input_form_comment').html(`<input type="checkbox" value="1" name="comment[remove_image]" id="comment_remove_image"><span class="small bold">画像を削除する（投稿後に反映されます）</span>`);
         $('#input_form_user').html(`<input type="checkbox" value="1" name="user[remove_image]" id="user_remove_image"><span class="small bold">画像を削除する（登録後に反映されます）</span>`);
-      }
+      };
       reader.readAsDataURL(input.files[0]);
-    }
+    };
   }
   $("#topic_image").change(function(){
     readURL(this);
