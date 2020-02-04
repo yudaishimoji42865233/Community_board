@@ -8,7 +8,7 @@ $(function() {
       };
       reader.readAsDataURL(input.files[0]);
     };
-  }
+  };
   $("#topic_image").change(function(){
     readURL(this);
   });
