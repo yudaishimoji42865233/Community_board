@@ -1,3 +1,22 @@
+<head>
+  <script type="text/javascript">
+  $(function() {
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#img_prev').attr('src', e.target.result);
+          $('#input_form_user').html(`<input type="checkbox" value="1" name="user[remove_image]" id="user_remove_image"><span class="small bold">画像を削除する（登録後に反映されます）</span>`);
+        };
+        reader.readAsDataURL(input.files[0]);
+      };
+    };
+    $("#topic_image").change(function(){
+      readURL(this);
+    });
+  });
+  </script>
+</head>
 <section>
 	<a class="alignC" href="/"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></a>
 </section>
