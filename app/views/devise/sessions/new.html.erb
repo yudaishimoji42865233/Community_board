@@ -1,13 +1,9 @@
-<section>
-	<a class="alignC" href="/"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></a>
+<section style="padding:10px;">
+	<%= link_to root_path, class:"alignL btn_repo", style:"height:50px;font-size:35px;width:auto;" do %>　コミュニティ掲示板<%end%>
 </section>
-	<div class="row" style="
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 660px;">
+	<div class="row" style="width: 100%;margin-left: auto;margin-right: auto;max-width: 660px;">
     <div class="category_area">
-      <h2 class="alignC">ユーザーログイン</h2><br>
+      <h2 class="alignC bold">ユーザーログイン</h2><br>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
           <%= f.label :email ,"Eメール"%><br />

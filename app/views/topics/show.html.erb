@@ -1,5 +1,5 @@
-<section>
-	<a class="alignC" href="/"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></a>
+<section style="padding:10px;">
+	<%= link_to root_path, class:"alignL btn_repo", style:"height:50px;font-size:35px;width:auto;" do %>　コミュニティ掲示板<%end%>
 </section>
 
 <section id="content_area">
@@ -23,16 +23,16 @@
 						<td class="td_txt_explanation txt_error" style="width:60%">コメント数が最大数となり、コメントがこれ以上行えません。</td>
 					<% end %>
 					<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-						<input type="button" value="戻る" class="btn_delete in_box_sizing" style="width:95%;" onclick="location.href='/'">
+            <%= link_to "戻る", topics_path, class:"btn_delete in_box_sizing", style:"width:95%;" %>
 					</td>
 						<% unless 100-@topic.comments.length <= 0%>
 							<% if user_signed_in? %>
 								<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-									<%= button_to 'コメントする', new_topic_comment_path(@topic.id), method: :get, class:"btn_submit in_box_sizing", style:"width:95%;" %>
+									<%= link_to 'コメントする', new_topic_comment_path(@topic.id), class:"btn_submit in_box_sizing", style:"width:95%;" %>
 								</td>
 							<% else %>
 								<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-									<%= button_to 'ログイン', new_user_session_path, class:"btn_s_inp in_box_sizing", style:"width:95%;" %>
+									<%= link_to 'ログイン', new_user_session_path, class:"btn_s_inp in_box_sizing", style:"width:95%;" %>
 								</td>
 							<% end %>
 						<% end %>
@@ -42,46 +42,45 @@
 
         <!-- トピック詳細 -->
         <div class="category_area" style="position:relative;">
-            <form action="" method="">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
                     <tr>
-                        <td class="td_category"><img src="/assets/category/category_name2.png" alt="投稿入力フォーム"></td>
+                        <td class="td_category"><div class="btn_repo">投稿者名</div></td>
                         <td style="cursor: pointer;" class="td_txt_explanation">
 													<span id="n_0"><%=@topic.user.name%></span>
 												</td>
                     </tr>
                     <tr>
-                        <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_name.png" alt="トピック名"></td>
+                        <td class="td_category" style="padding-top:5px;"><div class="btn_repo">タイトル</div></td>
                         <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
-                            <span class="txt_contribution_title"><%=@topic.title%></span>
+                          <span class="txt_contribution_title"><%=@topic.title%></span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
+                        <td class="td_category" style="padding-top:5px;"><div class="btn_repo">本文</div></td>
                         <td class="td_txt_explanation" style="padding-top:5px;">
                           <span class="txt_contribution_content">
-														<span id="td_0"><%=@topic.content%></span>
+														<span id="td_0"><%=@topic.content%>　</span>
 														<% if @topic.image.present?%>
-															<a class="modalLink" href="#modal1" id='0'>
-																<%= image_tag "/assets/bg/icon_photo.png", style:"max-width:54px;padding:0 0 .15rem .25rem;", alt:"画像"%>
-																<input type=hidden id=topic_id_0 name=topic_id_0 value=<%=@topic.image.url%>>
-															</a>
+															<%= link_to "#modal1", id: 0, class:"modalLink" do %>
+																<span class="rnk_button white" style="width:60px;height:20px;line-height:1.2;font-size:16px;margin-right:-20px;vertical-align:middle;display:inline-block;">画像</span>
+																<%= hidden_field_tag "topic_id_0", @topic.image.url %>
+															<%end%>
 														<%end%>
 													</span>
                         </td>
                     </tr>
+										<tr><td><hr></td><td><hr></td></tr>
 										<% if @user_vote.present? %>
 											<tr>
-												<td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_vote.png" alt="投票結果"></td>
+												<td class="td_category" style="padding-top:5px;"><div class="btn_repo">アンケート投票結果</div></td>
 												<td class="td_txt_explanation" valign="top" style="padding-top:5px;">
-													<hr>
 													<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
 														<%@enquete.each do |enquete|%>
 															<tr>
-																<td style="min-width:5%;"><%=enquete.content%></td>
-																<td><%=enquete.votes.length%>票
+																<td style="width:5%;white-space:nowrap;"><%=enquete.content%>　</td>
+																<td><span class="rnk_button2 white" style="height:20px;line-height:1.2;font-size:16px;margin-right:-20px;vertical-align:middle;display:inline;">　<%=enquete.votes.length%>票　</span>
 																	<% if @user_vote.present? && @user_vote.enquete_id == enquete.id%>
-																		<span style="font-size:16px;font-weight:bold;">（この回答に投票しています）</span>
+																		<span style="font-size:16px;font-weight:bold;">　（この回答に投票しています）</span>
 																	<%end%>
 																</td>
 															</tr>
@@ -91,16 +90,15 @@
 											</tr>
 										<% elsif @enquete.present? %>
 											<tr id="enquete_topic">
-												<td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_anke.png" alt="アンケート"></td>
+												<td class="td_category" style="padding-top:5px;"><div class="btn_repo">アンケート</div></td>
 												<td class="td_txt_explanation" valign="top" style="padding-top:5px;">
-													<hr>
 													<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
 														<%@enquete.each do |enquete|%>
 															<tr>
+																<td style="width:5%;white-space:nowrap;"><%=enquete.content%>　</td>
 																<td>
-																	<%=enquete.content%>
 																	<%if user_signed_in? %>
-																		<%= link_to image_tag("/assets/bg/icon_vote.png", style:"max-width:40px;padding:0 0 .15rem .25rem;cursor: pointer;"), vote_topic_path(enquete_id: enquete.id), method: :post, remote: true %>
+																		<%= link_to "投票" , vote_topic_path(enquete_id: enquete.id), method: :post, remote: true, class:"rnk_button white", style:"width:60px;height:20px;line-height:1.2;font-size:16px;margin-right:-20px;vertical-align:middle;display:inline-block;" %>
 																	<% end %>
 																</td>
 															</tr>
@@ -112,24 +110,24 @@
 										<% end %>
 									<tr>
 										<td></td>
-										<td><hr>
+										<td>
 											<% if @enquete.present? %>
+												<hr>
 												合計投票数：<span id="total_vote"><%= @total_vote.length%>票</span>　
 											<% end %>
 											評価：<span id="total_topic_like"><%= @topic_like.length %></span>
-											<span id="like_topic">
+											<span id="like_topic" style="display:inline-block;">
 												<% if user_signed_in? %>
 													<% unless @user_topic_like.present? %>
-														<%= link_to button_to('評価する'), topic_like_topic_path(topic_id: @topic.id), method: :post, remote: true %>
+														<%= link_to '評価する', topic_like_topic_path(topic_id: @topic.id), method: :post, remote: true, class:"btn_good" %>
 													<%else%>
-														<%= link_to button_to('戻す'), topic_like_topic_path(topic_id: @topic.id), method: :delete, remote: true %>
+														<%= link_to '戻す', topic_like_topic_path(topic_id: @topic.id), method: :delete, remote: true, class:"btn_good" %>
 													<%end%>
 												<% end %>
 											</span>
 										</td>
 									</tr>
                 </table>
-            </form>
 			
 			
 
@@ -144,9 +142,9 @@
 									<td style="width:40%;text-align:right;">評価：<span id="total_comment_<%= comment.id %>"><%=instance_variable_get("@comment_like_#{comment.id}").to_i%></span>
 										<span id="like_comment_<%=comment.id%>" style="display:inline-block;">
 										<% if instance_variable_get("@user_comment_like_#{comment.id}").present? %>
-											<%= button_to '戻す', comment_like_topic_path(comment_id: comment.id), method: :delete, remote: true %>
+											<%= link_to '戻す', comment_like_topic_path(comment_id: comment.id), method: :delete, remote: true, class:"btn_good" %>
 										<% elsif user_signed_in? %>
-											<%= button_to '評価する', comment_like_topic_path(comment_id: comment.id), method: :post, remote: true %>
+											<%= link_to '評価する', comment_like_topic_path(comment_id: comment.id), method: :post, remote: true, class:"btn_good" %>
 										<% else %>
 										<%end%>
 										</span>
@@ -157,10 +155,12 @@
 									<td colspan="3" class="txt_comment">
 										<span id="td_<%=index%>"><%=comment.content%></span>
 										<% if comment.image.present?%>
-											<span><a class="modalLink" href="#modal1" id='<%=index%>'>
-												<%= image_tag "/assets/bg/icon_photo.png", style:"max-width:54px;padding:0 0 .15rem .25rem;", alt:"画像" %>
-												<input type=hidden id=topic_id_<%=index%> name=topic_id_<%=index%> value=<%=comment.image.url%>>
-											</a></span>
+											<span>
+												<%= link_to "#modal1", id: index, class:"modalLink" do %>
+													<span class="rnk_button white" style="width:60px;height:20px;line-height:1.2;font-size:16px;margin-right:-20px;vertical-align:middle;display:inline-block;">画像</span>
+													<%= hidden_field_tag "topic_id_#{index}", comment.image.url %>
+												<% end %>
+											</span>
 										<%end%>
 									</td>
 								</tr>
@@ -170,8 +170,8 @@
 				<%end%>
         <div class="category_area">
 					<% if @comment.present? %>
-						<div style="float:left;height:40px;overflow: hidden;" ><%= link_to_prev_page @comment, image_tag("/assets/bg/jmp_prev.png", style:"width:100%;align:left;"),data: {"turbolinks"=>false} %></div>
-						<div style="float:right;height:40px;overflow: hidden;"><%= link_to_next_page @comment, image_tag("/assets/bg/jmp_next.png", style:"width:100%;align:right;"),data: {"turbolinks"=>false} %></div>
+						<div style="float:left;" ><%= link_to_prev_page @comment, "戻る", class:"btn_s_inp in_box_sizing", style:"font-size:16px;width:auto;align:left;margin:10px;",data: {"turbolinks"=>false} %></div>
+						<div style="float:right;"><%= link_to_next_page @comment, "次へ", class:"btn_submit in_box_sizing", style:"font-size:16px;width:auto;align:right;margin:10px;",data: {"turbolinks"=>false} %></div>
 			  		<div style="clear:both;"></div>
 					<%else%>
 						<div colspan="2" class="alignC">現在このトピックへのコメントはありません。</div>
@@ -214,9 +214,9 @@
 		</div>
 	</div>
 	<ul class="modalBtn">
-	<li><a class="modalLink" href="#modal1,2" id='1' style="text-align:center; display:block;"><img style="width:80%;" src="/assets/shop/model_return.png" alt="戻る"></a></li>
-	<li><a href="" class="close closeBtn" style="text-align:center; display:block;"><img style="width:80%;" src="/assets/shop/model_close.png" alt="ウィンドウを閉じる"></a></li>
-	<li><a class="modalLink" href="#modal1,1" id='1' style="text-align:center; display:block;"><img style="width:80%;" src="/assets/shop/model_next.png" alt="次へ"></a></li>
+	<li><%= link_to "#modal1,2", class:"modalLink", id:1, style:"text-align:center; display:block;" do %><span class="rnk_button white" style="width:280px;padding:14px;font-size:16px;display:inline-block;">前へ</span><%end%></li>
+	<li><%= link_to "", class:"close closeBtn", style:"text-align:center; display:block;" do %><span class="rnk_button2 white" style="width:280px;padding:14px;font-size:16px;display:inline-block;">閉じる</span><%end%></li>
+	<li><%= link_to "#modal1,1", class:"modalLink", id:1, style:"text-align:center; display:block;" do %><span class="rnk_button white" style="width:280px;padding:14px;font-size:16px;display:inline-block;">次へ</span><%end%></li>
 	</ul>
 
 </section>

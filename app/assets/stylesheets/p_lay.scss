@@ -39,7 +39,7 @@ checkbox and radio
 
 
 .btn_repo {
-	width:100%;
+	width:280px;
 	padding:14px;
 	color:#fff;
 	font-weight:bold;
@@ -50,8 +50,9 @@ checkbox and radio
 	border-radius:10px;
 	border:2px solid #242402;
 	box-shadow:0 2px 0 #555, inset -2px -2px 0 #987000, inset 2px 2px 0 #ffc084;
-	text-shadow:0 0 5px #fff;
 	-webkit-appearance:none;
+	text-align: center;
+	text-decoration:none;
 }
 
 .ss_grp {
@@ -75,25 +76,27 @@ btn
 
 .btn_good {
 	width:100%;
-	padding:8px;
+	padding:4px;
 	color:#fff;
 	font-weight:bold;
 	font-size:10px;
 	position:relative;
-	top:-.15rem;
+	top:-.35rem;
 	display:block;
-	background-color:#3f4fe2;
+	background-color:#f45151;
 	border-radius:10px;
 	border:1px solid #242402;
-	box-shadow:0 3px 0 #555, inset -2px -2px 0 #980000, inset 2px 2px 0 #ff9494;
-	text-shadow:0 0 5px #fff;
+	box-shadow:0 2px 0 #555, inset -2px -2px 0 #980000, inset 2px 2px 0 #ff9494;
 	-webkit-appearance:none;
+	text-decoration: none;
+	text-align: center;
 }
 
 .btn_good:hover {
-	top:.1rem;
+	top:-.2rem;
 	box-shadow:0 1px 0 #555, inset -2px -2px 0 #980000, inset 2px 2px 0 #ff9494;
 	background-color:#f45151;
+	text-shadow:0 0 5px #fff;
 }
 
 .btn_good:active {
@@ -121,6 +124,8 @@ Btn
 	display:block;
 	border-radius:10px;
 	-webkit-appearance:none;
+	text-decoration: none;
+	text-align: center;
 }
 
 /* btn_s_inp */
@@ -132,6 +137,8 @@ Btn
 
 /* btn_s_inp */
 .btn_s_off {
+	padding:4px;
+	width:auto;
 	background-color:#666;
 	border:1px solid #222;
 	box-shadow:0 2px 0 #555, inset -2px -2px 0 #333, inset 2px 2px 0 #999;
@@ -211,7 +218,7 @@ col
 .rnk_button2 {
 	overflow: hidden;
 	width:32%;
-//	color:#fff;
+	color:#fff;
 	background:#8FCE42;
 	font-size:100%;
 	font-weight:bold;
@@ -278,6 +285,9 @@ col
 
 }
 
+.rnk_button:hover{
+	text-shadow:0 0 5px #fff;
+}
 
 #menu2 {
   width:100%;
@@ -541,7 +551,7 @@ ul.bbsList li img{
  min-height:3rem;
 }
 
-.bbsBox a{
+.bbsBox span{
 margin: 0 auto;
 width: 80px;
 display: block;

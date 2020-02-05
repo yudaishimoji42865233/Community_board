@@ -1,3 +1,3 @@
-$('#like_comment_<%= params[:comment_id] %>').html(`<%= button_to '評価する', comment_like_topic_path(comment_id: params[:comment_id]), method: :post, remote: true %>`);
+$('#like_comment_<%= params[:comment_id] %>').html(`<%= link_to '評価する', comment_like_topic_path(comment_id: params[:comment_id]), method: :post, remote: true, class:"btn_good" %>`);
 
 $('#total_comment_<%= params[:comment_id] %>').html(`<%= @comment_like.length %>`);

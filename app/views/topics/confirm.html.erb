@@ -1,6 +1,6 @@
 <div class="vsc-initialized">
-<section>
-	<a class="alignC" href="/"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></a>
+<section style="padding:10px;">
+	<%= link_to root_path, class:"alignL btn_repo", style:"height:50px;font-size:35px;width:auto;" do %>　コミュニティ掲示板<%end%>
 </section>
 
 <section id="content_area">
@@ -36,48 +36,52 @@
 
         <!-- トピック詳細 -->
         <div class="category_area" style="position:relative;">
-            <form action="" method="">
                 <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
                     <tr>
-                        <td class="td_category"><img src="/assets/category/category_name2.png" alt="投稿入力フォーム"></td>
-                        <td style="cursor: pointer;" class="td_txt_explanation">
-							<span id=n_0><%=@topic.user.name%></span>
-						</td>
+                        <td class="td_category"><div class="btn_repo">トピックユーザー名</div></td>
+                        <td style="cursor: pointer;" class="td_txt_explanation"><span id=n_0><%=@topic.user.name%></span></td>
                     </tr>
                     <tr>
-                        <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_name.png" alt="トピック名"></td>
+                        <td class="td_category" style="padding-top:5px;"><div class="btn_repo">トピック名</div></td>
                         <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
                             <span class="txt_contribution_title"><%=@topic.title%></span>
                         </td>
                     </tr>
                     <tr>
-                        <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
+                        <td class="td_category" style="padding-top:5px;"><div class="btn_repo">本文</div></td>
                         <td class="td_txt_explanation" style="padding-top:5px;">
                             <span class="txt_contribution_content"><span id=td_0><%=@topic.content%></span>
                         </td>
                     </tr>
               			<tr>
-              			  <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_contribution_content.png" alt="本文"></td>
+              			  <td class="td_category" style="padding-top:5px;"><div class="btn_repo">カテゴリー</div></td>
               			  <td class="td_txt_explanation" style="padding-top:5px;">
               			    <%= @topic.category.name %>
               			  </td>
               			</tr>
 									</table>
         					<% if @topic.image.present? %>
-        					  <div colspan="3" class="alignC">
+                		<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+                		  <tr>
+												<td class="td_category" style="padding-top:5px;"><div class="btn_repo">トピック画像</div></td>
+												<td class="td_txt_explanation" style="padding-top:5px;">
+													<%= f.check_box :remove_image %><span class="small bold">画像を削除する（投稿後に反映されます）</span>
+              			  	</td>
+              				</tr>
+										</table>
+        					  <div colspan="3" class="alignC"><br>
 											<%= image_tag @topic.image.url, id: :img_prev, style:"max-height: 20rem;max-width: 20rem;border-radius: 5px;" %>
-        					    <%= f.check_box :remove_image %><span class="small bold">画像を削除する（投稿後に反映されます）</span>
 										</div>
         					<%else%>
 			  						<div style="clear:both;"></div>
 									<%end%>
-									<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
-                    <% if request.post? %>
+                  <% if request.post? %>
+										<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
               			  <%= f.fields_for @enquete do |i| %>
 										  	<% params[:enquetes]['content'].each.with_index(1) do |enquete, index| %>
 										  		<% if enquete.present? %>
               			    		<tr>
-              			    		  <td class="td_category" style="padding-top:5px;"><img src="/assets/category/category_vote.png" alt="アンケート<%=index%>"></td>
+              			    		  <td class="td_category" style="padding-top:5px;"><div class="btn_repo">アンケート<%=index%></div></td>
               			    		  <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
 										  					<%= enquete %>
 										  					<%= i.hidden_field :content, name: "enquetes[content][]", value: enquete %>
@@ -86,9 +90,8 @@
 										  		<%end%>
 										  	<%end%>
 										  <%end%>
-                    <%end%>
-                </table>
-            </form>
+                		</table>
+                	<%end%>
         </div><!-- category_area -->
 			<% end %>
       </div><!-- content_main_area_in -->

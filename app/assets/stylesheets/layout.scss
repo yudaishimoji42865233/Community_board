@@ -301,6 +301,8 @@ Btn
 	display:block;
 	border-radius:10px;
 	-webkit-appearance:none;
+	text-decoration: none;
+	text-align: center;
 }
 
 /* subtmit */
@@ -456,6 +458,7 @@ MediaQuery
 	.btn_delete {
 		padding:7px 14px;
 		font-size:.5rem;
+		text-decoration: none;
 	}
 
 	/* checkbox */

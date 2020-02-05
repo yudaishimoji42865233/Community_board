@@ -35,8 +35,8 @@ height: 1.5em;
 </head>
 
 <body>
-<section>
-	<a class="alignC" href="/"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></a>
+<section style="padding:10px;">
+	<%= link_to root_path, class:"alignL btn_repo", style:"height:50px;font-size:35px;width:auto;" do %>　コミュニティ掲示板<%end%>
 </section>
 
 <section id="content_area"  style="position: relative;">
@@ -45,7 +45,7 @@ height: 1.5em;
 		<ul id="tmenu" class="menu1" style="width: 97%;position: absolute;margin-left: 3%;margin-right: 0%;margin-top: 0.25em;z-index:1000;">
 			<li id=t1 >
 				<ul>
-					<li style="float:none;width:100%;display: block;margin: 0;position: relative;z-index:1001;"><a href="javascript:void(0)" style="width:100%;display: block;margin: 0;position: relative;z-index:1002;" onclick="opent('t1');event.preventDefault();return false;" class="white">カテゴリ一覧 ▼</a></li>
+					<li style="float:none;width:100%;display: block;margin: 0;position: relative;z-index:1001;"><%= link_to "カテゴリ一覧 ▼", "javascript:void(0)", style:"width:100%;display: block;margin: 0;position: relative;z-index:1002;", onclick:"opent('t1');event.preventDefault();return false;", class:"white"%></li>
 					<li style="float:none;width:100%;display: block;margin: 0;"><%= link_to '全て',topics_path, style:"width:100%;display:block;margin:0;", class:"white"%></li>
 					<li style="float:none;width:100%;display: block;margin: 0;"><%= link_to '募集',topics_path(q:{category_id_eq_any: 2}), style:"width:100%;display:block;margin:0;", class:"white"%></li>
 					<li style="float:none;width:100%;display: block;margin: 0;"><%= link_to '情報',topics_path(q:{category_id_eq_any: 3}), style:"width:100%;display:block;margin:0;", class:"white"%></li>
@@ -85,7 +85,7 @@ height: 1.5em;
 								<%= f.label :category_id_eq_any,'競売' %>
 								<%= f.check_box :category_id_eq_any, { multiple: true }, 6, '' %>
 								<% if user_signed_in? %>
-									<%= f.label :user_id_eq_any,'MY投稿' %>
+									<%= f.label :user_id_eq_any,'：MY投稿' %>
 									<%= f.check_box :user_id_eq_any, { multiple: true }, current_user.id, '' %>
 								<%end%>
 								<br>
@@ -99,21 +99,21 @@ height: 1.5em;
 								<% if current_user.image.present? %>
 									<%= image_tag current_user.image.url, class:"icon80", style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
 								<% else %>
-									<%= image_tag '/assets/bar/noface.jpg', class:"icon80", style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
+									<%= image_tag '/assets/noface.jpg', class:"icon80", style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
 								<% end %>
 							</td>
-							<td class="td_txt_explanation" style="align:right;vertical-align:middle;width:auto;font-size:25px;white-space:nowrap">
+							<td class="td_txt_explanation" style="align:right;vertical-align:middle;width:auto;font-size:25px;white-space:nowrap;">
 								<%= current_user.name %>
 							</td>
 							<td class="btn_submit_area" style="align:right;vertical-align:middle;min-width:280px;">
-								<%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn_delete in_box_sizing", style:"width:95%" %>
+								<%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn_delete in_box_sizing", style:"width:95%" %>
 							</td>
 						<% else %>
 							<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-								<%= button_to '新規登録', new_user_registration_path, method: :get, class:"btn_submit in_box_sizing", style:"width:95%;" %>
+								<%= link_to '新規登録', new_user_registration_path, class:"btn_submit in_box_sizing", style:"width:95%;" %>
 							</td>
 							<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-								<%= button_to 'ログイン', new_user_session_path, class:"btn_s_inp in_box_sizing", style:"width:95%;" %>
+								<%= link_to 'ログイン', new_user_session_path, class:"btn_s_inp in_box_sizing", style:"width:95%;" %>
 							</td>
 						<% end %>
 					</tr>
@@ -127,14 +127,14 @@ height: 1.5em;
         <div class="category_area">
             <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
               <tr>
-                <td class="td_category"><img src="/assets/category/category_contribution_list.png" alt="トピック投稿一覧"></td>
+                <td class="td_category"><div class="btn_repo">トピック投稿一覧</div></td>
                 <td class="td_txt_explanation" style="width: auto;"></td>
 								<% if user_signed_in? %>
 									<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-										<%= button_to 'トピックの編集・削除', delete_select_topics_path, method: :get, class:"btn_s_inp in_box_sizing", style:"width:95%;" %>
+										<%= link_to 'トピックの編集・削除', delete_select_topics_path, class:"btn_s_inp in_box_sizing", style:"width:95%;",data: {"turbolinks"=>false} %>
 									</td>
 									<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-										<%= button_to '投稿する', new_topic_path, method: :get, class:"btn_submit in_box_sizing", style:"width:95%;" %>
+										<%= link_to '投稿する', new_topic_path, class:"btn_submit in_box_sizing", style:"width:95%;" %>
 									</td>
 								<% end %>
               </tr>
@@ -143,13 +143,13 @@ height: 1.5em;
 <% @topic.each_slice(2) do |a,b| %>
 	<ul class=bbsList>
 		<li>
-			<div class="bbsBox" 						onclick="location.href='/topics/<%=a.id%>'" style="cursor: pointer;">
+			<div class="bbsBox">
 				<% if a.user.image.present?%>
-					<a><%= image_tag a.user.image.url, class:"icon80" %></a>
+					<span><%= image_tag a.user.image.url, class:"icon80" %></span>
 				<%else%>
-					<a><%= image_tag '/assets/bar/noface.jpg', class:"icon80" %></a>
+					<span><%= image_tag '/assets/noface.jpg', class:"icon80" %></span>
 				<%end%>
-				<p class="bbsDetail" ><%=a.title%><img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+				<p class="bbsDetail" ><%=a.title%>　<%= link_to "詳細",topic_path(a.id), data: {"turbolinks"=>false}, class:"rnk_button white", style:"width:60px;height:20px;line-height:1.2;margin-right:-20px;vertical-align:middle;display:inline-block;"%></p>
 			</div>
 			<div class="bbsClearfix">
 				<div class="bbsDashed3"></div>
@@ -159,13 +159,13 @@ height: 1.5em;
 		</li>
 		<% if b.present? %>
 			<li>
-				<div class="bbsBox" onclick="location.href='/topics/<%=b.id%>'" style="cursor: pointer;">
+				<div class="bbsBox">
 					<% if b.user.image.present?%>
-						<a><%= image_tag b.user.image.url, class:"icon80" %></a>
+						<span><%= image_tag b.user.image.url, class:"icon80" %></span>
 					<%else%>
-						<a><%= image_tag '/assets/bar/noface.jpg', class:"icon80" %></a>
+						<span><%= image_tag '/assets/noface.jpg', class:"icon80" %></span>
 					<%end%>
-					<p class="bbsDetail" ><%=b.title%><img class=bbsImglnk  src="/assets/bg/icon_detail_contribution.png" alt="トピックの詳細はコチラ"></p>
+					<p class="bbsDetail" ><%=b.title%>　<%= link_to "詳細",topic_path(b.id), data: {"turbolinks"=>false}, class:"rnk_button white", style:"width:60px;height:20px;line-height:1.2;margin-right:-20px;vertical-align:middle;display:inline-block;"%></p>
 				</div>
 				<div class="bbsClearfix">
 					<div class="bbsDashed3"></div>
@@ -177,8 +177,8 @@ height: 1.5em;
 	</ul>
 <% end %>
 	<% if @topic.present?%>
-		<div style="float:left;height:40px;overflow: hidden;" ><%= link_to_prev_page @topic, image_tag("/assets/bg/jmp_prev.png", style:"width:100%;align:left;") %></div>
-		<div style="float:right;height:40px;overflow: hidden;"><%= link_to_next_page @topic, image_tag("/assets/bg/jmp_next.png", style:"width:100%;align:right;") %></div>
+		<div style="float:left;height:40px;padding:10px;" ><%= link_to_prev_page @topic, "戻る", class:"btn_s_inp in_box_sizing", style:"font-size:16px;width:100%;align:left;" %></div>
+		<div style="float:right;height:40px;padding:10px;"><%= link_to_next_page @topic, "次へ", class:"btn_submit in_box_sizing", style:"font-size:16px;width:100%;align:right;" %></div>
 		<div style="clear:both;"></div>
 	<% else %>
 		<div colspan="3" class="alignC">トピックが見つかりません。</div>

@@ -17,29 +17,24 @@
   });
   </script>
 </head>
-<section>
-	<a class="alignC" href="/"><img src="/assets/bar/bar_interact.png" width="100%" alt="情報交換BBS"></a>
+<section style="padding:10px;">
+	<%= link_to root_path, class:"alignL btn_repo", style:"height:50px;font-size:35px;width:auto;" do %>　コミュニティ掲示板<%end%>
 </section>
-	<div class="row" style="
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 660px;">
+	<div class="row" style="width: 100%;margin-left: auto;margin-right: auto;max-width: 660px;">
     <div class="category_area">
-      <h2 class="alignC">ユーザー新規登録</h2><br>
-
+      <h2 class="alignC bold">ユーザー新規登録</h2><br>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field">
-        　<%= f.label :name, "ユーザー名" %>
+          <h4 style="margin-bottom:-25px;">ユーザー名</h4>
         　<%= f.text_field :name, class:"contribution_input_txt_area in_box_sizing", autofocus: true, autocomplete: "name" %>
         </div><br>
 
         <div class="field">
           <%= f.label :image, "ユーザーアイコン(任意)"%><br />
           <%= f.file_field :image, id: :topic_image, autofocus: true, autocomplete: "image" %><br>
-          <%= image_tag "", id: :img_prev, style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %><br>
+          <%= image_tag "", id: :img_prev, style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;margin:5px;" %><br>
           <div class="small bold " id="input_form_user"></div>
         </div><br>
 
