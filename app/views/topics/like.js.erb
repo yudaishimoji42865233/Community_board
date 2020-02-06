@@ -1,0 +1,2 @@
+$('#like_topic').html(`<%= link_to '戻す', like_topic_path(topic_id: params[:topic_id]), method: :delete, remote: true, class:"btn_good" %>`);
+$('#total_topic_like').html('<%= @topic_like.length %>');

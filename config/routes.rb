@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root :controller => 'topics', :action => 'index'
   resources :topics, except: [:destroy] do
+    resources :votes, only: [:create]
     resources :comments, only: [:create, :new] do
       collection do
         post :new, path: :new, as: :new, action: :new
@@ -20,11 +21,10 @@ Rails.application.routes.draw do
     member do
       patch :edit, path: :edit, as: :edit, action: :edit
       match :confirm, to: 'topics#confirm', via: [:get, :patch]
-      post :vote, to: 'topics#vote',   as: 'vote'
-      post :topic_like, to: 'topics#topic_like'
-      delete :topic_like, to: 'topics#topic_like_destroy'
+      post :like, to: 'topics#like'
+      delete :like, to: 'topics#like_delete'
       post :comment_like, to: 'topics#comment_like'
-      delete :comment_like, to: 'topics#comment_like_destroy'
+      delete :comment_like, to: 'topics#comment_like_delete'
     end
   end
 end

@@ -118,22 +118,12 @@ class TopicsController < ApplicationController
     redirect_to delete_select_topics_path
   end
 
-  def vote
-    @enquete = Enquete.where(topic_id: params[:id])
-    @total_vote = Vote.where(enquete_id: @enquete.ids)
-    unless @total_vote.find_by(user_id: current_user.id)
-      Vote.create!(vote_params)
-      @total_vote = Vote.where(enquete_id: @enquete.ids)
-    end
-    @user_vote = @total_vote.find_by(user_id: current_user.id)
-  end
-
-  def topic_like
+  def like
     TopicLike.create!(topic_like_params)
     @topic_like = TopicLike.where(topic_id: params[:topic_id])
   end
 
-  def topic_like_destroy
+  def like_delete
     TopicLike.find_by(topic_id: params[:topic_id], user_id: current_user.id).delete
     @topic_like = TopicLike.where(topic_id: params[:topic_id])
   end
@@ -143,7 +133,7 @@ class TopicsController < ApplicationController
     @comment_like = CommentLike.where(comment_id: params[:comment_id])
   end
 
-  def comment_like_destroy
+  def comment_like_delete
     CommentLike.find_by(comment_id: params[:comment_id], user_id: current_user.id).delete
     @comment_like = CommentLike.where(comment_id: params[:comment_id])
   end
@@ -152,10 +142,6 @@ class TopicsController < ApplicationController
 
   def topic_params
     params.require(:topic).permit(:title, :content, :image, :image_cache, :remove_image, :category_id, enquetes_attributes: [:id, :content, :topic_id]).merge(user_id: current_user.id)
-  end
-
-  def vote_params
-    params.permit(:enquete_id).merge(user_id: current_user.id)
   end
 
   def topic_like_params

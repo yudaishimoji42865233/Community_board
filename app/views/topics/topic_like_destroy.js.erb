@@ -1,3 +1,0 @@
-$('#like_topic').html(`<%= link_to '評価する', topic_like_topic_path(topic_id: params[:topic_id]), method: :post, remote: true, class:"btn_good" %>`);
-
-$('#total_topic_like').html('<%= @topic_like.length %>');
