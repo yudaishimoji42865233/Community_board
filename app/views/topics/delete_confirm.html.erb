@@ -1,36 +1,43 @@
 <div class="vsc-initialized">
   <section style="padding:10px;">
-  	<%= link_to root_path, class:"alignL btn_repo", style:"height:50px;font-size:35px;width:auto;" do %>　コミュニティ掲示板<%end%>
+    <%= link_to root_path, class:"alignL btn_repo", style:"height:50px;font-size:35px;width:auto;" do %>　コミュニティ掲示板<%end%>
   </section>
   <section id="content_area">
-  	<div id="content_main_area" class="in_box_sizing" style="z-index:2;">
+    <div id="content_main_area" class="in_box_sizing" style="z-index:2;">
       <div id="content_main_area_in">
         <div class="category_area">
-			    <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
-			    	<tr>
-			    		<td class="td_txt_explanation" style="width:60%">
-					      以下のトピックを削除致します。よろしければ【削除する】ボタンを押してください。<br>
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+            <tr>
+              <td class="td_txt_explanation" style="width:60%">
+                以下のトピックを削除致します。よろしければ【削除する】ボタンを押してください。<br>
                 ※削除を行った項目は復旧させることはできませんのであらかじめご了承ください。
-			    		</td>
-				      <td class="btn_submit_area" style="align:right;vertical-align:middle;">
-					    	<%= link_to '戻る', delete_select_topics_path, class:"btn_delete in_box_sizing", style:"width:95%;", data: {"turbolinks"=>false} %>
-				      </td>
+              </td>
+              <td class="btn_submit_area" style="align:right;vertical-align:middle;">
+                <%= link_to '戻る', delete_select_topics_path, class:"btn_delete in_box_sizing", style:"width:95%;", data: {"turbolinks"=>false} %>
+              </td>
               <td class="btn_submit_area" style="align:right;vertical-align:middle;">
                 <%= form_for @confirm_topics,url: delete_topics_path, method: :delete do |f| %>
                 <%= f.submit "削除する", class:"btn_submit in_box_sizing", style:"width:95%" %>
-			    	  </td>
-			    	</tr>
+              </td>
+            </tr>
           </table>
         </div>
         <div class="category_area" style="position:relative;">
           <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
             <tr>
-              <td class="td_category"><div class="btn_repo"><%=current_user.name%>の投稿一覧</div></td>
+              <td class="td_category">
+                <div class="btn_repo"><%=current_user.name%>の投稿一覧</div>
+              </td>
               <td style="cursor: pointer;" class="td_txt_explanation">
-	      	    <span class="txt_contribution_title">削除するトピックを選択してください。</span>
-	      	    </td>
+                <span class="txt_contribution_title">削除するトピックを選択してください。</span>
+              </td>
             </tr>
-            <tr><td></td><td><hr style="visibility:hidden"></td></tr>
+            <tr>
+              <td></td>
+              <td>
+                <hr style="visibility:hidden">
+              </td>
+            </tr>
           </table>
           <table class="contribution_list_table" width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
             <tr>
@@ -42,11 +49,16 @@
             </tr>
             <% @select_topics.each.with_index do |topic, i| %>
             <tr>
-              <td class="txt_comment_name" align="left"><%= link_to "#{topic.title}", topic_path(topic.id), class:"blue", style:"text-decoration:none;" %></td>
-              <td class="txt_comment_date">閲覧数:<%= topic.impressions.length %>　回答数:<%= topic.comments.length %>　評価数:<%= topic.topic_likes.length %></td>
+              <td class="txt_comment_name" align="left">
+                <%= link_to "#{topic.title}", topic_path(topic.id), class:"blue", style:"text-decoration:none;" %></td>
+              <td class="txt_comment_date">
+                閲覧数:<%= topic.impressions.length %>　回答数:<%= topic.comments.length %>　評価数:<%= topic.topic_likes.length %>
+              </td>
               <td class="txt_comment_date"><%= topic.category.name %></td>
               <td class="txt_comment_date"><%= topic.created_at.strftime("%Y/%m/%d") %></td>
-              <td class="contribution_delete"><%= check_box_tag 'topic[id][]', topic,false, value:"#{topic.id}",id:"#{i}", checked:true %><%= label_tag :id, "削除する" %></td>
+              <td class="contribution_delete">
+                <%= check_box_tag 'topic[id][]', topic,false, value:"#{topic.id}",id:"#{i}", checked:true %><%= label_tag :id, "削除する" %>
+              </td>
             </tr>
             <%end%>
           </table>
