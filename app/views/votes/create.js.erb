@@ -1,0 +1,17 @@
+$('#enquete_topic').html(`<td class="td_category" style="padding-top:5px;"><div class="btn_repo">アンケート投票結果</div></td>
+												  	<td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+												  		<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+												  			<%@enquete.each do |enquete|%>
+												  				<tr>
+												  					<td style="width:5%;white-space:nowrap;"><%=enquete.content%>　</td>
+																		<td><span class="rnk_button2 white" style="height:20px;line-height:1.2;font-size:16px;margin-right:-20px;vertical-align:middle;display:inline;">　<%=enquete.votes.length%>票　</span>
+																			<% if @user_vote.enquete_id == enquete.id%>
+																				<span style="font-size:16px;font-weight:bold;">　（この回答に投票しました）</span>
+																			<%end%>
+																		</td>
+												  				</tr>
+												  			<%end%>
+												  		</table>
+												  	</td>
+                          `);
+$('#total_vote').html(`<%=@total_vote.length%>票`)

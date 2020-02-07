@@ -1,0 +1,30 @@
+<section style="padding:10px;">
+	<%= link_to root_path, class:"alignL btn_repo", style:"height:50px;font-size:35px;width:auto;" do %>　コミュニティ掲示板<%end%>
+</section>
+	<div class="row" style="width: 100%;margin-left: auto;margin-right: auto;max-width: 660px;">
+    <div class="category_area">
+      <h2 class="alignC bold">ユーザーログイン</h2><br>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :email ,"Eメール"%><br />
+          <%= f.email_field :email, class:"contribution_input_txt_area in_box_sizing", autofocus: true, autocomplete: "email" %>
+        </div><br>
+      
+        <div class="field">
+          <%= f.label :password ,"パスワード"%><br />
+          <%= f.password_field :password, class:"contribution_input_txt_area in_box_sizing", autocomplete: "current-password" %>
+        </div><br>
+      
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <% f.check_box :remember_me %>
+            <% f.label :remember_me %>
+          </div><br>
+        <% end %>
+      
+        <div class="actions">
+					<%= f.submit "ログイン", class: "btn_s_inp in_box_sizing", style:"width:20%;" %>
+        </div><br>
+      <% end %>
+      
+      <%= render "devise/shared/links" %>

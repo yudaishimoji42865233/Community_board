@@ -1,0 +1,64 @@
+<head>
+  <script type="text/javascript">
+  $(function() {
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#img_prev').attr('src', e.target.result);
+          $('#input_form_user').html(`<input type="checkbox" value="1" name="user[remove_image]" id="user_remove_image"><span class="small bold">画像を削除する（登録後に反映されます）</span>`);
+        };
+        reader.readAsDataURL(input.files[0]);
+      };
+    };
+    $("#topic_image").change(function(){
+      readURL(this);
+    });
+  });
+  </script>
+</head>
+<section style="padding:10px;">
+	<%= link_to root_path, class:"alignL btn_repo", style:"height:50px;font-size:35px;width:auto;" do %>　コミュニティ掲示板<%end%>
+</section>
+	<div class="row" style="width: 100%;margin-left: auto;margin-right: auto;max-width: 660px;">
+    <div class="category_area">
+      <h2 class="alignC bold">ユーザー新規登録</h2><br>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field">
+          <h4 style="margin-bottom:-25px;">ユーザー名</h4>
+        　<%= f.text_field :name, class:"contribution_input_txt_area in_box_sizing", autofocus: true, autocomplete: "name" %>
+        </div><br>
+
+        <div class="field">
+          <%= f.label :image, "ユーザーアイコン(任意)"%><br />
+          <%= f.file_field :image, id: :topic_image, autofocus: true, autocomplete: "image" %><br>
+          <%= image_tag "", id: :img_prev, style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;margin:5px;" %><br>
+          <div class="small bold " id="input_form_user"></div>
+        </div><br>
+
+        <div class="field">
+          <%= f.label :email, "Eメールアドレス" %><br />
+          <%= f.email_field :email, class:"contribution_input_txt_area in_box_sizing", autofocus: true, autocomplete: "email" %>
+        </div><br>
+
+        <div class="field">
+          <%= f.label :password, "パスワード" %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %>文字以上)</em>
+          <% end %><br />
+          <%= f.password_field :password, class:"contribution_input_txt_area in_box_sizing", autocomplete: "new-password" %>
+        </div><br>
+
+        <div class="field">
+          <%= f.label :password_confirmation, "パスワード(再度入力)" %><br />
+          <%= f.password_field :password_confirmation, class:"contribution_input_txt_area in_box_sizing", autocomplete: "new-password" %>
+        </div><br>
+
+        <div class="actions">
+          <%= f.submit "登録する", class: "btn_submit in_box_sizing", style:"width:20%;" %>
+        </div><br>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
