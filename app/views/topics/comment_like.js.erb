@@ -1,3 +1,2 @@
 $('#like_comment_<%= params[:comment_id] %>').html(`<%= link_to '戻す', comment_like_topic_path(comment_id: params[:comment_id]), method: :delete, remote: true, class:"btn_good" %>`);
-
 $('#total_comment_<%= params[:comment_id] %>').html(`<%= @comment_like.length %>`);

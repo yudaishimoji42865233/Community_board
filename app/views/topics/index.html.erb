@@ -1,194 +1,206 @@
 <head>
-<script type="text/javascript">
-function opent(oid){
-	$('#'+oid).css({'height':'20em'});
-	$('#overlay').show();
-}
-$(function () {
-	$('#tmenu').bind('click', 
-		function(e){
-			if($('#overlay').css('display') == 'block' && e.target.className=="menu1") {
-				$('#t1').css({'height':'1.5em'});
-				$('#overlay').hide();
-			}
+	<script type="text/javascript">
+		function opent(oid) {
+			$('#' + oid).css({
+				'height': '20em'
+			});
+			$('#overlay').show();
 		}
-	);
-});
-
-</script>
-
-<style type="text/css">
-#t1{
-height: 1.5em;
-}
-
-</style>
-
-<script language="JavaScript">
-	function comme_call(num)
-	{
-		document.form_comme.topic_id.value=num;
-		document.form_comme.submit();
-	}
-</script>
-
+		$(function () {
+			$('#tmenu').bind('click',
+				function (e) {
+					if ($('#overlay').css('display') == 'block' && e.target.className == "menu1") {
+						$('#t1').css({
+							'height': '1.5em'
+						});
+						$('#overlay').hide();
+					}
+				}
+			);
+		});
+		function comme_call(num) {
+			document.form_comme.topic_id.value = num;
+			document.form_comme.submit();
+		}
+	</script>
+	<style type="text/css">
+		#t1 {
+			height: 1.5em;
+		}
+	</style>
 </head>
-
 <body>
-<section style="padding:10px;">
-	<%= link_to root_path, class:"alignL btn_repo", style:"height:50px;font-size:35px;width:auto;" do %>　コミュニティ掲示板<%end%>
-</section>
-
-<section id="content_area"  style="position: relative;">
-
-	<div style="position: absolute;top:0;z-index:1000;width: 100%;">
-		<ul id="tmenu" class="menu1" style="width: 97%;position: absolute;margin-left: 3%;margin-right: 0%;margin-top: 0.25em;z-index:1000;">
-			<li id=t1 >
-				<ul>
-					<li style="float:none;width:100%;display: block;margin: 0;position: relative;z-index:1001;"><%= link_to "カテゴリ一覧 ▼", "javascript:void(0)", style:"width:100%;display: block;margin: 0;position: relative;z-index:1002;", onclick:"opent('t1');event.preventDefault();return false;", class:"white"%></li>
-					<li style="float:none;width:100%;display: block;margin: 0;"><%= link_to '全て',topics_path, style:"width:100%;display:block;margin:0;", class:"white"%></li>
-					<li style="float:none;width:100%;display: block;margin: 0;"><%= link_to '募集',topics_path(q:{category_id_eq_any: 2}), style:"width:100%;display:block;margin:0;", class:"white"%></li>
-					<li style="float:none;width:100%;display: block;margin: 0;"><%= link_to '情報',topics_path(q:{category_id_eq_any: 3}), style:"width:100%;display:block;margin:0;", class:"white"%></li>
-					<li style="float:none;width:100%;display: block;margin: 0;"><%= link_to '質問',topics_path(q:{category_id_eq_any: 4}), style:"width:100%;display:block;margin:0;", class:"white"%></li>
-					<li style="float:none;width:100%;display: block;margin: 0;"><%= link_to '雑記',topics_path(q:{category_id_eq_any: 5}), style:"width:100%;display:block;margin:0;", class:"white"%></li>
-					<li style="float:none;width:100%;display: block;margin: 0;"><%= link_to '競売',topics_path(q:{category_id_eq_any: 6}), style:"width:100%;display:block;margin:0;", class:"white"%></li>
+	<div class="vsc-initialized">
+		<section style="padding:10px;">
+			<%= link_to root_path, class:"alignL btn_repo", style:"height:50px;font-size:35px;width:auto;" do %>　コミュニティ掲示板<%end%>
+		</section>
+		<section id="content_area" style="position: relative;">
+			<div style="position: absolute;top:0;z-index:1000;width: 100%;">
+				<ul id="tmenu" class="menu1" style="width: 97%;position: absolute;margin-left: 3%;margin-right: 0%;margin-top: 0.25em;z-index:1000;">
+					<li id=t1>
+						<ul>
+							<li style="float:none;width:100%;display: block;margin: 0;position: relative;z-index:1001;">
+								<%= link_to "カテゴリ一覧 ▼", "javascript:void(0)", style:"width:100%;display: block;margin: 0;position: relative;z-index:1002;", onclick:"opent('t1');event.preventDefault();return false;", class:"white"%>
+							</li>
+							<li style="float:none;width:100%;display: block;margin: 0;">
+								<%= link_to '全て',topics_path, style:"width:100%;display:block;margin:0;", class:"white"%></li>
+							<li style="float:none;width:100%;display: block;margin: 0;">
+								<%= link_to '募集',topics_path(q:{category_id_eq_any: 2}), style:"width:100%;display:block;margin:0;", class:"white"%>
+							</li>
+							<li style="float:none;width:100%;display: block;margin: 0;">
+								<%= link_to '情報',topics_path(q:{category_id_eq_any: 3}), style:"width:100%;display:block;margin:0;", class:"white"%>
+							</li>
+							<li style="float:none;width:100%;display: block;margin: 0;">
+								<%= link_to '質問',topics_path(q:{category_id_eq_any: 4}), style:"width:100%;display:block;margin:0;", class:"white"%>
+							</li>
+							<li style="float:none;width:100%;display: block;margin: 0;">
+								<%= link_to '雑記',topics_path(q:{category_id_eq_any: 5}), style:"width:100%;display:block;margin:0;", class:"white"%>
+							</li>
+							<li style="float:none;width:100%;display: block;margin: 0;">
+								<%= link_to '競売',topics_path(q:{category_id_eq_any: 6}), style:"width:100%;display:block;margin:0;", class:"white"%>
+							</li>
+						</ul>
+					</li>
+					<li><%= link_to '閲覧順',topics_path(q:{sorts: 'impressions_count desc'}), class:"white"%></li>
+					<li><%= link_to '評価順',topics_path(q:{sorts: 'topic_likes_count desc'}), class:"white"%></li>
+					<li><%= link_to '新着順',topics_path(q:{sorts: 'created_at desc'}), class:"white"%></li>
+					<li><%= link_to '更新順',topics_path(q:{sorts: 'updated_at desc'}), class:"white"%></li>
+					<% if user_signed_in? %>
+					<li><%= link_to 'MY投稿',topics_path(q:{user_id_eq_any: current_user.id}), class:"white"%></li>
+					<%end%>
 				</ul>
-			</li>
-			<li><%= link_to '閲覧順',topics_path(q:{sorts: 'impressions_count desc'}), class:"white"%></li>
-			<li><%= link_to '評価順',topics_path(q:{sorts: 'topic_likes_count desc'}), class:"white"%></li>
-			<li><%= link_to '新着順',topics_path(q:{sorts: 'created_at desc'}), class:"white"%></li>
-			<li><%= link_to '更新順',topics_path(q:{sorts: 'updated_at desc'}), class:"white"%></li>
-			<% if user_signed_in? %>
-				<li><%= link_to 'MY投稿',topics_path(q:{user_id_eq_any: current_user.id}), class:"white"%></li>
-			<%end%>
-		</ul>
-	</div>
-	<div id="overlay" style="width: 100%;height: 100%;position: fixed;top: 0;left: 0;z-index: 100;background: #000;opacity: 0.7; display: none; background-color: rgb(0, 0, 0);" onclick="$('#t1').css({'height':'1.5em'});$(this).hide();"></div>
-	<div id="content_main_area" class="in_box_sizing" style="position:absolute;top:2.5rem;z-index:1;width: 99.5%;" >
-    <div id="content_main_area_in" >
-			<div class="category_area">
-		    <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
-			    <tr>
-						<td class="td_txt_explanation" style="width:60%;font-size:16px;">
-							<%= search_form_for @q do |f|%>
-								<%= f.label :sorts,'ソート：' %>
-    						<%= f.select( :sorts, { '閲覧順': 'impressions_count desc', '評価順': 'topic_likes_count desc', '新着順': 'created_at desc', '更新順': 'updated_at desc' } , { selected: params[:q][:sorts] } )%><br>
-								<%= f.label :category_id_eq_any,'カテゴリー：' %>
-								<%= f.label :category_id_eq_any,'募集' %>
-								<%= f.check_box :category_id_eq_any, { multiple: true }, 2, '' %>
-								<%= f.label :category_id_eq_any,'情報' %>
-								<%= f.check_box :category_id_eq_any, { multiple: true }, 3, '' %>
-								<%= f.label :category_id_eq_any,'質問' %>
-								<%= f.check_box :category_id_eq_any, { multiple: true }, 4, '' %>
-								<%= f.label :category_id_eq_any,'雑記' %>
-								<%= f.check_box :category_id_eq_any, { multiple: true }, 5, '' %>
-								<%= f.label :category_id_eq_any,'競売' %>
-								<%= f.check_box :category_id_eq_any, { multiple: true }, 6, '' %>
-								<% if user_signed_in? %>
+			</div>
+			<div id="overlay" style="width: 100%;height: 100%;position: fixed;top: 0;left: 0;z-index: 100;background: #000;opacity: 0.7; display: none; background-color: rgb(0, 0, 0);" onclick="$('#t1').css({'height':'1.5em'});$(this).hide();"></div>
+			<div id="content_main_area" class="in_box_sizing" style="position:absolute;top:2.5rem;z-index:1;width: 99.5%;">
+				<div id="content_main_area_in">
+					<div class="category_area">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+							<tr>
+								<td class="td_txt_explanation" style="width:60%;font-size:16px;">
+									<%= search_form_for @q do |f|%>
+									<%= f.label :sorts,'ソート：' %>
+									<%= f.select( :sorts, { '閲覧順': 'impressions_count desc', '評価順': 'topic_likes_count desc', '新着順': 'created_at desc', '更新順': 'updated_at desc' } , { selected: params[:q][:sorts] } )%><br>
+									<%= f.label :category_id_eq_any,'カテゴリー：' %>
+									<%= f.label :category_id_eq_any,'募集' %>
+									<%= f.check_box :category_id_eq_any, { multiple: true }, 2, '' %>
+									<%= f.label :category_id_eq_any,'情報' %>
+									<%= f.check_box :category_id_eq_any, { multiple: true }, 3, '' %>
+									<%= f.label :category_id_eq_any,'質問' %>
+									<%= f.check_box :category_id_eq_any, { multiple: true }, 4, '' %>
+									<%= f.label :category_id_eq_any,'雑記' %>
+									<%= f.check_box :category_id_eq_any, { multiple: true }, 5, '' %>
+									<%= f.label :category_id_eq_any,'競売' %>
+									<%= f.check_box :category_id_eq_any, { multiple: true }, 6, '' %>
+									<% if user_signed_in? %>
 									<%= f.label :user_id_eq_any,'：MY投稿' %>
 									<%= f.check_box :user_id_eq_any, { multiple: true }, current_user.id, '' %>
-								<%end%>
-								<br>
-								<%= f.search_field :title_cont, class:"contribution_input_txt_area in_box_sizing", style: "width: 50%;", placeholder:"トピック名で検索", value: "#{@q.title_cont}"%>
-								<%= f.submit "トピック検索", class: "btn_s_inp", style: "width:auto;display:inline;height:32px;"%>
-							<%end%>
-						</td>
-
-						<% if user_signed_in? %>
-							<td class="td_txt_explanation" style="align:right;vertical-align:middle;width:6.5%;">
-								<% if current_user.image.present? %>
-									<%= image_tag current_user.image.url, class:"icon80", style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
-								<% else %>
-									<%= image_tag '/assets/noface.jpg', class:"icon80", style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
-								<% end %>
-							</td>
-							<td class="td_txt_explanation" style="align:right;vertical-align:middle;width:auto;font-size:25px;white-space:nowrap;">
-								<%= current_user.name %>
-							</td>
-							<td class="btn_submit_area" style="align:right;vertical-align:middle;min-width:280px;">
-								<%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn_delete in_box_sizing", style:"width:95%" %>
-							</td>
-						<% else %>
-							<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-								<%= link_to '新規登録', new_user_registration_path, class:"btn_submit in_box_sizing", style:"width:95%;" %>
-							</td>
-							<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-								<%= link_to 'ログイン', new_user_session_path, class:"btn_s_inp in_box_sizing", style:"width:95%;" %>
-							</td>
-						<% end %>
-					</tr>
-						<%#投稿しました%>
-						<%#削除しました%>
-				</table>
-			</div><!-- category_area -->
-		
-
-        <!-- 投稿一覧 -->
-        <div class="category_area">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
-              <tr>
-                <td class="td_category"><div class="btn_repo">トピック投稿一覧</div></td>
-                <td class="td_txt_explanation" style="width: auto;"></td>
+									<%end%>
+									<br>
+									<%= f.search_field :title_cont, class:"contribution_input_txt_area in_box_sizing", style: "width: 50%;", placeholder:"トピック名で検索", value: "#{@q.title_cont}"%>
+									<%= f.submit "トピック検索", class: "btn_s_inp", style: "width:auto;display:inline;height:32px;"%>
+									<%end%>
+								</td>
 								<% if user_signed_in? %>
-									<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-										<%= link_to 'トピックの編集・削除', delete_select_topics_path, class:"btn_s_inp in_box_sizing", style:"width:95%;",data: {"turbolinks"=>false} %>
-									</td>
-									<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-										<%= link_to '投稿する', new_topic_path, class:"btn_submit in_box_sizing", style:"width:95%;" %>
-									</td>
+								<td class="td_txt_explanation" style="align:right;vertical-align:middle;width:6.5%;">
+									<% if current_user.image.present? %>
+									<%= image_tag current_user.image.url, class:"icon80", style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
+									<% else %>
+									<%= image_tag '/assets/noface.jpg', class:"icon80", style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
+									<% end %>
+								</td>
+								<td class="td_txt_explanation"
+									style="align:right;vertical-align:middle;width:auto;font-size:25px;white-space:nowrap;">
+									<%= current_user.name %>
+								</td>
+								<td class="btn_submit_area" style="align:right;vertical-align:middle;min-width:280px;">
+									<%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn_delete in_box_sizing", style:"width:95%" %>
+								</td>
+								<% else %>
+								<td class="btn_submit_area" style="align:right;vertical-align:middle;">
+									<%= link_to '新規登録', new_user_registration_path, class:"btn_submit in_box_sizing", style:"width:95%;" %>
+								</td>
+								<td class="btn_submit_area" style="align:right;vertical-align:middle;">
+									<%= link_to 'ログイン', new_user_session_path, class:"btn_s_inp in_box_sizing", style:"width:95%;" %>
+								</td>
 								<% end %>
-              </tr>
-            </table>
-
-<% @topic.each_slice(2) do |a,b| %>
-	<ul class=bbsList>
-		<li>
-			<div class="bbsBox">
-				<% if a.user.image.present?%>
-					<span><%= image_tag a.user.image.url, class:"icon80" %></span>
-				<%else%>
-					<span><%= image_tag '/assets/noface.jpg', class:"icon80" %></span>
-				<%end%>
-				<p class="bbsDetail" ><%=a.title%>　<%= link_to "詳細",topic_path(a.id), data: {"turbolinks"=>false}, class:"rnk_button white", style:"width:60px;height:20px;line-height:1.2;margin-right:-20px;vertical-align:middle;display:inline-block;"%></p>
-			</div>
-			<div class="bbsClearfix">
-				<div class="bbsDashed3"></div>
-				<div class="bbsInfoBar bbsInfoBarR">【<%=a.category.name%>】<%=a.user.name%></div>
-				<div class="bbsInfoBar bbsInfoBarL">更新日:<%=a.updated_at.strftime("%Y/%m/%d")%>　閲覧数:<%= a.impressionist_count %>　回答数:<%= a.comments.length %>　評価数:<%= a.topic_likes.length %></div>
-			</div>
-		</li>
-		<% if b.present? %>
-			<li>
-				<div class="bbsBox">
-					<% if b.user.image.present?%>
-						<span><%= image_tag b.user.image.url, class:"icon80" %></span>
-					<%else%>
-						<span><%= image_tag '/assets/noface.jpg', class:"icon80" %></span>
-					<%end%>
-					<p class="bbsDetail" ><%=b.title%>　<%= link_to "詳細",topic_path(b.id), data: {"turbolinks"=>false}, class:"rnk_button white", style:"width:60px;height:20px;line-height:1.2;margin-right:-20px;vertical-align:middle;display:inline-block;"%></p>
+							</tr>
+						</table>
+					</div>
+					<div class="category_area">
+						<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+							<tr>
+								<td class="td_category">
+									<div class="btn_repo">トピック投稿一覧</div>
+								</td>
+								<td class="td_txt_explanation" style="width: auto;"></td>
+								<% if user_signed_in? %>
+								<td class="btn_submit_area" style="align:right;vertical-align:middle;">
+									<%= link_to 'トピックの編集・削除', delete_select_topics_path, class:"btn_s_inp in_box_sizing", style:"width:95%;",data: {"turbolinks"=>false} %>
+								</td>
+								<td class="btn_submit_area" style="align:right;vertical-align:middle;">
+									<%= link_to '投稿する', new_topic_path, class:"btn_submit in_box_sizing", style:"width:95%;" %>
+								</td>
+								<% end %>
+							</tr>
+						</table>
+						<% @topic.each_slice(2) do |a,b| %>
+						<ul class=bbsList>
+							<li>
+								<div class="bbsBox">
+									<% if a.user.image.present?%>
+									<span><%= image_tag a.user.image.url, class:"icon80" %></span>
+									<%else%>
+									<span><%= image_tag '/assets/noface.jpg', class:"icon80" %></span>
+									<%end%>
+									<p class="bbsDetail">
+										<%=a.title%>　<%= link_to "詳細",topic_path(a.id), data: {"turbolinks"=>false}, class:"rnk_button white", style:"width:60px;height:20px;line-height:1.2;margin-right:-20px;vertical-align:middle;display:inline-block;"%>
+									</p>
+								</div>
+								<div class="bbsClearfix">
+									<div class="bbsDashed3"></div>
+									<div class="bbsInfoBar bbsInfoBarR">【<%=a.category.name%>】<%=a.user.name%></div>
+									<div class="bbsInfoBar bbsInfoBarL">
+										更新日:<%=a.updated_at.strftime("%Y/%m/%d")%>　閲覧数:<%= a.impressionist_count %>　回答数:<%= a.comments.length %>　評価数:<%= a.topic_likes.length %>
+									</div>
+								</div>
+							</li>
+							<% if b.present? %>
+							<li>
+								<div class="bbsBox">
+									<% if b.user.image.present?%>
+									<span><%= image_tag b.user.image.url, class:"icon80" %></span>
+									<%else%>
+									<span><%= image_tag '/assets/noface.jpg', class:"icon80" %></span>
+									<%end%>
+									<p class="bbsDetail">
+										<%=b.title%>　<%= link_to "詳細",topic_path(b.id), data: {"turbolinks"=>false}, class:"rnk_button white", style:"width:60px;height:20px;line-height:1.2;margin-right:-20px;vertical-align:middle;display:inline-block;"%>
+									</p>
+								</div>
+								<div class="bbsClearfix">
+									<div class="bbsDashed3"></div>
+									<div class="bbsInfoBar bbsInfoBarR">【<%=b.category.name%>】<%=b.user.name%></div>
+									<div class="bbsInfoBar bbsInfoBarL">
+										更新日:<%=b.updated_at.strftime("%Y/%m/%d")%>　閲覧数:<%= b.impressionist_count %>　回答数:<%= b.comments.length %>　評価数:<%= b.topic_likes.length %>
+									</div>
+								</div>
+							</li>
+							<%end%>
+						</ul>
+						<% end %>
+						<% if @topic.present?%>
+						<div style="float:left;height:40px;padding:10px;">
+							<%= link_to_prev_page @topic, "戻る", class:"btn_s_inp in_box_sizing", style:"font-size:16px;width:100%;align:left;" %>
+						</div>
+						<div style="float:right;height:40px;padding:10px;">
+							<%= link_to_next_page @topic, "次へ", class:"btn_submit in_box_sizing", style:"font-size:16px;width:100%;align:right;" %>
+						</div>
+						<div style="clear:both;"></div>
+						<% else %>
+						<div colspan="3" class="alignC">トピックが見つかりません。</div>
+						<%end%>
+					</div>
 				</div>
-				<div class="bbsClearfix">
-					<div class="bbsDashed3"></div>
-					<div class="bbsInfoBar bbsInfoBarR">【<%=b.category.name%>】<%=b.user.name%></div>
-					<div class="bbsInfoBar bbsInfoBarL">更新日:<%=b.updated_at.strftime("%Y/%m/%d")%>　閲覧数:<%= b.impressionist_count %>　回答数:<%= b.comments.length %>　評価数:<%= b.topic_likes.length %></div>
-				</div>
-			</li>
-		<%end%>
-	</ul>
-<% end %>
-	<% if @topic.present?%>
-		<div style="float:left;height:40px;padding:10px;" ><%= link_to_prev_page @topic, "戻る", class:"btn_s_inp in_box_sizing", style:"font-size:16px;width:100%;align:left;" %></div>
-		<div style="float:right;height:40px;padding:10px;"><%= link_to_next_page @topic, "次へ", class:"btn_submit in_box_sizing", style:"font-size:16px;width:100%;align:right;" %></div>
-		<div style="clear:both;"></div>
-	<% else %>
-		<div colspan="3" class="alignC">トピックが見つかりません。</div>
-	<%end%>
-</div><!-- category_area -->
-
-
-
-      </div><!-- content_main_area_in -->
-    </div><!-- content_main_area -->
-</section>
-
+			</div>
+		</section>
+	</div>
 </body>

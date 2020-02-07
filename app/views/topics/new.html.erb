@@ -1,145 +1,161 @@
 <head>
   <script type="text/javascript">
-  $(function() {
-    function readURL(input) {
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-          $('#img_prev').attr('src', e.target.result);
-          $('#input_form_topic').html(`<input name="topic[remove_image]" type="hidden" value="0"><input type="checkbox" value="1" name="topic[remove_image]" id="topic_remove_image"><span class="small bold">画像を削除する（投稿後に反映されます）</span>`);
+    $(function () {
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            $('#img_prev').attr('src', e.target.result);
+            $('#input_form_topic').html(
+              `<input name="topic[remove_image]" type="hidden" value="0"><input type="checkbox" value="1" name="topic[remove_image]" id="topic_remove_image"><span class="small bold">画像を削除する（投稿後に反映されます）</span>`
+              );
+          };
+          reader.readAsDataURL(input.files[0]);
         };
-        reader.readAsDataURL(input.files[0]);
       };
-    };
-    $("#topic_image").change(function(){
-      readURL(this);
+      $("#topic_image").change(function () {
+        readURL(this);
+      });
     });
-  });
   </script>
 </head>
 <div class="vsc-initialized">
   <section style="padding:10px;">
-  	<%= link_to root_path, class:"alignL btn_repo", style:"height:50px;font-size:35px;width:auto;" do %>　コミュニティ掲示板<%end%>
+    <%= link_to root_path, class:"alignL btn_repo", style:"height:50px;font-size:35px;width:auto;" do %>　コミュニティ掲示板<%end%>
   </section>
-  
   <section id="content_area">
-  	<div id="content_main_area" class="in_box_sizing" style="z-index:2;">
+    <div id="content_main_area" class="in_box_sizing" style="z-index:2;">
       <%= form_for [ :confirm, @topic ] do |f| %>
-        <div id="content_main_area_in">
-          <div class="category_area">
-			      <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
-			      	<tr>
-			      		<td class="td_txt_explanation" style="width:60%">
-			      			トピック新規作成
-			      		</td>
-			      		<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-                  <%= link_to "戻る", topics_path, class:"btn_delete in_box_sizing", style:"width:95%;" %>
-			      	  </td>				
-                <td class="btn_submit_area" style="align:right;vertical-align:middle;">
-                  <%= f.submit "投稿を確認する", class:"btn_submit in_box_sizing", style:"width:95%" %>
-			      	  </td>
-			      	</tr>
-			      	<!-- コメント数が最大に達した時に下記エラー分を表示させてください。
-			      	<tr>
-			      		<td colspan="3" class="txt_error">コメント数が最大数となり、コメントがこれ以上行えません。新しくトピックを作成する必要があります。</td>
-              </tr>
-              -->
-            </table>
-          </div><!-- category_area -->
-
-          <div class="category_area" style="position:relative;">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
-              <tr>
-                <td class="td_category"></td>
-                <td style="cursor: pointer;" class="td_txt_explanation">
-	        	      <span class="txt_contribution_title">
-                    下記フォームに入力し、投稿確認ボタンを押してください。<br>
-                    （投稿後はアンケートのみ追加・編集できません）
-                  </span>
-	        	    </td>
-              </tr>
-              <tr>
-                <td class="td_category" style="padding-top:5px;"><div class="btn_repo">トピック名</div></td>
-                <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
-                  <%= f.text_field :title, class:"contribution_input_txt_area in_box_sizing", placeholder:"トピック名を入力してください。"%>
-                </td>
-              </tr>
-              <tr>
-                <td class="td_category" style="padding-top:5px;"><div class="btn_repo">本文</div></td>
-                <td class="td_txt_explanation" style="padding-top:5px;">
-                  <%= f.text_area :content, class:"renewal_comment_area in_box_sizing", placeholder:"投稿するトピックの本文をこちらに入力してください。"%>
-                </td>
-              </tr>
-              <tr>
-                <td class="td_category" style="padding-top:5px;"><div class="btn_repo">カテゴリー</div></td>
-                <td class="td_txt_explanation" style="padding-top:5px;">
-                  <%= f.collection_select :category_id, Category.all, :id, :name %>
-                </td>
-              </tr>
-              <tr>
-                <td class="td_category" style="padding-top:5px;"><div class="btn_repo">トピック画像</div></td>
-                <td class="td_txt_explanation" style="padding-top:5px;">
-                  <span class="small bold" id="input_form_topic">
-                    <% if @topic.image.present? %>
-                      <%= f.check_box :remove_image %><span class="small bold">画像を削除する（投稿後に反映されます）</span>
-                    <%else%>
-                      （任意）画像を1つ追加できます。
-                    <%end%>
-                  </span>
-                  <%= f.file_field :image, id: :topic_image %><%= f.hidden_field :image_cache %>
-                </td>
-              </tr>
-            </table>
-            <div colspan="3" class="alignC">
-              <% if @topic.image.present? %>
-                <%= image_tag @topic.image.url, id: :img_prev, style:"max-height: 20rem;max-width: 20rem;border-radius: 5px;" %>
-              <%else%>
-                <%= image_tag "", id: :img_prev, style:"max-height: 20rem;max-width: 20rem;border-radius: 5px;" %>
-              <%end%>
-            </div>
-            <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
-              <tr>
-                <td class="td_category" style="padding-top:5px;"><div class="btn_repo">アンケート</div></td>
-                <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
-                  <span class="txt_contribution_title">
-                    下記のアンケート選択回答を入力してください。
-                  </span>
-                </td>
-              </tr>
-              <%= f.fields_for @enquete do |i| %>
-                <tr>
-                  <td class="td_category" style="padding-top:5px;"><div class="btn_repo">アンケート１</div></td>
-                  <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
-                    <%= i.text_field :content, name: "enquetes[content][]", class:"contribution_input_txt_area in_box_sizing", placeholder:"選択回答内容(10文字以内)"%>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="td_category" style="padding-top:5px;"><div class="btn_repo">アンケート２</div></td>
-                  <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
-                    <%= i.text_field :content, name: "enquetes[content][]", class:"contribution_input_txt_area in_box_sizing", placeholder:"選択回答内容(10文字以内)"%>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="td_category" style="padding-top:5px;"><div class="btn_repo">アンケート３</div></td>
-                  <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
-                    <%= i.text_field :content, name: "enquetes[content][]", class:"contribution_input_txt_area in_box_sizing", placeholder:"選択回答内容(10文字以内)"%>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="td_category" style="padding-top:5px;"><div class="btn_repo">アンケート４</div></td>
-                  <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
-                    <%= i.text_field :content, name: "enquetes[content][]", class:"contribution_input_txt_area in_box_sizing", placeholder:"選択回答内容(10文字以内)"%>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="td_category" style="padding-top:5px;"><div class="btn_repo">アンケート５</div></td>
-                  <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
-                    <%= i.text_field :content, name: "enquetes[content][]", class:"contribution_input_txt_area in_box_sizing", placeholder:"選択回答内容(10文字以内)"%>
-                  </td>
-                </tr>
-              <%end%>
-          </div>
+      <div id="content_main_area_in">
+        <div class="category_area">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+            <tr>
+              <td class="td_txt_explanation" style="width:60%">
+                トピック新規作成
+              </td>
+              <td class="btn_submit_area" style="align:right;vertical-align:middle;">
+                <%= link_to "戻る", topics_path, class:"btn_delete in_box_sizing", style:"width:95%;" %>
+              </td>
+              <td class="btn_submit_area" style="align:right;vertical-align:middle;">
+                <%= f.submit "投稿を確認する", class:"btn_submit in_box_sizing", style:"width:95%" %>
+              </td>
+            </tr>
+          </table>
         </div>
+        <div class="category_area" style="position:relative;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+            <tr>
+              <td class="td_category"></td>
+              <td style="cursor: pointer;" class="td_txt_explanation">
+                <span class="txt_contribution_title">
+                  下記フォームに入力し、投稿確認ボタンを押してください。<br>
+                  （投稿後はアンケートのみ追加・編集できません）
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="td_category" style="padding-top:5px;">
+                <div class="btn_repo">トピック名</div>
+              </td>
+              <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+                <%= f.text_field :title, class:"contribution_input_txt_area in_box_sizing", placeholder:"トピック名を入力してください。"%>
+              </td>
+            </tr>
+            <tr>
+              <td class="td_category" style="padding-top:5px;">
+                <div class="btn_repo">本文</div>
+              </td>
+              <td class="td_txt_explanation" style="padding-top:5px;">
+                <%= f.text_area :content, class:"renewal_comment_area in_box_sizing", placeholder:"投稿するトピックの本文をこちらに入力してください。"%>
+              </td>
+            </tr>
+            <tr>
+              <td class="td_category" style="padding-top:5px;">
+                <div class="btn_repo">カテゴリー</div>
+              </td>
+              <td class="td_txt_explanation" style="padding-top:5px;">
+                <%= f.collection_select :category_id, Category.all, :id, :name %>
+              </td>
+            </tr>
+            <tr>
+              <td class="td_category" style="padding-top:5px;">
+                <div class="btn_repo">トピック画像</div>
+              </td>
+              <td class="td_txt_explanation" style="padding-top:5px;">
+                <span class="small bold" id="input_form_topic">
+                  <% if @topic.image.present? %>
+                  <%= f.check_box :remove_image %><span class="small bold">画像を削除する（投稿後に反映されます）</span>
+                  <%else%>
+                  （任意）画像を1つ追加できます。
+                  <%end%>
+                </span>
+                <%= f.file_field :image, id: :topic_image %><%= f.hidden_field :image_cache %>
+              </td>
+            </tr>
+          </table>
+          <div colspan="3" class="alignC">
+            <% if @topic.image.present? %>
+            <%= image_tag @topic.image.url, id: :img_prev, style:"max-height: 20rem;max-width: 20rem;border-radius: 5px;" %>
+            <%else%>
+            <%= image_tag "", id: :img_prev, style:"max-height: 20rem;max-width: 20rem;border-radius: 5px;" %>
+            <%end%>
+          </div>
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
+            <tr>
+              <td class="td_category" style="padding-top:5px;">
+                <div class="btn_repo">アンケート</div>
+              </td>
+              <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+                <span class="txt_contribution_title">
+                  下記のアンケート選択回答を入力してください。
+                </span>
+              </td>
+            </tr>
+            <%= f.fields_for @enquete do |i| %>
+            <tr>
+              <td class="td_category" style="padding-top:5px;">
+                <div class="btn_repo">アンケート１</div>
+              </td>
+              <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+                <%= i.text_field :content, name: "enquetes[content][]", class:"contribution_input_txt_area in_box_sizing", placeholder:"選択回答内容(10文字以内)"%>
+              </td>
+            </tr>
+            <tr>
+              <td class="td_category" style="padding-top:5px;">
+                <div class="btn_repo">アンケート２</div>
+              </td>
+              <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+                <%= i.text_field :content, name: "enquetes[content][]", class:"contribution_input_txt_area in_box_sizing", placeholder:"選択回答内容(10文字以内)"%>
+              </td>
+            </tr>
+            <tr>
+              <td class="td_category" style="padding-top:5px;">
+                <div class="btn_repo">アンケート３</div>
+              </td>
+              <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+                <%= i.text_field :content, name: "enquetes[content][]", class:"contribution_input_txt_area in_box_sizing", placeholder:"選択回答内容(10文字以内)"%>
+              </td>
+            </tr>
+            <tr>
+              <td class="td_category" style="padding-top:5px;">
+                <div class="btn_repo">アンケート４</div>
+              </td>
+              <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+                <%= i.text_field :content, name: "enquetes[content][]", class:"contribution_input_txt_area in_box_sizing", placeholder:"選択回答内容(10文字以内)"%>
+              </td>
+            </tr>
+            <tr>
+              <td class="td_category" style="padding-top:5px;">
+                <div class="btn_repo">アンケート５</div>
+              </td>
+              <td class="td_txt_explanation" valign="top" style="padding-top:5px;">
+                <%= i.text_field :content, name: "enquetes[content][]", class:"contribution_input_txt_area in_box_sizing", placeholder:"選択回答内容(10文字以内)"%>
+              </td>
+            </tr>
+            <%end%>
+        </div>
+      </div>
       <% end %>
     </div>
   </section>
+</div>
