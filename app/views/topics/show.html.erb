@@ -98,7 +98,7 @@
 																<td style="width:5%;white-space:nowrap;"><%=enquete.content%>　</td>
 																<td>
 																	<%if user_signed_in? %>
-																		<%= link_to "投票" , topic_votes_path(params[:id],enquete_id: enquete.id), method: :post, remote: true, class:"rnk_button white", style:"width:60px;height:20px;line-height:1.2;font-size:16px;margin-right:-20px;vertical-align:middle;display:inline-block;" %>
+																		<%= link_to "投票" , topic_votes_path(params[:id],enquete_id: enquete.id), method: :post, remote: true, data: { confirm: '選択したアンケートに投票します。投票後は訂正できません' }, class:"rnk_button white", style:"width:60px;height:20px;line-height:1.2;font-size:16px;margin-right:-20px;vertical-align:middle;display:inline-block;" %>
 																	<% end %>
 																</td>
 															</tr>
