@@ -2,8 +2,9 @@ body {
 	font-family: 'Helvetica Neue', Helvetica, Arial, Roboto, 'Droid Sans', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
 	font-size:100%; /* 10px */
 	color:#242402;
-	background-color:#8FCE42;
+	background-color:#003366;
 	line-height:1.5;
+	color:#ffffcc;
 }
 img {
 	vertical-align:bottom;
@@ -17,6 +18,7 @@ h1 {
 a {
 	-webkit-tap-highlight-color:none;
 }
+
 .alignC {
 	text-align:center;
 }
@@ -75,6 +77,9 @@ a:hover {
 }
 
 
+label{
+	color: #FFFFCC;
+}
 /* =========
 txt_color
 ========= */
