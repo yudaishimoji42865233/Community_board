@@ -51,11 +51,11 @@ production:
   <<: *default
   database: <%= ENV['DB_NAME'] %> 
   socket: /var/lib/mysql/mysql.sock
-  username: <%= ENV['DB_USERNAME'] %>
+  username: root
   password: <%= ENV['DB_PASSWORD'] %>
   url: <%= ENV['DATABASE_URL'] %>
 
-  # username: root
+  username: <%= ENV['DB_USERNAME'] %>
   # password: <%= ENV['DATABASE_PASSWORD'] %>
   # master_key: <%= ENV['RAILS_MASTER_KEY'] %>
   # database: Community_board_production
