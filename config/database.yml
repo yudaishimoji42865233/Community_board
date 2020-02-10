@@ -49,15 +49,15 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV['DB_NAME'] %> 
-  socket: /var/lib/mysql/mysql.sock
+  database: Community_board_production
   username: root
-  password: <%= ENV['DB_PASSWORD'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
   url: <%= ENV['DATABASE_URL'] %>
 
-  username: <%= ENV['DB_USERNAME'] %>
-  # password: <%= ENV['DATABASE_PASSWORD'] %>
+  # database: <%= ENV['DB_NAME'] %> 
+  # username: <%= ENV['DB_USERNAME'] %>
+  # password: <%= ENV['DB_PASSWORD'] %>
   # master_key: <%= ENV['RAILS_MASTER_KEY'] %>
-  # database: Community_board_production
   # username: Community_board
   # password: <%= ENV['COMMUNITY_BOARD_DATABASE_PASSWORD'] %>
