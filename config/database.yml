@@ -50,8 +50,9 @@ test:
 production:
   <<: *default
   database: <%= ENV['DB_NAME'] %> 
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
   url: <%= ENV['DATABASE_URL'] %>
   # master_key: <%= ENV['RAILS_MASTER_KEY'] %>
 
