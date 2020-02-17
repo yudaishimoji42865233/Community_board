@@ -40,12 +40,12 @@ checkbox and radio
 .btn_repo {
 	width:280px;
 	padding:14px;
-	color:#FFFFCC;
+	color:#fff;
 	font-weight:bold;
 	position:relative;
 	top:-.15rem;
 	display:block;
-	background-image: image-url("unnamed.jpg");
+	background-color:#c0802f;
 	border-radius:10px;
 	border:2px solid #242402;
 	box-shadow:0 2px 0 #555, inset -2px -2px 0 #987000, inset 2px 2px 0 #ffc084;
@@ -527,11 +527,11 @@ ul.bbsList{
 	display: -moz-box;
 }
 ul.bbsList li{
-	width:48%;
+	width:49%;
 	padding:4px;
 	text-align:center;
 	vertical-align: top;
-	background-image:image-url("20th-century-brown-vintage-paper-8.jpg");
+	background:#ffffcc;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
 	border-radius: 6px;
