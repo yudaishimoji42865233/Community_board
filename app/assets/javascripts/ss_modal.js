@@ -113,7 +113,7 @@
         url = topic_id;
         iop=1;
       }else{
-        url = "px1.png";
+        url = "/assets/px1.png";
         iop=0;
       }
       var imgPreloader=new Image();
