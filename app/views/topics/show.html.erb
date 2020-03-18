@@ -141,43 +141,7 @@
 				</table>
 			</div>
 			<% if @comment.present? %>
-			<% @comment.each.with_index(1) do |comment, index|%>
-			<div class="category_area">
-				<table width="100%" border="0" cellpadding="0" cellspacing="0" summary="">
-					<tr>
-						<td style="width:30%;text-align:left;">
-							名前：<span id="n_<%=index%>"><%=comment.user.name%></span></td>
-						<td style="width:40%;text-align:right;">評価：<span
-								id="total_comment_<%= comment.id %>"><%=instance_variable_get("@comment_like_#{comment.id}").to_i%></span>
-							<span id="like_comment_<%=comment.id%>" style="display:inline-block;">
-								<% if instance_variable_get("@user_comment_like_#{comment.id}").present? %>
-								<%= link_to '戻す', comment_like_topic_path(comment_id: comment.id), method: :delete, remote: true, class:"btn_good" %>
-								<% elsif user_signed_in? %>
-								<%= link_to '評価する', comment_like_topic_path(comment_id: comment.id), method: :post, remote: true, class:"btn_good" %>
-								<% else %>
-								<%end%>
-							</span>
-						</td>
-						<td style="width:30%;text-align:right;">日時：<span
-								class="txt_contribution_title"><%=comment.created_at.strftime("%Y/%m/%d %H:%M:%S")%></span></td>
-					</tr>
-					<tr>
-						<td colspan="3" class="txt_comment">
-							<span id="td_<%=index%>"><%=comment.content%></span>
-							<% if comment.image.present?%>
-							<span>
-								<%= link_to "#modal1", id: index, class:"modalLink" do %>
-								<span class="rnk_button white"
-									style="width:60px;height:20px;line-height:1.2;font-size:16px;margin-right:-20px;vertical-align:middle;display:inline-block;">画像</span>
-								<%= hidden_field_tag "topic_id_#{index}", comment.image.url %>
-								<% end %>
-							</span>
-							<%end%>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<%end%>
+				<%= render partial: "comment_template", collection: @comment, as: :comment %>
 			<%end%>
 			<div class="category_area">
 				<% if @comment.present? %>

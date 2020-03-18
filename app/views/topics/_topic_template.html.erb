@@ -1,0 +1,43 @@
+
+<ul class=bbsList>
+	<li>
+		<div class="bbsBox">
+			<% if a.user.image.present?%>
+			<span><%= image_tag a.user.image.url, class:"icon80" %></span>
+			<%else%>
+			<span><%= image_tag 'noface.jpg', class:"icon80" %></span>
+			<%end%>
+			<p class="bbsDetail">
+				<%=a.title%>　<%= link_to "詳細",topic_path(a.id), data: {"turbolinks"=>false}, class:"rnk_button white", style:"width:60px;height:20px;line-height:1.2;margin-right:-20px;vertical-align:middle;display:inline-block;"%>
+			</p>
+		</div>
+		<div class="bbsClearfix">
+			<div class="bbsDashed3"></div>
+			<div class="bbsInfoBar bbsInfoBarR">【<%=a.category.name%>】<%=a.user.name%></div>
+			<div class="bbsInfoBar bbsInfoBarL">
+				更新日:<%=a.updated_at.strftime("%Y/%m/%d")%>　閲覧数:<%= a.impressionist_count %>　回答数:<%= a.comments.length %>　評価数:<%= a.topic_likes.length %>
+			</div>
+		</div>
+	</li>
+	<% if b.present? %>
+	<li>
+		<div class="bbsBox">
+			<% if b.user.image.present?%>
+			<span><%= image_tag b.user.image.url, class:"icon80" %></span>
+			<%else%>
+			<span><%= image_tag 'noface.jpg', class:"icon80" %></span>
+			<%end%>
+			<p class="bbsDetail">
+				<%=b.title%>　<%= link_to "詳細",topic_path(b.id), data: {"turbolinks"=>false}, class:"rnk_button white", style:"width:60px;height:20px;line-height:1.2;margin-right:-20px;vertical-align:middle;display:inline-block;"%>
+			</p>
+		</div>
+		<div class="bbsClearfix">
+			<div class="bbsDashed3"></div>
+			<div class="bbsInfoBar bbsInfoBarR">【<%=b.category.name%>】<%=b.user.name%></div>
+			<div class="bbsInfoBar bbsInfoBarL">
+				更新日:<%=b.updated_at.strftime("%Y/%m/%d")%>　閲覧数:<%= b.impressionist_count %>　回答数:<%= b.comments.length %>　評価数:<%= b.topic_likes.length %>
+			</div>
+		</div>
+	</li>
+	<%end%>
+</ul>
