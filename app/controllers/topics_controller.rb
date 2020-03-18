@@ -5,12 +5,12 @@ class TopicsController < ApplicationController
       @q = Topic.search(search_params)
       @q.sorts = 'created_at desc' if @q.sorts.empty?
       params[:page] ||= 1
-      @topic = @q.result(distinct: true).page(params[:page]).per(20)
+      @topic = @q.result(distinct: true).page(params[:page]).per(10)
     else
       params[:q] = { sorts: 'created_at desc' }
       @q = Topic.ransack(params[:q])
       params[:page] ||= 1
-      @topic = @q.result(distinct: true).page(params[:page]).per(20)
+      @topic = @q.result(distinct: true).page(params[:page]).per(10)
     end
   end
 
