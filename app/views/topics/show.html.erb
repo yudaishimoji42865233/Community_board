@@ -64,8 +64,6 @@
 									style="width:60px;height:20px;line-height:1.2;font-size:16px;margin-right:-20px;vertical-align:middle;display:inline-block;">画像</span>
 								<%= hidden_field_tag "topic_id_0", @topic.image.url %>
 								<%end%>
-								<%else%>
-								<%= hidden_field_tag "topic_id_0", "/assets/px1.png" %>
 								<%end%>
 							</span>
 						</td>
@@ -174,8 +172,6 @@
 								<%= hidden_field_tag "topic_id_#{index}", comment.image.url %>
 								<% end %>
 							</span>
-							<%else%>
-							<%= hidden_field_tag "topic_id_#{index}", "/assets/px1.png" %>
 							<%end%>
 						</td>
 					</tr>
@@ -232,15 +228,9 @@
 			</div>
 		</div>
 		<ul class="modalBtn">
-			<li><%= link_to "#modal1,2", class:"modalLink", id:1, style:"text-align:center; display:block;" do %><span
-					class="rnk_button white" style="width:60%;padding:14px;font-size:16px;display:inline-block;">前へ</span><%end%>
-			</li>
 			<li><%= link_to "", class:"close closeBtn", style:"text-align:center; display:block;" do %><span
 					class="rnk_button2 white"
 					style="width:60%;padding:14px;font-size:16px;display:inline-block;">閉じる</span><%end%>
-			</li>
-			<li><%= link_to "#modal1,1", class:"modalLink", id:1, style:"text-align:center; display:block;" do %><span
-					class="rnk_button white" style="width:60%;padding:14px;font-size:16px;display:inline-block;">次へ</span><%end%>
 			</li>
 		</ul>
 	</section>
@@ -250,11 +240,11 @@
 
 <script type="text/javascript">
 var idx={};
-idx[0]={img:1,next:<%if @comment.present?%>1<%else%>0<%end%>,befo:<%if @comment.present?%><%=@comment.length%><%else%>0<%end%>};
+idx[0]={img:<%if @topic.image.present?%>1<%else%>0<%end%>,next:<%if @comment.present?%>1<%else%>0<%end%>,befo:<%if @comment.present?%><%=@comment.length%><%else%>0<%end%>};
 <% @comment.each.with_index(1) do |comment, i| %>
 <%if i == @comment.length%>
-idx[<%=i%>]={img:1,next:0,befo:<%=i-1%>};
+idx[<%=i%>]={img:<%if comment.image.present?%>1<%else%>0<%end%>,next:0,befo:<%=i-1%>};
 <%else%>
-idx[<%=i%>]={img:1,next:<%=i+1%>,befo:<%=i-1%>};
+idx[<%=i%>]={img:<%if comment.image.present?%>1<%else%>0<%end%>,next:<%=i+1%>,befo:<%=i-1%>};
 <%end%><%end%>
 </script>
