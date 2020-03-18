@@ -1,54 +1,86 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<head>
+  <script type="text/javascript">
+  $(function() {
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          $('#img_prev').attr('src', e.target.result);
+          $('#input_form_user').html(`<input type="checkbox" value="1" name="user[remove_image]" id="user_remove_image"><span class="small bold">画像を削除する（編集後に反映されます）</span>`);
+        };
+        reader.readAsDataURL(input.files[0]);
+      };
+    };
+    $("#topic_image").change(function(){
+      readURL(this);
+    });
+  });
+  </script>
+</head>
+<section style="padding:10px;">
+	<%= link_to root_path, class:"alignL btn_repo", style:"height:50px;font-size:35px;width:auto;" do %>　コミュニティ掲示板<%end%>
+</section>
+	<div class="row" style="width: 100%;margin-left: auto;margin-right: auto;max-width: 660px;">
+    <div class="category_area">
+      <h2 class="alignC bold">ユーザー情報編集</h2><br>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="field">
+          <h4 style="margin-bottom:-25px;">ユーザー名</h4>
+        　<%= f.text_field :name, class:"contribution_input_txt_area in_box_sizing", autofocus: true, autocomplete: "name" %>
+        </div><br>
 
-  <div class="field">
-  　<%= f.label :name %><br />
-  　<%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+        <div class="field">
+          <%= f.label :image, "ユーザーアイコン(任意)"%><br />
+          <%= f.file_field :image, id: :topic_image, autofocus: true, autocomplete: "image" %><br>
+          <% if current_user.image.present? %>
+          <%= image_tag current_user.image.url, id: :img_prev, style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;margin:5px;" %><br>
+          <span class="small bold" id="input_form_user">
+            <%= f.check_box :remove_image %><span class="small bold">画像を削除する（編集後に反映されます）</span>
+          </span><br>
+          <%else%>
+          <%= image_tag "", id: :img_prev, style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;margin:5px;" %><br>
+          <%end%>
+          <div class="small bold" id="input_form_user"></div>
+        </div><br>
 
-  <div class="field">
-    <%= f.label :image %><br />
-    <%= f.file_field :image, autofocus: true, autocomplete: "image" %>
-  </div>
+        <div class="field">
+          <%= f.label :email, "Eメールアドレス" %><br />
+          <%= f.email_field :email, class:"contribution_input_txt_area in_box_sizing", autofocus: true, autocomplete: "email" %>
+        </div><br>
 
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+        <div class="field">
+          <%= f.label :password, "パスワード(パスワードを変更しない場合は空白のままにしてください)" %><br />
+          <%= f.password_field :password, class:"contribution_input_txt_area in_box_sizing", autocomplete: "new-password" %>
+          <% if @minimum_password_length %>
+            <br />
+            <em>(<%= @minimum_password_length %>文字以上)</em>
+          <% end %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+        <div class="field">
+          <%= f.label :password_confirmation, "パスワード再度入力(パスワードを変更しない場合は空白のままにしてください)" %><br />
+          <%= f.password_field :password_confirmation, class:"contribution_input_txt_area in_box_sizing", autocomplete: "new-password" %>
+        </div><br />
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+        <div class="field">
+          <%= f.label :current_password,"(※必須)変更を反映させるには現在のパスワードを入力してください" %><br />
+          <%= f.password_field :current_password, class:"contribution_input_txt_area in_box_sizing", autocomplete: "current-password" %>
+        </div><br />
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+        <div class="actions">
+          <%= f.submit "変更する", class: "btn_submit in_box_sizing", style:"width:20%;" %>
+        </div><br>
+      <% end %>
+      <%= link_to "戻る", root_path, class: "btn_delete in_box_sizing", style:"width:20%;" %><br>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+

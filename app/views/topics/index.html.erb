@@ -106,17 +106,21 @@
 									<%end%>
 								</td>
 								<% if user_signed_in? %>
-								<td class="td_txt_explanation" style="align:right;vertical-align:middle;width:6.5%;">
-									<% if current_user.image.present? %>
-									<%= image_tag current_user.image.url, class:"icon80", style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
-									<% else %>
-									<%= image_tag 'noface.jpg', class:"icon80", style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
-									<% end %>
-								</td>
-								<td class="td_txt_explanation"
-									style="align:right;vertical-align:middle;width:auto;font-size:25px;white-space:nowrap;">
-									<%= current_user.name %>
-								</td>
+									<td class="td_txt_explanation" style="align:right;vertical-align:middle;width:6.5%;">
+										<%= link_to edit_user_registration_path do%>
+										<% if current_user.image.present? %>
+											<%= image_tag current_user.image.url, class:"icon80", style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
+										<% else %>
+										<%= image_tag 'noface.jpg', class:"icon80", style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
+										<% end %>
+										<% end %>
+									</td>
+									<td class="td_txt_explanation"
+										style="align:right;vertical-align:middle;width:auto;font-size:25px;white-space:nowrap;">
+										<%= link_to edit_user_registration_path, style:"text-decoration:none;color:#242402;" do%>
+											<%= current_user.name %>
+										<% end %>
+									</td>
 								<td class="btn_submit_area" style="align:right;vertical-align:middle;min-width:280px;">
 									<%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn_delete in_box_sizing", style:"width:95%" %>
 								</td>
@@ -140,7 +144,7 @@
 								<td class="td_txt_explanation" style="width: auto;"></td>
 								<% if user_signed_in? %>
 								<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-									<%= link_to 'トピックの編集・削除', delete_select_topics_path, class:"btn_s_inp in_box_sizing", style:"width:95%;",data: {"turbolinks"=>false} %>
+									<%= link_to 'トピックの編集・削除', delete_select_topics_path, class:"btn_s_inp in_box_sizing", style:"width:95%;",data: {turbolinks: false} %>
 								</td>
 								<td class="btn_submit_area" style="align:right;vertical-align:middle;">
 									<%= link_to '投稿する', new_topic_path, class:"btn_submit in_box_sizing", style:"width:95%;" %>

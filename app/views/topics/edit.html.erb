@@ -31,7 +31,7 @@
                 トピックの編集
               </td>
               <td class="btn_submit_area" style="align:right;vertical-align:middle;">
-                <%= link_to '戻る', delete_select_topics_path, class:"btn_delete in_box_sizing", style:"width:95%;", data: {"turbolinks"=>false} %>
+                <%= link_to '戻る', delete_select_topics_path, class:"btn_delete in_box_sizing", style:"width:95%;", data: {turbolinks: false} %>
               </td>
               <td class="btn_submit_area" style="align:right;vertical-align:middle;">
                 <%= form_for [ :confirm, @topic ] do |f| %>

@@ -33,7 +33,7 @@
 			      			下記フォームにすべて入力し、投稿確認ボタンを押してください。
 			      		</td>
                 <td class="btn_submit_area" style="align:right;vertical-align:middle;">
-                  <%= link_to '戻る', topic_path(params[:topic_id]), class:"btn_delete in_box_sizing", style:"width:95%;", data: {"turbolinks"=>false} %>
+                  <%= link_to '戻る', topic_path(params[:topic_id]), class:"btn_delete in_box_sizing", style:"width:95%;", data: {turbolinks: false} %>
 			      	  </td>	
                 <td class="btn_submit_area" style="align:right;vertical-align:middle;">
                   <%= f.submit "投稿を確認する", class:"btn_submit in_box_sizing", style:"width:95%" %>
