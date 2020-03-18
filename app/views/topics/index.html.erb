@@ -111,13 +111,13 @@
 										<% if current_user.image.present? %>
 											<%= image_tag current_user.image.url, class:"icon80", style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
 										<% else %>
-										<%= image_tag 'noface.jpg', class:"icon80", style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
+											<%= image_tag 'noface.jpg', class:"icon80", style:"max-height: 4.5rem;max-width: 4.5rem;border-radius: 5px;" %>
 										<% end %>
 										<% end %>
 									</td>
 									<td class="td_txt_explanation"
 										style="align:right;vertical-align:middle;width:auto;font-size:25px;white-space:nowrap;">
-										<%= link_to edit_user_registration_path, style:"text-decoration:none;color:#242402;" do%>
+										<%= link_to edit_user_registration_path, class:"icon80", style:"text-decoration:none;color:#242402;" do%>
 											<%= current_user.name %>
 										<% end %>
 									</td>

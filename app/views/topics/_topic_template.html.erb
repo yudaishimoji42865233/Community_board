@@ -3,9 +3,9 @@
 	<li>
 		<div class="bbsBox">
 			<% if a.user.image.present?%>
-			<span><%= image_tag a.user.image.url, class:"icon80" %></span>
+			<span><%= image_tag a.user.image.url %></span>
 			<%else%>
-			<span><%= image_tag 'noface.jpg', class:"icon80" %></span>
+			<span><%= image_tag 'noface.jpg' %></span>
 			<%end%>
 			<p class="bbsDetail">
 				<%=a.title%>　<%= link_to "詳細",topic_path(a.id), data: {turbolinks: false}, class:"rnk_button white", style:"width:60px;height:20px;line-height:1.2;margin-right:-20px;vertical-align:middle;display:inline-block;"%>
@@ -23,9 +23,9 @@
 	<li>
 		<div class="bbsBox">
 			<% if b.user.image.present?%>
-			<span><%= image_tag b.user.image.url, class:"icon80" %></span>
+			<span><%= image_tag b.user.image.url %></span>
 			<%else%>
-			<span><%= image_tag 'noface.jpg', class:"icon80" %></span>
+			<span><%= image_tag 'noface.jpg' %></span>
 			<%end%>
 			<p class="bbsDetail">
 				<%=b.title%>　<%= link_to "詳細",topic_path(b.id), data: {turbolinks: false}, class:"rnk_button white", style:"width:60px;height:20px;line-height:1.2;margin-right:-20px;vertical-align:middle;display:inline-block;"%>
