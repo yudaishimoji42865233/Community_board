@@ -56,21 +56,21 @@
         <% end %>
 
         <div class="field">
-          <%= f.label :password, "パスワード(パスワードを変更しない場合は空白のままにしてください)" %><br />
-          <%= f.password_field :password, class:"contribution_input_txt_area in_box_sizing", autocomplete: "new-password" %>
+          <%= f.label :password, "パスワード" %>
           <% if @minimum_password_length %>
-            <br />
-            <em>(<%= @minimum_password_length %>文字以上)</em>
+            (<%= @minimum_password_length %>文字以上)
           <% end %>
-        </div>
+          <%= "　(パスワードを変更しない場合は空白のままにしてください)" %>
+          <%= f.password_field :password, class:"contribution_input_txt_area in_box_sizing", autocomplete: "new-password" %>
+        </div><br />
 
         <div class="field">
-          <%= f.label :password_confirmation, "パスワード再度入力(パスワードを変更しない場合は空白のままにしてください)" %><br />
+          <%= f.label :password_confirmation, "パスワード再度入力　(パスワードを変更しない場合は空白のままにしてください)" %><br />
           <%= f.password_field :password_confirmation, class:"contribution_input_txt_area in_box_sizing", autocomplete: "new-password" %>
         </div><br />
 
         <div class="field">
-          <%= f.label :current_password,"(※必須)変更を反映させるには現在のパスワードを入力してください" %><br />
+          <%= f.label :current_password,"変更を反映させるには現在のパスワードを入力してください (※必須)" %><br />
           <%= f.password_field :current_password, class:"contribution_input_txt_area in_box_sizing", autocomplete: "current-password" %>
         </div><br />
 

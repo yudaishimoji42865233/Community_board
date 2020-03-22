@@ -46,13 +46,13 @@
         <div class="field">
           <%= f.label :password, "パスワード" %>
           <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %>文字以上)</em>
+          (<%= @minimum_password_length %>文字以上)
           <% end %><br />
           <%= f.password_field :password, class:"contribution_input_txt_area in_box_sizing", autocomplete: "new-password" %>
         </div><br>
 
         <div class="field">
-          <%= f.label :password_confirmation, "パスワード(再度入力)" %><br />
+          <%= f.label :password_confirmation, "パスワード再度入力" %><br />
           <%= f.password_field :password_confirmation, class:"contribution_input_txt_area in_box_sizing", autocomplete: "new-password" %>
         </div><br>
 
