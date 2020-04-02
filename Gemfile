@@ -39,11 +39,19 @@ group :development, :test do
   gem 'pry-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'capybara'
   gem 'capistrano'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+end
+
+group :test do
+  gem 'faker', "~> 2.8"
 end
 
 group :production do
@@ -72,5 +80,3 @@ gem 'kaminari'
 gem 'impressionist'
 gem 'fog-aws'
 gem 'seed_dump'
-gem 'rspec-rails'
-gem 'factory_bot_rails'
