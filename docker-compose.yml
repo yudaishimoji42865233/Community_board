@@ -3,7 +3,7 @@ db:
   environment:
     MYSQL_ROOT_PASSWORD: root
   ports:
-    - "3306:3306"
+    - "4306:3306"
 
 web:
   build: .
@@ -11,6 +11,6 @@ web:
   volumes:
     - .:/community_board
   ports:
-    - "3000:3000"
+    - "3001:3000"
   links:
     - db

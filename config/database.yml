@@ -12,15 +12,14 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  pool: 5
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: root
-  host: db
-  # socket: /tmp/mysql.sock
 
 development:
   <<: *default
   database: Community_board_development
+  password: root
+  host: db
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -28,6 +27,8 @@ development:
 test:
   <<: *default
   database: Community_board_test
+  password: root
+  host: db
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -51,14 +52,6 @@ test:
 production:
   <<: *default
   database: Community_board_production
-  username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
   url: <%= ENV['DATABASE_URL'] %>
-
-# database: <%= ENV['DB_NAME'] %> 
-# username: <%= ENV['DB_USERNAME'] %>
-# password: <%= ENV['DB_PASSWORD'] %>
-# master_key: <%= ENV['RAILS_MASTER_KEY'] %>
-# username: Community_board
-# password: <%= ENV['COMMUNITY_BOARD_DATABASE_PASSWORD'] %>
