@@ -129,7 +129,7 @@
 									<%= link_to '新規登録', new_user_registration_path, class:"btn_submit in_box_sizing", style:"width:95%;" %>
 								</td>
 								<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-									<%= link_to 'ログイン', new_user_session_path, class:"btn_s_inp in_box_sizing", style:"width:95%;" %>
+									<%= link_to 'ログイン', new_user_session_path, class:"btn_inp in_box_sizing", style:"width:95%;" %>
 								</td>
 								<% end %>
 							</tr>
@@ -144,7 +144,7 @@
 								<td class="td_txt_explanation" style="width: auto;"></td>
 								<% if user_signed_in? %>
 								<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-									<%= link_to 'トピックの編集・削除', delete_select_topics_path, class:"btn_s_inp in_box_sizing", style:"width:95%;",data: {turbolinks: false} %>
+									<%= link_to 'トピックの編集・削除', delete_select_topics_path, class:"btn_inp in_box_sizing", style:"width:95%;",data: {turbolinks: false} %>
 								</td>
 								<td class="btn_submit_area" style="align:right;vertical-align:middle;">
 									<%= link_to '投稿する', new_topic_path, class:"btn_submit in_box_sizing", style:"width:95%;" %>
@@ -157,7 +157,7 @@
 						<% end %>
 						<% if @topic.present?%>
 						<div style="float:left;height:40px;padding:10px;">
-							<%= link_to_prev_page @topic, "戻る", class:"btn_s_inp in_box_sizing", style:"font-size:16px;width:100%;align:left;" %>
+							<%= link_to_prev_page @topic, "戻る", class:"btn_inp in_box_sizing", style:"font-size:16px;width:100%;align:left;" %>
 						</div>
 						<div style="float:right;height:40px;padding:10px;">
 							<%= link_to_next_page @topic, "次へ", class:"btn_submit in_box_sizing", style:"font-size:16px;width:100%;align:right;" %>

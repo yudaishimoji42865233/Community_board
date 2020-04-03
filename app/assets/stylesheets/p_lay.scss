@@ -129,7 +129,8 @@ Btn
 }
 
 /* btn_s_inp */
-.btn_s_inp {
+.btn_s_inp,
+.btn_inp {
 	background-color:#368;
 	border:1px solid #023;
 	box-shadow:0 3px 0 #555, inset -2px -2px 0 #033, inset 2px 2px 0 #099;
@@ -146,13 +147,15 @@ Btn
 
 
 
-.btn_s_inp:hover {
+.btn_s_inp:hover,
+.btn_inp:hover {
 	top:.1rem;
 	box-shadow:0 1px 0 #055, inset -2px -2px 0 #033, inset 2px 2px 0 #099;
 	background-color:#279;
 }
 
-.btn_s_inp:active {
+.btn_s_inp:active
+.btn_inp:active {
 	background-color:#279;
 }
 

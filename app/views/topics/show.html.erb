@@ -26,7 +26,7 @@
 						</td>
 						<% else %>
 						<td class="btn_submit_area" style="align:right;vertical-align:middle;">
-							<%= link_to 'ログイン', new_user_session_path, class:"btn_s_inp in_box_sizing", style:"width:95%;" %>
+							<%= link_to 'ログイン', new_user_session_path, class:"btn_inp in_box_sizing", style:"width:95%;" %>
 						</td>
 						<% end %>
 						<% end %>
@@ -146,7 +146,7 @@
 			<div class="category_area">
 				<% if @comment.present? %>
 				<div style="float:left;">
-					<%= link_to_prev_page @comment, "戻る", class:"btn_s_inp in_box_sizing", style:"font-size:16px;width:auto;align:left;margin:10px;",data: {turbolinks: false} %>
+					<%= link_to_prev_page @comment, "戻る", class:"btn_inp in_box_sizing", style:"font-size:16px;width:auto;align:left;margin:10px;",data: {turbolinks: false} %>
 				</div>
 				<div style="float:right;">
 					<%= link_to_next_page @comment, "次へ", class:"btn_submit in_box_sizing", style:"font-size:16px;width:auto;align:right;margin:10px;",data: {turbolinks: false} %>
