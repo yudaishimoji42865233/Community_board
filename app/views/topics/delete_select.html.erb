@@ -11,8 +11,8 @@
             <tr>
               <td class="td_txt_explanation" style="width:60%">
                 削除する投稿トピックにチェックを入れてください。<br>
-                ※削除を行った項目は復旧させることはできませんのであらかじめ<br>
-                ご了承ください。
+                ※削除を行った項目は復旧させることはできませんので<br>
+                あらかじめご了承ください。
               </td>
               <td class="btn_submit_area" style="align:right;vertical-align:middle;">
                 <%= link_to "戻る", topics_path, class:"btn_delete in_box_sizing", style:"width:95%;" %>
@@ -69,7 +69,7 @@
               <td class="txt_comment_date"><%= topic.created_at.strftime("%Y/%m/%d") %></td>
               <td class="contribution_delete">
                 <%= check_box_tag 'topic[id][]', topic,false, value:"#{topic.id}", selected:'topic[id][]' %>削除する/
-                <%= link_to "トピックを編集する", "/topics/#{topic.id}/edit", method: :get, class:"rnk_button2 white", style:"width:160px;height:20px;line-height:1.3;vertical-align:middle;font-weight:normal;display:inline-block;text-decoration:none;" %>
+                <%= link_to "トピックを編集する", "/topics/#{topic.id}/edit", method: :get, class:"btn_s_inp", style:"width:160px;line-height:1.3;vertical-align:middle;font-weight:bold;display:inline-block;text-decoration:none;" %>
               </td>
             </tr>
             <%end%>
