@@ -28,12 +28,12 @@
   # {impressionable_type: "Topic", impressionable_id: 49, user_id: nil, controller_name: "topics", action_name: "show", view_name: nil, request_hash: "706cd8d701ecc3bd16ad435d3db32b4ad9360b3da94c1704531e5054ad86a059", ip_address: "::1", session_hash: "20f0543db723258f760cbd10a02fee8e", message: nil, referrer: "http://localhost:3000/", params: {}},
   # {impressionable_type: "Topic", impressionable_id: 4, user_id: nil, controller_name: "topics", action_name: "show", view_name: nil, request_hash: "3a2098f6238d0304894a2c054e63a714ddad5c531b199ff85263fb16d5cab38d", ip_address: "::1", session_hash: "20f0543db723258f760cbd10a02fee8e", message: nil, referrer: "http://localhost:3000/topics?utf8=%E2%9C%93&q%5Bsorts%5D=impressions_count+desc&q%5Bcategory_id_eq_any%5D%5B%5D=&q%5Bcategory_id_eq_any%5D%5B%5D=&q%5Bcategory_id_eq_any%5D%5B%5D=&q%5Bcategory_id_eq_any%5D%5B%5D=&q%5Bcategory_id_eq_any%5D%5B%5D=&q%5Btitle_cont%5D=", params: {}}
 # ])
-# User.create!([
-  # {name: "dvwevq", image: "download-4.jpg", email: "t@t.com", encrypted_password: "$2a$11$s6LCZR3o8IvV4tbhjhVBQO3w6e9/uh70rB/yE/aR4v5rRdGw8tEn6", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
-  # {name: "dfavefve", image: "download-10.jpg", email: "d@d.com", encrypted_password: "$2a$11$c36qgFxh2EfeqRylA5QwRebXD8ltRU0KCodxMtqPGwWg6KflSu9rq", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
-  # {name: "elm", image: nil, email: "test@t.com", encrypted_password: "$2a$11$sJ8NU4nsxRiezNvMpoYS8.IcGsk7VLN4RGjDXdn.Al6QFoFFIUjJy", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
-  # {name: "aaaaaaaaaaaaaaaa", image: nil, email: "a@a.com", encrypted_password: "$2a$11$B7zpXEI3m79acGqnPnUAse2nBI8dtaCMXG5MBSx/NT.gdxoFon7x2", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil}
-# ])
+User.create!([
+  {name: "テスト1", image: "download-4.jpg", email: "t@t.com", password: 'aaaaaa', password_confirmation: 'aaaaaa', reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
+  {name: "テスト2", image: "download-10.jpg", email: "d@d.com", password: 'aaaaaa', password_confirmation: 'aaaaaa', reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
+  {name: "テスト3", image: nil, email: "test@t.com", password: 'aaaaaa', password_confirmation: 'aaaaaa', reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil},
+  {name: "テスト4", image: nil, email: "a@a.com", password: 'aaaaaa', password_confirmation: 'aaaaaa', reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil}
+])
 
 Topic.create!([
   {title: "wdvewvwvwv", content: "evwfveaveavfe", image: nil, category_id: 2, user_id: 1, impressions_count: 5},
