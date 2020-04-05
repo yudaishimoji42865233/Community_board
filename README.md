@@ -34,13 +34,13 @@ Eメール:t@t.com<br>
 
 ## バックエンド
 
-- 画像アップロード・削除（Active Storage+Amazon S3)
+- 画像アップロード・削除（Active Storage+Amazon S3）
 - Rspec による自動テスト機能
 - ユーザー登録・ログイン機能（deviseを使用）
 - トピックの 投稿/削除/編集 機能
 - いいね機能（Ajax）
 - ページネーション機能（Kaminari）
-- 検索機能(ransackでの複数検索)
+- 検索機能（ransackでの複数検索）
 - ユーザーデータ編集機能 /削除/編集機能
 
 
@@ -68,3 +68,98 @@ Eメール:t@t.com<br>
 - Nginx
 - AWS (EC2, S3, Elastic IP)
 - Capistrano
+
+# DB設計
+
+## Usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false, unique: true|
+|image|string||
+|email|string|null: false, unique: true|
+|password|string|null: false|
+|encrypted_password|string|null: false|
+
+### Association
+- has_many :topic          ,dependent: :destroy
+- has_many :comment        ,dependent: :destroy
+- has_many :vote           ,dependent: :destroy
+- has_many :topic_likes    ,dependent: :destroy
+- has_many :comment_likes  ,dependent: :destroy
+
+
+## Topicsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|title|string|null: false|
+|content|string|null: false|
+|image|string||
+|category_id|integer|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|impressions_count|integer|default: 0|
+
+### Association
+- belongs_to_active_hash :category
+- has_many :comments, dependent: :destroy
+- has_many :enquetes, dependent: :destroy
+- has_many :topic_likes, dependent: :destroy
+- belongs_to :user
+
+
+## Commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|content|string|null: false|
+|image|string||
+|topic_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :topic, dependent: :destroy
+- belongs_to :user
+- has_many :comment_likes, dependent: :destroy
+
+
+## Enquetesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|content|string|null: false|
+|topic_id"|integer|null: false, foreign_key: true|
+
+### Association
+
+- belongs_to :topic
+- has_many :votes
+
+
+## Votesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|enquete_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :enquete
+
+
+## Topic_likesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|topic_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :topic
+
+
+## Comment_likesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|comment_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :comment
