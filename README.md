@@ -40,7 +40,7 @@ TECH::EXPERTで学習したスキルを活かしたいという思いで作成�
 
 ## バックエンド
 
-- 画像アップロード・削除（Active Storage+Amazon S3）
+- 画像アップロード・削除（carrierwave + fog-aws）
 - Rspec による自動テスト機能
 - ユーザー登録・ログイン機能（deviseを使用）
 - トピックの 投稿/削除/編集 機能
