@@ -71,7 +71,7 @@ Eメール:t@t.com
 ## インフラ
 
 - Nginx
-- AWS (EC2, S3, Elastic IP)
+- AWS (EC2, RDS for MySQL, S3, Route53, Elastic IP)
 - Capistrano
 
 
