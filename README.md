@@ -10,7 +10,7 @@
 評価（いいね機能）をつけることができます。
 
 # 本番環境
-URL: http://3.115.206.168/
+URL: http://www.com-board.com/
 
 ・サイトログイン  
 ユーザー名: community_board  
